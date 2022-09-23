@@ -1,11 +1,10 @@
-apiVersion: organization.github.jet.crossplane.io/v1alpha1
+apiVersion: organization.taikun.jet.crossplane.io/v1alpha1
 kind: Organization
 metadata:
-  name: hello-crossplane
+  name: organ-crossplane
 spec:
   forProvider:
-    name: "test-organization-crossplane-raph"
-    full_name: "Create taikun organization with crossplane"
-    dicount_rate: 42
+    fullName: "Create taikun organization with crossplane"
+    discountRate: 42
   providerConfigRef:
     name: default
