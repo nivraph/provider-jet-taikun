@@ -5,18 +5,18 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.8.0
   creationTimestamp: null
-  name: resources.null.taikun.jet.crossplane.io
+  name: organizations.organization.taikun.jet.crossplane.io
 spec:
-  group: null.taikun.jet.crossplane.io
+  group: organization.taikun.jet.crossplane.io
   names:
     categories:
     - crossplane
     - managed
     - taikunjet
-    kind: Resource
-    listKind: ResourceList
-    plural: resources
-    singular: resource
+    kind: Organization
+    listKind: OrganizationList
+    plural: organizations
+    singular: organization
   scope: Cluster
   versions:
   - additionalPrinterColumns:
@@ -35,7 +35,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: Resource is the Schema for the Resources API
+        description: Organization is the Schema for the Organizations API
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation
@@ -50,7 +50,7 @@ spec:
           metadata:
             type: object
           spec:
-            description: ResourceSpec defines the desired state of Resource
+            description: OrganizationSpec defines the desired state of Organization
             properties:
               deletionPolicy:
                 default: Delete
@@ -63,13 +63,44 @@ spec:
                 type: string
               forProvider:
                 properties:
-                  triggers:
-                    additionalProperties:
-                      type: string
-                    description: A map of arbitrary strings that, when changed, will
-                      force the null resource to be replaced, re-running any associated
-                      provisioners.
-                    type: object
+                  address:
+                    description: Address.
+                    type: string
+                  billingEmail:
+                    description: Billing email.
+                    type: string
+                  city:
+                    description: City.
+                    type: string
+                  country:
+                    description: Country.
+                    type: string
+                  discountRate:
+                    description: Discount rate, must be between 0 and 100 (included).
+                      Defaults to `100`.
+                    type: number
+                  email:
+                    description: Email.
+                    type: string
+                  fullName:
+                    description: Full name.
+                    type: string
+                  lock:
+                    description: Indicates whether to lock the organization. Defaults
+                      to `false`.
+                    type: boolean
+                  managersCanChangeSubscription:
+                    description: Allow subscription to be changed by managers. Defaults
+                      to `true`.
+                    type: boolean
+                  phone:
+                    description: Phone number.
+                    type: string
+                  vatNumber:
+                    description: VAT number.
+                    type: string
+                required:
+                - fullName
                 type: object
               providerConfigRef:
                 default:
@@ -168,11 +199,19 @@ spec:
             - forProvider
             type: object
           status:
-            description: ResourceStatus defines the observed state of Resource.
+            description: OrganizationStatus defines the observed state of Organization.
             properties:
               atProvider:
                 properties:
+                  createdAt:
+                    type: string
                   id:
+                    type: string
+                  isReadOnly:
+                    type: boolean
+                  partnerId:
+                    type: string
+                  partnerName:
                     type: string
                 type: object
               conditions:
