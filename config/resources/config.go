@@ -10,4 +10,11 @@ func Configure(p *config.Provider) {
 		// this resource, which would be "github"
 		r.ShortGroup = "organization"
 	})
+	p.AddResourceConfigurator("taikun_access_profile", func(r *config.Resource) {
+		r.ShortGroup = "access_profile"
+		r.References["organization_id"] = config.Reference{
+			Type: "Organization",
+		}
+		r.ExternalName = config.IdentifierFromProvider
+	})
 }

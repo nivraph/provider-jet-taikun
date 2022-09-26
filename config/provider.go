@@ -23,7 +23,7 @@ import (
 	tjconfig "github.com/crossplane/terrajet/pkg/config"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
-	"github.com/crossplane-contrib/provider-jet-taikun/config/organization"
+	resources "github.com/crossplane-contrib/provider-jet-taikun/config/resources"
 )
 
 const (
@@ -46,12 +46,21 @@ func GetProvider() *tjconfig.Provider {
 	pc := tjconfig.NewProviderWithSchema([]byte(providerSchema), resourcePrefix, modulePath,
 		tjconfig.WithDefaultResourceFn(defaultResourceFn),
 		tjconfig.WithIncludeList([]string{
+
+			// Resources
 			"taikun_organization$",
+			"taikun_access_profile$",
+
+			// Data
 		}))
 
 	for _, configure := range []func(provider *tjconfig.Provider){
 		// add custom config functions
-		organization.Configure,
+
+		// Resources
+		resources.Configure,
+
+		// Data
 	} {
 		configure(pc)
 	}
