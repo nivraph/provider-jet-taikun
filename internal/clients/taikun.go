@@ -39,6 +39,14 @@ const (
 	errUnmarshalCredentials = "cannot unmarshal taikun credentials as JSON"
 )
 
+const (
+	taikunEmail            = "email"
+	taikunPassword         = "password"
+	taikunApiHost          = "api_host"
+	taikunKeycloakEmail    = "keycloak_email"
+	taikunKeycloakPassword = "keycloak_password"
+)
+
 // TerraformSetupBuilder builds Terraform a terraform.SetupFn function which
 // returns Terraform provider setup configuration
 func TerraformSetupBuilder(version, providerSource, providerVersion string) terraform.SetupFn {
@@ -74,19 +82,23 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 			return ps, errors.Wrap(err, errUnmarshalCredentials)
 		}
 
-		// set environment variables for sensitive provider configuration
-		// Deprecated: In shared gRPC mode we do not support injecting
-		// credentials via the environment variables. You should specify
-		// credentials via the Terraform main.tf.json instead.
-		/*ps.Env = []string{
-			fmt.Sprintf("%s=%s", "HASHICUPS_USERNAME", taikunCreds["username"]),
-			fmt.Sprintf("%s=%s", "HASHICUPS_PASSWORD", taikunCreds["password"]),
-		}*/
 		// set credentials in Terraform provider configuration
-		/*ps.Configuration = map[string]interface{}{
-			"username": taikunCreds["username"],
-			"password": taikunCreds["password"],
-		}*/
+		ps.Configuration = map[string]interface{}{}
+		if v, ok := taikunCreds[taikunEmail]; ok {
+			ps.Configuration[taikunEmail] = v
+		}
+		if v, ok := taikunCreds[taikunPassword]; ok {
+			ps.Configuration[taikunPassword] = v
+		}
+		if v, ok := taikunCreds[taikunApiHost]; ok {
+			ps.Configuration[taikunApiHost] = v
+		}
+		if v, ok := taikunCreds[taikunKeycloakEmail]; ok {
+			ps.Configuration[taikunKeycloakEmail] = v
+		}
+		if v, ok := taikunCreds[taikunKeycloakPassword]; ok {
+			ps.Configuration[taikunKeycloakPassword] = v
+		}
 		return ps, nil
 	}
 }
