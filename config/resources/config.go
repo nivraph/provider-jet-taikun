@@ -11,7 +11,7 @@ func Configure(p *config.Provider) {
 		r.ShortGroup = "organization"
 	})
 	p.AddResourceConfigurator("taikun_access_profile", func(r *config.Resource) {
-		r.ShortGroup = "access_profile"
+		r.ShortGroup = "accessProfile"
 		r.References["organization_id"] = config.Reference{
 			Type: "Organization",
 		}
