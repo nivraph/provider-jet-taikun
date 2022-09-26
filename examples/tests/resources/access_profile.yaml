@@ -1,5 +1,5 @@
-apiVersion: organization.taikun.jet.crossplane.io/v1alpha1
-kind: AccessProfile
+apiVersion: accessprofile.taikun.jet.crossplane.io/v1alpha1
+kind: Profile
 metadata:
   name: ap-raph-crossplane
 spec:
