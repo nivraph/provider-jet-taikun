@@ -21,6 +21,7 @@ import (
 
 	"github.com/crossplane/terrajet/pkg/controller"
 
+	profile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/accessprofile/profile"
 	organization "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/organization/organization"
 	providerconfig "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/providerconfig"
 )
@@ -29,6 +30,7 @@ import (
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
+		profile.Setup,
 		organization.Setup,
 		providerconfig.Setup,
 	} {
