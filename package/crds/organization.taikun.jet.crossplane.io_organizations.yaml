@@ -93,6 +93,9 @@ spec:
                     description: Allow subscription to be changed by managers. Defaults
                       to `true`.
                     type: boolean
+                  name:
+                    description: Organization's name.
+                    type: string
                   phone:
                     description: Phone number.
                     type: string
@@ -101,6 +104,7 @@ spec:
                     type: string
                 required:
                 - fullName
+                - name
                 type: object
               providerConfigRef:
                 default:

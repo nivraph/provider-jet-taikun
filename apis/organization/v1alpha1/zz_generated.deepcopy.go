@@ -172,6 +172,11 @@ func (in *OrganizationParameters) DeepCopyInto(out *OrganizationParameters) {
 		*out = new(bool)
 		**out = **in
 	}
+	if in.Name != nil {
+		in, out := &in.Name, &out.Name
+		*out = new(string)
+		**out = **in
+	}
 	if in.Phone != nil {
 		in, out := &in.Phone, &out.Phone
 		*out = new(string)

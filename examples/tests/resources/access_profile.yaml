@@ -4,6 +4,7 @@ metadata:
   name: ap-raph-crossplane
 spec:
   forProvider:
+    name: "success AP"
     organizationId: "15680"
   providerConfigRef:
     name: default

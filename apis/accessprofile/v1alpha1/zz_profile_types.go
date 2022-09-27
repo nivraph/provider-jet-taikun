@@ -104,6 +104,10 @@ type ProfileParameters struct {
 	// +kubebuilder:validation:Optional
 	Lock *bool `json:"lock,omitempty" tf:"lock,omitempty"`
 
+	// The name of the access profile.
+	// +kubebuilder:validation:Required
+	Name *string `json:"name" tf:"name,omitempty"`
+
 	// List of NTP servers.
 	// +kubebuilder:validation:Optional
 	NtpServer []NtpServerParameters `json:"ntpServer,omitempty" tf:"ntp_server,omitempty"`

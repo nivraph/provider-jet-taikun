@@ -4,6 +4,7 @@ metadata:
   name: orga-raph-crossplane
 spec:
   forProvider:
+    name: "success"
     fullName: "Create taikun organization with crossplane"
     discountRate: 42
     city: "Praha"

@@ -309,6 +309,11 @@ func (in *ProfileParameters) DeepCopyInto(out *ProfileParameters) {
 		*out = new(bool)
 		**out = **in
 	}
+	if in.Name != nil {
+		in, out := &in.Name, &out.Name
+		*out = new(string)
+		**out = **in
+	}
 	if in.NtpServer != nil {
 		in, out := &in.NtpServer, &out.NtpServer
 		*out = make([]NtpServerParameters, len(*in))

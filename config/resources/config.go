@@ -9,6 +9,7 @@ func Configure(p *config.Provider) {
 		// we need to override the default group that terrajet generated for
 		// this resource, which would be "github"
 		r.ShortGroup = "organization"
+		r.ExternalName = config.IdentifierFromProvider
 	})
 	p.AddResourceConfigurator("taikun_access_profile", func(r *config.Resource) {
 		r.ShortGroup = "accessProfile"
@@ -16,7 +17,7 @@ func Configure(p *config.Provider) {
 			r.References["organization_id"] = config.Reference{
 				Type: "Organization",
 			}
-			r.ExternalName = config.IdentifierFromProvider
 		*/
+		r.ExternalName = config.IdentifierFromProvider
 	})
 }
