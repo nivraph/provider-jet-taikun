@@ -22,8 +22,10 @@ import (
 	"github.com/crossplane/terrajet/pkg/controller"
 
 	profile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/accessprofile/profile"
+	profilealertingprofile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/alertingprofile/profile"
 	organization "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/organization/organization"
 	providerconfig "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/providerconfig"
+	configuration "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/slackconfiguration/configuration"
 )
 
 // Setup creates all controllers with the supplied logger and adds them to
@@ -31,8 +33,10 @@ import (
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
 		profile.Setup,
+		profilealertingprofile.Setup,
 		organization.Setup,
 		providerconfig.Setup,
+		configuration.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {
 			return err

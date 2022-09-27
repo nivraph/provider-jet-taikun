@@ -1,0 +1,13 @@
+apiVersion: slackconfiguration.taikun.jet.crossplane.io/v1alpha1
+kind: Configuration
+metadata:
+  name: slack-config-raph-crossplane
+spec:
+  forProvider:
+    name: "success-slack-conf"
+    organizationId: "15687"
+    channel: "random"
+    type: "General"
+    url: "https://test-crossplane.slack.com/archives/C043Z7TNESZ"
+  providerConfigRef:
+    name: default
