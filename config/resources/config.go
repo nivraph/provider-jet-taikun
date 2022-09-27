@@ -29,4 +29,11 @@ func Configure(p *config.Provider) {
 			Type: "SlackConfiguration",
 		}
 	})
+        p.AddResourceConfigurator("taikun_user", func(r *config.Resource) {
+                r.ShortGroup = "user"
+                r.ExternalName = config.IdentifierFromProvider
+                r.References["organizationId"] = config.Reference{
+                        Type: "Organization",
+                }
+        })
 }
