@@ -29,4 +29,18 @@ func Configure(p *config.Provider) {
 			Type: "SlackConfiguration",
 		}
 	})
+	p.AddResourceConfigurator("taikun_cloud_credential_aws", func(r *config.Resource) {
+		r.ShortGroup = "cloudCredentialAws"
+		r.ExternalName = config.IdentifierFromProvider
+		r.References["organizationId"] = config.Reference{
+			Type: "Organization",
+		}
+	})
+	p.AddResourceConfigurator("taikun_cloud_credential_openstack", func(r *config.Resource) {
+		r.ShortGroup = "cloudCredentialOpenstack"
+		r.ExternalName = config.IdentifierFromProvider
+		r.References["organizationId"] = config.Reference{
+			Type: "Organization",
+		}
+	})
 }
