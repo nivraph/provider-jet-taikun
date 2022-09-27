@@ -23,6 +23,8 @@ import (
 
 	profile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/accessprofile/profile"
 	profilealertingprofile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/alertingprofile/profile"
+	credentialaws "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/cloudcredentialaws/credentialaws"
+	credentialopenstack "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/cloudcredentialopenstack/credentialopenstack"
 	organization "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/organization/organization"
 	providerconfig "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/providerconfig"
 	configuration "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/slackconfiguration/configuration"
@@ -34,6 +36,8 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
 		profile.Setup,
 		profilealertingprofile.Setup,
+		credentialaws.Setup,
+		credentialopenstack.Setup,
 		organization.Setup,
 		providerconfig.Setup,
 		configuration.Setup,
