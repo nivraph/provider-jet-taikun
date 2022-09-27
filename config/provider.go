@@ -48,6 +48,8 @@ func GetProvider() *tjconfig.Provider {
 			// Resources
 			"taikun_organization$",
 			"taikun_access_profile$",
+			"taikun_alerting_profile$",
+			"taikun_slack_configuration$",
 
 			// Data
 		}))
