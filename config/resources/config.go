@@ -1,4 +1,4 @@
-package organization
+package resources
 
 import "github.com/crossplane/terrajet/pkg/config"
 
