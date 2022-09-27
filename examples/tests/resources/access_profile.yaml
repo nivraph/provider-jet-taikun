@@ -5,6 +5,9 @@ metadata:
 spec:
   forProvider:
     name: "success-AP"
-    organizationId: "15683"
+    organizationId: "15686"
+    sshUser:
+      - name: "test-key"
+        publicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQwGpzLk0IzqKnBpaHqecLA+X4zfHamNe9Rg3CoaXHF :oui_oui:"
   providerConfigRef:
     name: default
