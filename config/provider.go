@@ -56,6 +56,8 @@ func GetProvider() *tjconfig.Provider {
 			"taikun_cloud_credential_openstack",
 			"taikun_showback_credential",
 			"taikun_showback_rule",
+			"taikun_billing_credential",
+			"taikun_billing_rule",
 
 			// Data
 		}))

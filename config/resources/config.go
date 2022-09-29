@@ -70,5 +70,25 @@ func Configure(p *config.Provider) {
 		r.References["organizationId"] = config.Reference{
 			Type: "Organization",
 		}
+		r.References["showbackCredentialId"] = config.Reference{
+			Type: "ShowbackCredential",
+		}
+	})
+	p.AddResourceConfigurator("taikun_billing_credential", func(r *config.Resource) {
+		r.ShortGroup = "billingCredential"
+		r.ExternalName = config.IdentifierFromProvider
+		r.References["organizationId"] = config.Reference{
+			Type: "Organization",
+		}
+	})
+	p.AddResourceConfigurator("taikun_billing_rule", func(r *config.Resource) {
+		r.ShortGroup = "billingRule"
+		r.ExternalName = config.IdentifierFromProvider
+		r.References["organizationId"] = config.Reference{
+			Type: "Organization",
+		}
+		r.References["billingCredentialId"] = config.Reference{
+			Type: "BillingCredential",
+		}
 	})
 }
