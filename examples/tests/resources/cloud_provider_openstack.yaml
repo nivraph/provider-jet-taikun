@@ -1,0 +1,19 @@
+apiVersion: cloudcredentialopenstack.taikun.jet.crossplane.io/v1alpha1
+kind: CredentialOpenstack
+metadata:
+  name: cred-open-raph-crossplane
+spec:
+  forProvider:
+    name: "successscredopenstack"
+    domain: "default"
+    lock: false
+    organizationId: "15687"
+    user: "raphael"
+    passwordSecretRef:
+      key: "password"
+      name: "openstack-credentials"
+      namespace: "crossplane-system"
+    projectName: "itera-intern"
+    publicNetworkName: "public2"
+    region: "RegionOne"
+    url: "https://cloud.tcpro.cz:30500/v3"
