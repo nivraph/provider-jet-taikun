@@ -1,2 +1,4 @@
 secret_aws.yaml
 secret_openstack.yaml
+secret_billing.yaml
+secret_showback.yaml
