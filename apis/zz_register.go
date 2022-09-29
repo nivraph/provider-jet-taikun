@@ -24,7 +24,13 @@ import (
 
 	v1alpha1 "github.com/crossplane-contrib/provider-jet-taikun/apis/accessprofile/v1alpha1"
 	v1alpha1alertingprofile "github.com/crossplane-contrib/provider-jet-taikun/apis/alertingprofile/v1alpha1"
+	v1alpha1cloudcredentialaws "github.com/crossplane-contrib/provider-jet-taikun/apis/cloudcredentialaws/v1alpha1"
+	v1alpha1cloudcredentialopenstack "github.com/crossplane-contrib/provider-jet-taikun/apis/cloudcredentialopenstack/v1alpha1"
+	v1alpha1kubernetesprofile "github.com/crossplane-contrib/provider-jet-taikun/apis/kubernetesprofile/v1alpha1"
 	v1alpha1organization "github.com/crossplane-contrib/provider-jet-taikun/apis/organization/v1alpha1"
+	v1alpha1policyprofile "github.com/crossplane-contrib/provider-jet-taikun/apis/policyprofile/v1alpha1"
+	v1alpha1showbackcredential "github.com/crossplane-contrib/provider-jet-taikun/apis/showbackcredential/v1alpha1"
+	v1alpha1showbackrule "github.com/crossplane-contrib/provider-jet-taikun/apis/showbackrule/v1alpha1"
 	v1alpha1slackconfiguration "github.com/crossplane-contrib/provider-jet-taikun/apis/slackconfiguration/v1alpha1"
 	v1alpha1apis "github.com/crossplane-contrib/provider-jet-taikun/apis/v1alpha1"
 )
@@ -34,7 +40,13 @@ func init() {
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
 		v1alpha1alertingprofile.SchemeBuilder.AddToScheme,
+		v1alpha1cloudcredentialaws.SchemeBuilder.AddToScheme,
+		v1alpha1cloudcredentialopenstack.SchemeBuilder.AddToScheme,
+		v1alpha1kubernetesprofile.SchemeBuilder.AddToScheme,
 		v1alpha1organization.SchemeBuilder.AddToScheme,
+		v1alpha1policyprofile.SchemeBuilder.AddToScheme,
+		v1alpha1showbackcredential.SchemeBuilder.AddToScheme,
+		v1alpha1showbackrule.SchemeBuilder.AddToScheme,
 		v1alpha1slackconfiguration.SchemeBuilder.AddToScheme,
 		v1alpha1apis.SchemeBuilder.AddToScheme,
 	)
