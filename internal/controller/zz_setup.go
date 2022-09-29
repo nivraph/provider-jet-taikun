@@ -25,6 +25,7 @@ import (
 	profilealertingprofile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/alertingprofile/profile"
 	credentialaws "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/cloudcredentialaws/credentialaws"
 	credentialopenstack "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/cloudcredentialopenstack/credentialopenstack"
+	profilekubernetesprofile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/kubernetesprofile/profile"
 	organization "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/organization/organization"
 	providerconfig "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/providerconfig"
 	configuration "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/slackconfiguration/configuration"
@@ -38,6 +39,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		profilealertingprofile.Setup,
 		credentialaws.Setup,
 		credentialopenstack.Setup,
+		profilekubernetesprofile.Setup,
 		organization.Setup,
 		providerconfig.Setup,
 		configuration.Setup,

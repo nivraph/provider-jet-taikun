@@ -1,0 +1,13 @@
+apiVersion: kubernetesprofile.taikun.jet.crossplane.io/v1alpha1
+kind: Profile
+metadata:
+  name: kp-raph-crossplane
+spec:
+  forProvider:
+    name: "success-KP"
+    organizationId: "15687"
+    lock: false
+    loadBalancingSolution: "Octavia"
+    uniqueClusterName: true
+  providerConfigRef:
+    name: default
