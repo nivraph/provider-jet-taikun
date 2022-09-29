@@ -49,6 +49,7 @@ func GetProvider() *tjconfig.Provider {
 			"taikun_organization$",
 			"taikun_access_profile$",
 			"taikun_alerting_profile$",
+			"taikun_kubernetes_profile$",
 			"taikun_slack_configuration$",
 			"taikun_cloud_credential_aws",
 			"taikun_cloud_credential_openstack",
