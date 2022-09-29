@@ -57,4 +57,18 @@ func Configure(p *config.Provider) {
 			Type: "Organization",
 		}
 	})
+	p.AddResourceConfigurator("taikun_showback_credential", func(r *config.Resource) {
+		r.ShortGroup = "showbackCredential"
+		r.ExternalName = config.IdentifierFromProvider
+		r.References["organizationId"] = config.Reference{
+			Type: "Organization",
+		}
+	})
+	p.AddResourceConfigurator("taikun_showback_rule", func(r *config.Resource) {
+		r.ShortGroup = "showbackRule"
+		r.ExternalName = config.IdentifierFromProvider
+		r.References["organizationId"] = config.Reference{
+			Type: "Organization",
+		}
+	})
 }

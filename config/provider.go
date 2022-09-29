@@ -54,6 +54,8 @@ func GetProvider() *tjconfig.Provider {
 			"taikun_slack_configuration$",
 			"taikun_cloud_credential_aws",
 			"taikun_cloud_credential_openstack",
+			"taikun_showback_credential",
+			"taikun_showback_rule",
 
 			// Data
 		}))
