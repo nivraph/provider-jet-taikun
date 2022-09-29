@@ -51,6 +51,7 @@ func GetProvider() *tjconfig.Provider {
 			"taikun_alerting_profile$",
 			"taikun_slack_configuration$",
                         "taikun_user$",
+                        "taikun_standalone_profile$",
 
 			// Data
 		}))

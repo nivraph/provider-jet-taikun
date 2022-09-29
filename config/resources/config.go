@@ -36,4 +36,8 @@ func Configure(p *config.Provider) {
                         Type: "Organization",
                 }
         })
+        p.AddResourceConfigurator("taikun_standalone_profile", func(r *config.Resource) {
+                r.ShortGroup = "standaloneProfile"
+                r.ExternalName = config.IdentifierFromProvider
+        })
 }
