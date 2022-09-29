@@ -29,6 +29,8 @@ import (
 	organization "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/organization/organization"
 	profilepolicyprofile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/policyprofile/profile"
 	providerconfig "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/providerconfig"
+	credential "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/showbackcredential/credential"
+	rule "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/showbackrule/rule"
 	configuration "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/slackconfiguration/configuration"
 )
 
@@ -44,6 +46,8 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		organization.Setup,
 		profilepolicyprofile.Setup,
 		providerconfig.Setup,
+		credential.Setup,
+		rule.Setup,
 		configuration.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {

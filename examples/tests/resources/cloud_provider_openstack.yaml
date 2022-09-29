@@ -5,15 +5,15 @@ metadata:
 spec:
   forProvider:
     name: "successscredopenstack"
-    domain: "default"
-    lock: false
     organizationId: "15687"
     user: "raphael"
     passwordSecretRef:
       key: "password"
       name: "openstack-credentials"
       namespace: "crossplane-system"
-    projectName: "itera-intern"
-    publicNetworkName: "public2"
-    region: "RegionOne"
     url: "https://cloud.tcpro.cz:30500/v3"
+    domain: "default"
+    projectName: "itera-intern"
+    region: "RegionOne"
+    publicNetworkName: "public2"
+    lock: false
