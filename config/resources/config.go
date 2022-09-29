@@ -40,4 +40,12 @@ func Configure(p *config.Provider) {
                 r.ShortGroup = "standaloneProfile"
                 r.ExternalName = config.IdentifierFromProvider
         })
+        p.AddResourceConfigurator("taikun_backup_policy", func(r *config.Resource) {
+                r.ShortGroup = "backupPolicy"
+                r.ExternalName = config.IdentifierFromProvider
+        })
+        p.AddResourceConfigurator("taikun_backup_credential", func(r *config.Resource) {
+                r.ShortGroup = "backupCredential"
+                r.ExternalName = config.IdentifierFromProvider
+        })
 }
