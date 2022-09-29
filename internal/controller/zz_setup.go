@@ -23,14 +23,16 @@ import (
 
 	profile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/accessprofile/profile"
 	profilealertingprofile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/alertingprofile/profile"
+	credential "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/billingcredential/credential"
+	rule "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/billingrule/rule"
 	credentialaws "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/cloudcredentialaws/credentialaws"
 	credentialopenstack "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/cloudcredentialopenstack/credentialopenstack"
 	profilekubernetesprofile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/kubernetesprofile/profile"
 	organization "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/organization/organization"
 	profilepolicyprofile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/policyprofile/profile"
 	providerconfig "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/providerconfig"
-	credential "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/showbackcredential/credential"
-	rule "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/showbackrule/rule"
+	credentialshowbackcredential "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/showbackcredential/credential"
+	ruleshowbackrule "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/showbackrule/rule"
 	configuration "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/slackconfiguration/configuration"
 )
 
@@ -40,14 +42,16 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
 		profile.Setup,
 		profilealertingprofile.Setup,
+		credential.Setup,
+		rule.Setup,
 		credentialaws.Setup,
 		credentialopenstack.Setup,
 		profilekubernetesprofile.Setup,
 		organization.Setup,
 		profilepolicyprofile.Setup,
 		providerconfig.Setup,
-		credential.Setup,
-		rule.Setup,
+		credentialshowbackcredential.Setup,
+		ruleshowbackrule.Setup,
 		configuration.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {

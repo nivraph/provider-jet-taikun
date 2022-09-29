@@ -24,6 +24,8 @@ import (
 
 	v1alpha1 "github.com/crossplane-contrib/provider-jet-taikun/apis/accessprofile/v1alpha1"
 	v1alpha1alertingprofile "github.com/crossplane-contrib/provider-jet-taikun/apis/alertingprofile/v1alpha1"
+	v1alpha1billingcredential "github.com/crossplane-contrib/provider-jet-taikun/apis/billingcredential/v1alpha1"
+	v1alpha1billingrule "github.com/crossplane-contrib/provider-jet-taikun/apis/billingrule/v1alpha1"
 	v1alpha1cloudcredentialaws "github.com/crossplane-contrib/provider-jet-taikun/apis/cloudcredentialaws/v1alpha1"
 	v1alpha1cloudcredentialopenstack "github.com/crossplane-contrib/provider-jet-taikun/apis/cloudcredentialopenstack/v1alpha1"
 	v1alpha1kubernetesprofile "github.com/crossplane-contrib/provider-jet-taikun/apis/kubernetesprofile/v1alpha1"
@@ -40,6 +42,8 @@ func init() {
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
 		v1alpha1alertingprofile.SchemeBuilder.AddToScheme,
+		v1alpha1billingcredential.SchemeBuilder.AddToScheme,
+		v1alpha1billingrule.SchemeBuilder.AddToScheme,
 		v1alpha1cloudcredentialaws.SchemeBuilder.AddToScheme,
 		v1alpha1cloudcredentialopenstack.SchemeBuilder.AddToScheme,
 		v1alpha1kubernetesprofile.SchemeBuilder.AddToScheme,
