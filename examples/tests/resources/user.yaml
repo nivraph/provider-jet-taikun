@@ -1,0 +1,12 @@
+apiVersion: user.taikun.jet.crossplane.io/v1alpha1
+kind: User
+metadata:
+    name: "data-user-alexis"
+spec:
+  forProvider:
+    userName: "user-alexis"
+    email: "em@ty.com"
+    role: "Manager"
+    organizationId: "15690"
+  providerConfigRef:
+    name: default
