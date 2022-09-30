@@ -127,4 +127,29 @@ func Configure(p *config.Provider) {
 			Type: "Organization",
 		}
 	})
+	p.AddResourceConfigurator("taikun_project", func(r *config.Resource) {
+		r.ShortGroup = "project"
+		r.ExternalName = config.IdentifierFromProvider
+		r.References["organizationId"] = config.Reference{
+			Type: "Organization",
+		}
+		r.References["accessProfileId"] = config.Reference{
+			Type: "AccessProfile",
+		}
+		r.References["alertingProfileId"] = config.Reference{
+			Type: "AlertingProfile",
+		}
+		r.References["KubernetesProfileId"] = config.Reference{
+			Type: "KubernetesProfile",
+		}
+		r.References["policyProfileId"] = config.Reference{
+			Type: "PolicyProfile",
+		}
+		// TODO: add backup credential references
+		/*
+			r.References["backupCredentialId"] = config.Reference{
+				Type: "BackupCredential",
+			}
+		*/
+	})
 }
