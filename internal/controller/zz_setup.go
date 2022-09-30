@@ -34,6 +34,7 @@ import (
 	profilekubernetesprofile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/kubernetesprofile/profile"
 	organization "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/organization/organization"
 	profilepolicyprofile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/policyprofile/profile"
+	project "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/project/project"
 	providerconfig "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/providerconfig"
 	credentialshowbackcredential "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/showbackcredential/credential"
 	ruleshowbackrule "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/showbackrule/rule"
@@ -59,6 +60,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		profilekubernetesprofile.Setup,
 		organization.Setup,
 		profilepolicyprofile.Setup,
+		project.Setup,
 		providerconfig.Setup,
 		credentialshowbackcredential.Setup,
 		ruleshowbackrule.Setup,

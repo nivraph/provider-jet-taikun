@@ -35,6 +35,7 @@ import (
 	v1alpha1kubernetesprofile "github.com/crossplane-contrib/provider-jet-taikun/apis/kubernetesprofile/v1alpha1"
 	v1alpha1organization "github.com/crossplane-contrib/provider-jet-taikun/apis/organization/v1alpha1"
 	v1alpha1policyprofile "github.com/crossplane-contrib/provider-jet-taikun/apis/policyprofile/v1alpha1"
+	v1alpha1project "github.com/crossplane-contrib/provider-jet-taikun/apis/project/v1alpha1"
 	v1alpha1showbackcredential "github.com/crossplane-contrib/provider-jet-taikun/apis/showbackcredential/v1alpha1"
 	v1alpha1showbackrule "github.com/crossplane-contrib/provider-jet-taikun/apis/showbackrule/v1alpha1"
 	v1alpha1slackconfiguration "github.com/crossplane-contrib/provider-jet-taikun/apis/slackconfiguration/v1alpha1"
@@ -59,6 +60,7 @@ func init() {
 		v1alpha1kubernetesprofile.SchemeBuilder.AddToScheme,
 		v1alpha1organization.SchemeBuilder.AddToScheme,
 		v1alpha1policyprofile.SchemeBuilder.AddToScheme,
+		v1alpha1project.SchemeBuilder.AddToScheme,
 		v1alpha1showbackcredential.SchemeBuilder.AddToScheme,
 		v1alpha1showbackrule.SchemeBuilder.AddToScheme,
 		v1alpha1slackconfiguration.SchemeBuilder.AddToScheme,
