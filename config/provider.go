@@ -58,10 +58,10 @@ func GetProvider() *tjconfig.Provider {
 			"taikun_showback_rule",
 			"taikun_billing_credential",
 			"taikun_billing_rule",
-                        "taikun_user$",
-                        "taikun_standalone_profile$",
-                        "taikun_backup_policy$",
-                        "taikun_backup_credential$",
+			"taikun_user$",
+			"taikun_standalone_profile$",
+			"taikun_backup_policy$",
+			"taikun_backup_credential$",
 
 			// Data
 		}))
