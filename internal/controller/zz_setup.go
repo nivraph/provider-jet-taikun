@@ -23,9 +23,13 @@ import (
 
 	profile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/accessprofile/profile"
 	profilealertingprofile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/alertingprofile/profile"
-	credential "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/billingcredential/credential"
+	credential "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/backupcredential/credential"
+	policy "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/backuppolicy/policy"
+	credentialbillingcredential "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/billingcredential/credential"
 	rule "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/billingrule/rule"
 	credentialaws "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/cloudcredentialaws/credentialaws"
+	credentialazure "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/cloudcredentialazure/credentialazure"
+	credentialgcp "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/cloudcredentialgcp/credentialgcp"
 	credentialopenstack "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/cloudcredentialopenstack/credentialopenstack"
 	profilekubernetesprofile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/kubernetesprofile/profile"
 	organization "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/organization/organization"
@@ -34,6 +38,8 @@ import (
 	credentialshowbackcredential "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/showbackcredential/credential"
 	ruleshowbackrule "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/showbackrule/rule"
 	configuration "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/slackconfiguration/configuration"
+	profilestandaloneprofile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/standaloneprofile/profile"
+	user "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/user/user"
 )
 
 // Setup creates all controllers with the supplied logger and adds them to
@@ -43,8 +49,12 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		profile.Setup,
 		profilealertingprofile.Setup,
 		credential.Setup,
+		policy.Setup,
+		credentialbillingcredential.Setup,
 		rule.Setup,
 		credentialaws.Setup,
+		credentialazure.Setup,
+		credentialgcp.Setup,
 		credentialopenstack.Setup,
 		profilekubernetesprofile.Setup,
 		organization.Setup,
@@ -53,6 +63,8 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		credentialshowbackcredential.Setup,
 		ruleshowbackrule.Setup,
 		configuration.Setup,
+		profilestandaloneprofile.Setup,
+		user.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {
 			return err

@@ -91,23 +91,40 @@ func Configure(p *config.Provider) {
 			Type: "BillingCredential",
 		}
 	})
-        p.AddResourceConfigurator("taikun_user", func(r *config.Resource) {
-                r.ShortGroup = "user"
-                r.ExternalName = config.IdentifierFromProvider
-                r.References["organizationId"] = config.Reference{
-                        Type: "Organization",
-                }
-        })
-        p.AddResourceConfigurator("taikun_standalone_profile", func(r *config.Resource) {
-                r.ShortGroup = "standaloneProfile"
-                r.ExternalName = config.IdentifierFromProvider
-        })
-        p.AddResourceConfigurator("taikun_backup_policy", func(r *config.Resource) {
-                r.ShortGroup = "backupPolicy"
-                r.ExternalName = config.IdentifierFromProvider
-        })
-        p.AddResourceConfigurator("taikun_backup_credential", func(r *config.Resource) {
-                r.ShortGroup = "backupCredential"
-                r.ExternalName = config.IdentifierFromProvider
-        })
+	p.AddResourceConfigurator("taikun_user", func(r *config.Resource) {
+		r.ShortGroup = "user"
+		r.ExternalName = config.IdentifierFromProvider
+		r.References["organizationId"] = config.Reference{
+			Type: "Organization",
+		}
+	})
+	p.AddResourceConfigurator("taikun_standalone_profile", func(r *config.Resource) {
+		r.ShortGroup = "standaloneProfile"
+		r.ExternalName = config.IdentifierFromProvider
+	})
+	p.AddResourceConfigurator("taikun_backup_policy", func(r *config.Resource) {
+		r.ShortGroup = "backupPolicy"
+		r.ExternalName = config.IdentifierFromProvider
+	})
+	p.AddResourceConfigurator("taikun_backup_credential", func(r *config.Resource) {
+		r.ShortGroup = "backupCredential"
+		r.ExternalName = config.IdentifierFromProvider
+	})
+	p.AddResourceConfigurator("taikun_cloud_credential_gcp", func(r *config.Resource) {
+		r.ShortGroup = "cloudCredentialGcp"
+		r.ExternalName = config.IdentifierFromProvider
+		r.References["organizationId"] = config.Reference{
+			Type: "Organization",
+		}
+		r.References["billingAccountId"] = config.Reference{
+			Type: "BillingCredential",
+		}
+	})
+	p.AddResourceConfigurator("taikun_cloud_credential_azure", func(r *config.Resource) {
+		r.ShortGroup = "cloudCredentialAzure"
+		r.ExternalName = config.IdentifierFromProvider
+		r.References["organizationId"] = config.Reference{
+			Type: "Organization",
+		}
+	})
 }

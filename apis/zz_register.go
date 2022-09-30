@@ -24,9 +24,13 @@ import (
 
 	v1alpha1 "github.com/crossplane-contrib/provider-jet-taikun/apis/accessprofile/v1alpha1"
 	v1alpha1alertingprofile "github.com/crossplane-contrib/provider-jet-taikun/apis/alertingprofile/v1alpha1"
+	v1alpha1backupcredential "github.com/crossplane-contrib/provider-jet-taikun/apis/backupcredential/v1alpha1"
+	v1alpha1backuppolicy "github.com/crossplane-contrib/provider-jet-taikun/apis/backuppolicy/v1alpha1"
 	v1alpha1billingcredential "github.com/crossplane-contrib/provider-jet-taikun/apis/billingcredential/v1alpha1"
 	v1alpha1billingrule "github.com/crossplane-contrib/provider-jet-taikun/apis/billingrule/v1alpha1"
 	v1alpha1cloudcredentialaws "github.com/crossplane-contrib/provider-jet-taikun/apis/cloudcredentialaws/v1alpha1"
+	v1alpha1cloudcredentialazure "github.com/crossplane-contrib/provider-jet-taikun/apis/cloudcredentialazure/v1alpha1"
+	v1alpha1cloudcredentialgcp "github.com/crossplane-contrib/provider-jet-taikun/apis/cloudcredentialgcp/v1alpha1"
 	v1alpha1cloudcredentialopenstack "github.com/crossplane-contrib/provider-jet-taikun/apis/cloudcredentialopenstack/v1alpha1"
 	v1alpha1kubernetesprofile "github.com/crossplane-contrib/provider-jet-taikun/apis/kubernetesprofile/v1alpha1"
 	v1alpha1organization "github.com/crossplane-contrib/provider-jet-taikun/apis/organization/v1alpha1"
@@ -34,6 +38,8 @@ import (
 	v1alpha1showbackcredential "github.com/crossplane-contrib/provider-jet-taikun/apis/showbackcredential/v1alpha1"
 	v1alpha1showbackrule "github.com/crossplane-contrib/provider-jet-taikun/apis/showbackrule/v1alpha1"
 	v1alpha1slackconfiguration "github.com/crossplane-contrib/provider-jet-taikun/apis/slackconfiguration/v1alpha1"
+	v1alpha1standaloneprofile "github.com/crossplane-contrib/provider-jet-taikun/apis/standaloneprofile/v1alpha1"
+	v1alpha1user "github.com/crossplane-contrib/provider-jet-taikun/apis/user/v1alpha1"
 	v1alpha1apis "github.com/crossplane-contrib/provider-jet-taikun/apis/v1alpha1"
 )
 
@@ -42,9 +48,13 @@ func init() {
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
 		v1alpha1alertingprofile.SchemeBuilder.AddToScheme,
+		v1alpha1backupcredential.SchemeBuilder.AddToScheme,
+		v1alpha1backuppolicy.SchemeBuilder.AddToScheme,
 		v1alpha1billingcredential.SchemeBuilder.AddToScheme,
 		v1alpha1billingrule.SchemeBuilder.AddToScheme,
 		v1alpha1cloudcredentialaws.SchemeBuilder.AddToScheme,
+		v1alpha1cloudcredentialazure.SchemeBuilder.AddToScheme,
+		v1alpha1cloudcredentialgcp.SchemeBuilder.AddToScheme,
 		v1alpha1cloudcredentialopenstack.SchemeBuilder.AddToScheme,
 		v1alpha1kubernetesprofile.SchemeBuilder.AddToScheme,
 		v1alpha1organization.SchemeBuilder.AddToScheme,
@@ -52,6 +62,8 @@ func init() {
 		v1alpha1showbackcredential.SchemeBuilder.AddToScheme,
 		v1alpha1showbackrule.SchemeBuilder.AddToScheme,
 		v1alpha1slackconfiguration.SchemeBuilder.AddToScheme,
+		v1alpha1standaloneprofile.SchemeBuilder.AddToScheme,
+		v1alpha1user.SchemeBuilder.AddToScheme,
 		v1alpha1apis.SchemeBuilder.AddToScheme,
 	)
 }
