@@ -1,0 +1,11 @@
+apiVersion: project.taikun.jet.crossplane.io/v1alpha1
+kind: Project
+metadata:
+  name: "project-crossplane-raph"
+spec:
+  forProvider:
+    name: "test-project-crossplane"
+    cloudCredentialId: "19050"
+    organizationId: "15687"
+  providerConfigRef:
+    name: default
