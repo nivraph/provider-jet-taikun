@@ -64,6 +64,7 @@ func GetProvider() *tjconfig.Provider {
 			"taikun_standalone_profile$",
 			"taikun_backup_policy$",
 			"taikun_backup_credential$",
+			"taikun_project$",
 
 			// Data
 		}))
