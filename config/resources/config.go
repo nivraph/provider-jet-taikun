@@ -105,6 +105,9 @@ func Configure(p *config.Provider) {
 	p.AddResourceConfigurator("taikun_backup_policy", func(r *config.Resource) {
 		r.ShortGroup = "backupPolicy"
 		r.ExternalName = config.IdentifierFromProvider
+                r.References["projectId"] = config.Reference{
+                        Type: "Project",
+                }
 	})
 	p.AddResourceConfigurator("taikun_backup_credential", func(r *config.Resource) {
 		r.ShortGroup = "backupCredential"
