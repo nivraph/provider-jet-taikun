@@ -7,5 +7,23 @@ spec:
     name: "test-project-crossplane"
     cloudCredentialId: "19050"
     organizationId: "15687"
+    quotaDiskSize: 40000
+    quotaRamSize: 40000
+    lock: false
+    monitoring: true
+    kubernetesProfileId: "18855"
+    alertingProfileId: "21690"
+    accessProfileId: "48716"
+    flavors:
+      - "Standard_B2ms"
+    images:
+      - "/Subscriptions/3fc9a50d-d38d-4954-bec6-f1a82a88fd7a/Providers/Microsoft.Compute/Locations/westeurope/Publishers/Canonical/ArtifactTypes/VMImage/Offers/0001-com-ubuntu-server-focal/Skus/20_04-lts-gen2/Versions/20.04.202209200"
+    vm:
+      - flavor: "Standard_B2ms"
+        imageId: "/Subscriptions/3fc9a50d-d38d-4954-bec6-f1a82a88fd7a/Providers/Microsoft.Compute/Locations/westeurope/Publishers/Canonical/ArtifactTypes/VMImage/Offers/0001-com-ubuntu-server-focal/Skus/20_04-lts-gen2/Versions/20.04.202209200"
+        name: "test-vm"
+        standaloneProfileId: "1778"
+        volumeSize: 40
+        username: "raphael"
   providerConfigRef:
     name: default
