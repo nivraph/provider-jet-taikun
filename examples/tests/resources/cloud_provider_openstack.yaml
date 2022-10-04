@@ -4,7 +4,7 @@ metadata:
   name: cred-open-raph-crossplane
 spec:
   forProvider:
-    name: "successscredopenstack"
+    name: "cred-open"
     organizationId: "15687"
     user: "raphael"
     passwordSecretRef:
@@ -17,3 +17,4 @@ spec:
     region: "RegionOne"
     publicNetworkName: "public2"
     lock: false
+    availabilityZone: "pod4"
