@@ -6,7 +6,7 @@ spec:
   forProvider:
     name: "success-Showbackrule"
     globalAlertLimit: 42
-    kind: "General"
+    kind: "External"
     label:
       - key: "key"
         value: "value"
@@ -15,5 +15,6 @@ spec:
     price: 1000
     projectAlertLimit: 42
     organizationId: "15687"
+    showbackCredentialId: "45"
   providerConfigRef:
     name: default
