@@ -1,0 +1,10 @@
+apiVersion: organizationbillingruleattachment.taikun.jet.crossplane.io/v1alpha1
+kind: BillingRuleAttachment
+metadata:
+  name: billingrule-raph-attach
+spec:
+  forProvider:
+    billingRuleId: "7677"
+    organizationId: "15687"
+  providerConfigRef:
+    name: default

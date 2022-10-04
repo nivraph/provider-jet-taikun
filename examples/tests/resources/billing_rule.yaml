@@ -5,13 +5,12 @@ metadata:
 spec:
   forProvider:
     name: "success-billingrule"
-    billingCredentialId:
+    billingCredentialId: "10136"
     label:
       - key: "label"
         value: "value"
     metricName: "coredns_forward_request_duration_seconds"
     price: 1
     type: "Sum"
-    organizationId: "15687"
   providerConfigRef:
     name: default

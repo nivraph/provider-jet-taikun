@@ -152,4 +152,14 @@ func Configure(p *config.Provider) {
 			}
 		*/
 	})
+	p.AddResourceConfigurator("taikun_organization_billing_rule_attachment", func(r *config.Resource) {
+		r.ShortGroup = "organizationBillingRuleAttachment"
+		r.ExternalName = config.IdentifierFromProvider
+		r.References["organizationId"] = config.Reference{
+			Type: "Organization",
+		}
+		r.References["billingRuleId"] = config.Reference{
+			Type: "BillingRule",
+		}
+	})
 }

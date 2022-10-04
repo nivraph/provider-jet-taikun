@@ -33,6 +33,7 @@ import (
 	credentialopenstack "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/cloudcredentialopenstack/credentialopenstack"
 	profilekubernetesprofile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/kubernetesprofile/profile"
 	organization "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/organization/organization"
+	billingruleattachment "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/organizationbillingruleattachment/billingruleattachment"
 	profilepolicyprofile "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/policyprofile/profile"
 	project "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/project/project"
 	providerconfig "github.com/crossplane-contrib/provider-jet-taikun/internal/controller/providerconfig"
@@ -59,6 +60,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		credentialopenstack.Setup,
 		profilekubernetesprofile.Setup,
 		organization.Setup,
+		billingruleattachment.Setup,
 		profilepolicyprofile.Setup,
 		project.Setup,
 		providerconfig.Setup,
