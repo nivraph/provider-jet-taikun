@@ -1,0 +1,8 @@
+apiVersion: projectuserattachment.taikun.jet.crossplane.io/v1alpha1
+kind: UserAttachment
+metadata:
+  name: user-raph-attach
+spec:
+  forProvider:
+    userId: "473b17d3-e27a-49b4-bb6d-484421687050"
+    projectId: "15718"
