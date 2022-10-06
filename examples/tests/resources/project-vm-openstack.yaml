@@ -1,0 +1,28 @@
+apiVersion: project.taikun.jet.crossplane.io/v1alpha1
+kind: Project
+metadata:
+  name: "project-crossplane-raph-open-vm"
+spec:
+  forProvider:
+    name: "test-project-crossplane-vm"
+    cloudCredentialId: "19102"
+    organizationId: "15687"
+    quotaDiskSize: 40000
+    quotaRamSize: 40000
+    lock: false
+    monitoring: false
+    kubernetesProfileId: "18855"
+    flavors:
+      - "m1.medium"
+    images:
+      - "b2a2939d-3609-4f15-92b7-b5dc3dd5c9d3"
+    vm:
+      - flavor: "m1.medium"
+        imageId: "b2a2939d-3609-4f15-92b7-b5dc3dd5c9d3"
+        name: "test-vm"
+        standaloneProfileId: "1778"
+        volumeSize: 40
+        username: "raphael"
+        publicIp: true
+  providerConfigRef:
+    name: default
