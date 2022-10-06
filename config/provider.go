@@ -67,7 +67,7 @@ func GetProvider() *tjconfig.Provider {
 			"taikun_project$",
 			"taikun_organization_billing_rule_attachment$",
 
-			// Data
+			// Data Sources
 		}))
 
 	for _, configure := range []func(provider *tjconfig.Provider){
