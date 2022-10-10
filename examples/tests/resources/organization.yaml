@@ -1,15 +1,12 @@
 apiVersion: organization.taikun.jet.crossplane.io/v1alpha1
 kind: Organization
 metadata:
-  name: orga-raph-crossplane
+  name: org-alexis-october
 spec:
   forProvider:
-    name: "successorga"
-    fullName: "Create taikun organization with crossplane"
+    name: "org-alexis-october"
+    fullName: "org-alexis-october with crossplane"
     discountRate: 42
     city: "Praha"
-    billingEmail: "billing2@foo.org"
-    email: "contact@foo.org"
-    phone: "065100035103"
   providerConfigRef:
     name: default

@@ -1,15 +1,15 @@
 apiVersion: cloudcredentialopenstack.taikun.jet.crossplane.io/v1alpha1
 kind: CredentialOpenstack
 metadata:
-  name: cred-open-raph-crossplane
+  name: openstack-alexis
 spec:
   forProvider:
-    name: "cred-open"
-    organizationId: "15687"
-    user: "raphael"
+    name: "openstack-alexis"
+    organizationId: "15723"
+    user: "alexis"
     passwordSecretRef:
       key: "password"
-      name: "openstack-credentials"
+      name: "openstack-creds"
       namespace: "crossplane-system"
     url: "https://cloud.tcpro.cz:30500/v3"
     domain: "default"

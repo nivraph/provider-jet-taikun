@@ -1,29 +1,29 @@
 apiVersion: project.taikun.jet.crossplane.io/v1alpha1
 kind: Project
 metadata:
-  name: "project-crossplane-raph"
+  name: project-os-alexis
 spec:
   forProvider:
-    name: "test-project-crossplane"
-    cloudCredentialId: "19050"
-    organizationId: "15687"
+    name: "project-os-alexis"
+    cloudCredentialId: "19117"
+    organizationId: "15723"
     quotaDiskSize: 40000
     quotaRamSize: 40000
     lock: false
     monitoring: true
-    kubernetesProfileId: "18855"
-    alertingProfileId: "21690"
-    accessProfileId: "48716"
+    kubernetesProfileId: "18900"
+    alertingProfileId: "21737"
+    accessProfileId: "48770"
     flavors:
-      - "Standard_B2ms"
+      - "n0.xsmall"
     images:
-      - "/Subscriptions/3fc9a50d-d38d-4954-bec6-f1a82a88fd7a/Providers/Microsoft.Compute/Locations/westeurope/Publishers/Canonical/ArtifactTypes/VMImage/Offers/0001-com-ubuntu-server-focal/Skus/20_04-lts-gen2/Versions/20.04.202209200"
+      - "b67c1ceb-6600-4151-b363-ee43d8d76adf"
     vm:
-      - flavor: "Standard_B2ms"
-        imageId: "/Subscriptions/3fc9a50d-d38d-4954-bec6-f1a82a88fd7a/Providers/Microsoft.Compute/Locations/westeurope/Publishers/Canonical/ArtifactTypes/VMImage/Offers/0001-com-ubuntu-server-focal/Skus/20_04-lts-gen2/Versions/20.04.202209200"
-        name: "test-vm"
-        standaloneProfileId: "1778"
+      - flavor: "n0.xsmall"
+        imageId: "b67c1ceb-6600-4151-b363-ee43d8d76adf"
+        name: "os-vm"
+        standaloneProfileId: "1789"
         volumeSize: 40
-        username: "raphael"
+        username: "alexis"
   providerConfigRef:
     name: default

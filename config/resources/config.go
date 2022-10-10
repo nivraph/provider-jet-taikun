@@ -162,4 +162,21 @@ func Configure(p *config.Provider) {
 			Type: "BillingRule",
 		}
 	})
+        p.AddResourceConfigurator("taikun_kubeconfig", func(r *config.Resource) {
+                r.ShortGroup = "kubeconfig"
+                r.ExternalName = config.IdentifierFromProvider
+                r.References["projectId"] = config.Reference{
+                        Type: "Project",
+                }
+        })
+        p.AddResourceConfigurator("taikun_project_user_attachment", func(r *config.Resource) {
+                r.ShortGroup = "projectUserAttachment"
+                r.ExternalName = config.IdentifierFromProvider
+                r.References["projectId"] = config.Reference{
+                        Type: "Project",
+                }
+                r.References["userId"] = config.Reference{
+                        Type: "User",
+                }
+        })
 }

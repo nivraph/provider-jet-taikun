@@ -1,20 +1,14 @@
 apiVersion: alertingprofile.taikun.jet.crossplane.io/v1alpha1
 kind: Profile
 metadata:
-  name: alertp-raph-crossplane
+  name: alert-alexis-october
 spec:
   forProvider:
-    name: "success-AlertP"
+    name: "alert-alexis-october"
     emails:
-      - "raphael.nivault@itera.io"
+      - "alexis.decarvalho@itera.io"
     lock: false
-    organizationId: "15687"
+    organizationId: "15723"
     reminder: "Daily"
-    slackConfigurationId: "5069"
-    webhook:
-      - header:
-          - key: "key"
-            value: "value"
-        url: "https://www.example.com"
   providerConfigRef:
     name: default

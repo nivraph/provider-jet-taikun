@@ -1,0 +1,12 @@
+apiVersion: backuppolicy.taikun.jet.crossplane.io/v1alpha1
+kind: Policy
+metadata:
+    name: "backup-policy-alexis"
+spec:
+  forProvider:
+    name: "backup-policy-alexis"
+    cronPeriod: "0 0 * * 0"
+    projectId: "15754"
+    includedNamespaces: ["crossplane-system"]
+  providerConfigRef:
+    name: default
