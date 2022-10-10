@@ -93,8 +93,15 @@ type ProfileParameters struct {
 	Name *string `json:"name" tf:"name,omitempty"`
 
 	// The ID of the organization which owns the profile.
+	// +crossplane:generate:reference:type=Organization
 	// +kubebuilder:validation:Optional
 	OrganizationID *string `json:"organizationId,omitempty" tf:"organization_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	OrganizationIDRef *v1.Reference `json:"organizationIdRef,omitempty" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	OrganizationIDSelector *v1.Selector `json:"organizationIdSelector,omitempty" tf:"-"`
 
 	// The frequency of notifications: `HalfHour`, `Hourly`, `Daily` or `None`.
 	// +kubebuilder:validation:Required

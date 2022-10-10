@@ -22,6 +22,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"github.com/crossplane/crossplane-runtime/apis/common/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 )
 
@@ -261,6 +262,16 @@ func (in *ProfileParameters) DeepCopyInto(out *ProfileParameters) {
 		in, out := &in.OrganizationID, &out.OrganizationID
 		*out = new(string)
 		**out = **in
+	}
+	if in.OrganizationIDRef != nil {
+		in, out := &in.OrganizationIDRef, &out.OrganizationIDRef
+		*out = new(v1.Reference)
+		**out = **in
+	}
+	if in.OrganizationIDSelector != nil {
+		in, out := &in.OrganizationIDSelector, &out.OrganizationIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.Reminder != nil {
 		in, out := &in.Reminder, &out.Reminder

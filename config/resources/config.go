@@ -28,7 +28,7 @@ func Configure(p *config.Provider) {
 		r.References["slackConfigurationId"] = config.Reference{
 			Type: "SlackConfiguration",
 		}
-		r.References["organizationId"] = config.Reference{
+		r.References["organization_id"] = config.Reference{
 			Type: "Organization",
 		}
 	})
