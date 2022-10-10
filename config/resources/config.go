@@ -28,6 +28,9 @@ func Configure(p *config.Provider) {
 		r.References["slackConfigurationId"] = config.Reference{
 			Type: "SlackConfiguration",
 		}
+		r.References["organizationId"] = config.Reference{
+			Type: "Organization",
+		}
 	})
 	p.AddResourceConfigurator("taikun_kubernetes_profile", func(r *config.Resource) {
 		r.ShortGroup = "kubernetesProfile"
