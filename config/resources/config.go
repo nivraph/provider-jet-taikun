@@ -29,7 +29,7 @@ func Configure(p *config.Provider) {
 			Type: "SlackConfiguration",
 		}
 		r.References["organization_id"] = config.Reference{
-			Type: "Organization",
+			Type: "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization",
 		}
 	})
 	p.AddResourceConfigurator("taikun_kubernetes_profile", func(r *config.Resource) {

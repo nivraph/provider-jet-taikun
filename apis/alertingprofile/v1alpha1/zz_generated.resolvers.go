@@ -20,6 +20,7 @@ package v1alpha1
 import (
 	"context"
 	reference "github.com/crossplane/crossplane-runtime/pkg/reference"
+	v1alpha1 "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1"
 	errors "github.com/pkg/errors"
 	client "sigs.k8s.io/controller-runtime/pkg/client"
 )
@@ -37,8 +38,8 @@ func (mg *Profile) ResolveReferences(ctx context.Context, c client.Reader) error
 		Reference:    mg.Spec.ForProvider.OrganizationIDRef,
 		Selector:     mg.Spec.ForProvider.OrganizationIDSelector,
 		To: reference.To{
-			List:    &OrganizationList{},
-			Managed: &Organization{},
+			List:    &v1alpha1.OrganizationList{},
+			Managed: &v1alpha1.Organization{},
 		},
 	})
 	if err != nil {
