@@ -21,6 +21,7 @@ import (
 	"context"
 	reference "github.com/crossplane/crossplane-runtime/pkg/reference"
 	v1alpha1 "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1"
+	v1alpha11 "github.com/nivraph/provider-jet-taikun/apis/slackconfiguration/v1alpha1"
 	errors "github.com/pkg/errors"
 	client "sigs.k8s.io/controller-runtime/pkg/client"
 )
@@ -47,6 +48,22 @@ func (mg *Profile) ResolveReferences(ctx context.Context, c client.Reader) error
 	}
 	mg.Spec.ForProvider.OrganizationID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.OrganizationIDRef = rsp.ResolvedReference
+
+	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.SlackConfigurationID),
+		Extract:      reference.ExternalName(),
+		Reference:    mg.Spec.ForProvider.SlackConfigurationIDRef,
+		Selector:     mg.Spec.ForProvider.SlackConfigurationIDSelector,
+		To: reference.To{
+			List:    &v1alpha11.ConfigurationList{},
+			Managed: &v1alpha11.Configuration{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.SlackConfigurationID")
+	}
+	mg.Spec.ForProvider.SlackConfigurationID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.SlackConfigurationIDRef = rsp.ResolvedReference
 
 	return nil
 }

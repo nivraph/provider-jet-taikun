@@ -25,11 +25,9 @@ func Configure(p *config.Provider) {
 	p.AddResourceConfigurator("taikun_alerting_profile", func(r *config.Resource) {
 		r.ShortGroup = "alertingProfile"
 		r.ExternalName = config.IdentifierFromProvider
-		/*
-			r.References["slack_configuration_id"] = config.Reference{
-				Type: "SlackConfiguration",
-			}
-		*/
+		r.References["slack_configuration_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/slackconfiguration/v1alpha1.Configuration",
+		}
 		r.References["organization_id"] = config.Reference{
 			Type: "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization",
 		}
