@@ -55,8 +55,15 @@ type RuleObservation struct {
 type RuleParameters struct {
 
 	// ID of the billing credential.
-	// +kubebuilder:validation:Required
-	BillingCredentialID *string `json:"billingCredentialId" tf:"billing_credential_id,omitempty"`
+	// +crossplane:generate:reference:type=BillingCredential
+	// +kubebuilder:validation:Optional
+	BillingCredentialID *string `json:"billingCredentialId,omitempty" tf:"billing_credential_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	BillingCredentialIDRef *v1.Reference `json:"billingCredentialIdRef,omitempty" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	BillingCredentialIDSelector *v1.Selector `json:"billingCredentialIdSelector,omitempty" tf:"-"`
 
 	// Labels linked to the billing rule.
 	// +kubebuilder:validation:Required

@@ -76,8 +76,15 @@ type RuleParameters struct {
 	Name *string `json:"name" tf:"name,omitempty"`
 
 	// The ID of the organization which owns the showback rule.
+	// +crossplane:generate:reference:type=github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization
 	// +kubebuilder:validation:Optional
 	OrganizationID *string `json:"organizationId,omitempty" tf:"organization_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	OrganizationIDRef *v1.Reference `json:"organizationIdRef,omitempty" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	OrganizationIDSelector *v1.Selector `json:"organizationIdSelector,omitempty" tf:"-"`
 
 	// Billing in CZK per selected unit.
 	// +kubebuilder:validation:Required
@@ -88,8 +95,15 @@ type RuleParameters struct {
 	ProjectAlertLimit *float64 `json:"projectAlertLimit,omitempty" tf:"project_alert_limit,omitempty"`
 
 	// ID of the showback credential.
+	// +crossplane:generate:reference:type=ShowbackCredential
 	// +kubebuilder:validation:Optional
 	ShowbackCredentialID *string `json:"showbackCredentialId,omitempty" tf:"showback_credential_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	ShowbackCredentialIDRef *v1.Reference `json:"showbackCredentialIdRef,omitempty" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	ShowbackCredentialIDSelector *v1.Selector `json:"showbackCredentialIdSelector,omitempty" tf:"-"`
 
 	// The type of showback rule: `Count` (calculate package as unit) or `Sum` (calculate per quantity).
 	// +kubebuilder:validation:Required

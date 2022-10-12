@@ -113,8 +113,15 @@ type ProfileParameters struct {
 	NtpServer []NtpServerParameters `json:"ntpServer,omitempty" tf:"ntp_server,omitempty"`
 
 	// The ID of the organization which owns the access profile.
+	// +crossplane:generate:reference:type=github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization
 	// +kubebuilder:validation:Optional
 	OrganizationID *string `json:"organizationId,omitempty" tf:"organization_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	OrganizationIDRef *v1.Reference `json:"organizationIdRef,omitempty" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	OrganizationIDSelector *v1.Selector `json:"organizationIdSelector,omitempty" tf:"-"`
 
 	// List of SSH users.
 	// +kubebuilder:validation:Optional

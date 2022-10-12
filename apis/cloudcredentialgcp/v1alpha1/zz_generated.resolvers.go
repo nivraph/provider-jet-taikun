@@ -25,12 +25,28 @@ import (
 	client "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
-// ResolveReferences of this Profile.
-func (mg *Profile) ResolveReferences(ctx context.Context, c client.Reader) error {
+// ResolveReferences of this CredentialGCP.
+func (mg *CredentialGCP) ResolveReferences(ctx context.Context, c client.Reader) error {
 	r := reference.NewAPIResolver(c, mg)
 
 	var rsp reference.ResolutionResponse
 	var err error
+
+	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.BillingAccountID),
+		Extract:      reference.ExternalName(),
+		Reference:    mg.Spec.ForProvider.BillingAccountIDRef,
+		Selector:     mg.Spec.ForProvider.BillingAccountIDSelector,
+		To: reference.To{
+			List:    &BillingCredentialList{},
+			Managed: &BillingCredential{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.BillingAccountID")
+	}
+	mg.Spec.ForProvider.BillingAccountID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.BillingAccountIDRef = rsp.ResolvedReference
 
 	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.OrganizationID),
@@ -47,22 +63,6 @@ func (mg *Profile) ResolveReferences(ctx context.Context, c client.Reader) error
 	}
 	mg.Spec.ForProvider.OrganizationID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.OrganizationIDRef = rsp.ResolvedReference
-
-	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
-		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.SlackConfigurationID),
-		Extract:      reference.ExternalName(),
-		Reference:    mg.Spec.ForProvider.SlackConfigurationIDRef,
-		Selector:     mg.Spec.ForProvider.SlackConfigurationIDSelector,
-		To: reference.To{
-			List:    &SlackConfigurationList{},
-			Managed: &SlackConfiguration{},
-		},
-	})
-	if err != nil {
-		return errors.Wrap(err, "mg.Spec.ForProvider.SlackConfigurationID")
-	}
-	mg.Spec.ForProvider.SlackConfigurationID = reference.ToPtrValue(rsp.ResolvedValue)
-	mg.Spec.ForProvider.SlackConfigurationIDRef = rsp.ResolvedReference
 
 	return nil
 }

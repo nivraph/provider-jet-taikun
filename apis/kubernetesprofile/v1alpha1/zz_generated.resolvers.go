@@ -48,21 +48,5 @@ func (mg *Profile) ResolveReferences(ctx context.Context, c client.Reader) error
 	mg.Spec.ForProvider.OrganizationID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.OrganizationIDRef = rsp.ResolvedReference
 
-	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
-		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.SlackConfigurationID),
-		Extract:      reference.ExternalName(),
-		Reference:    mg.Spec.ForProvider.SlackConfigurationIDRef,
-		Selector:     mg.Spec.ForProvider.SlackConfigurationIDSelector,
-		To: reference.To{
-			List:    &SlackConfigurationList{},
-			Managed: &SlackConfiguration{},
-		},
-	})
-	if err != nil {
-		return errors.Wrap(err, "mg.Spec.ForProvider.SlackConfigurationID")
-	}
-	mg.Spec.ForProvider.SlackConfigurationID = reference.ToPtrValue(rsp.ResolvedValue)
-	mg.Spec.ForProvider.SlackConfigurationIDRef = rsp.ResolvedReference
-
 	return nil
 }

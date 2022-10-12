@@ -25,8 +25,8 @@ import (
 	client "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
-// ResolveReferences of this Profile.
-func (mg *Profile) ResolveReferences(ctx context.Context, c client.Reader) error {
+// ResolveReferences of this Rule.
+func (mg *Rule) ResolveReferences(ctx context.Context, c client.Reader) error {
 	r := reference.NewAPIResolver(c, mg)
 
 	var rsp reference.ResolutionResponse
@@ -49,20 +49,20 @@ func (mg *Profile) ResolveReferences(ctx context.Context, c client.Reader) error
 	mg.Spec.ForProvider.OrganizationIDRef = rsp.ResolvedReference
 
 	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
-		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.SlackConfigurationID),
+		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ShowbackCredentialID),
 		Extract:      reference.ExternalName(),
-		Reference:    mg.Spec.ForProvider.SlackConfigurationIDRef,
-		Selector:     mg.Spec.ForProvider.SlackConfigurationIDSelector,
+		Reference:    mg.Spec.ForProvider.ShowbackCredentialIDRef,
+		Selector:     mg.Spec.ForProvider.ShowbackCredentialIDSelector,
 		To: reference.To{
-			List:    &SlackConfigurationList{},
-			Managed: &SlackConfiguration{},
+			List:    &ShowbackCredentialList{},
+			Managed: &ShowbackCredential{},
 		},
 	})
 	if err != nil {
-		return errors.Wrap(err, "mg.Spec.ForProvider.SlackConfigurationID")
+		return errors.Wrap(err, "mg.Spec.ForProvider.ShowbackCredentialID")
 	}
-	mg.Spec.ForProvider.SlackConfigurationID = reference.ToPtrValue(rsp.ResolvedValue)
-	mg.Spec.ForProvider.SlackConfigurationIDRef = rsp.ResolvedReference
+	mg.Spec.ForProvider.ShowbackCredentialID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.ShowbackCredentialIDRef = rsp.ResolvedReference
 
 	return nil
 }

@@ -38,8 +38,15 @@ type CredentialGCPObservation struct {
 type CredentialGCPParameters struct {
 
 	// The ID of the GCP credential's billing account. Conflicts with: `import_project`.
+	// +crossplane:generate:reference:type=BillingCredential
 	// +kubebuilder:validation:Optional
 	BillingAccountID *string `json:"billingAccountId,omitempty" tf:"billing_account_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	BillingAccountIDRef *v1.Reference `json:"billingAccountIdRef,omitempty" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	BillingAccountIDSelector *v1.Selector `json:"billingAccountIdSelector,omitempty" tf:"-"`
 
 	// The path of the GCP credential's configuration file.
 	// +kubebuilder:validation:Required
@@ -62,8 +69,15 @@ type CredentialGCPParameters struct {
 	Name *string `json:"name" tf:"name,omitempty"`
 
 	// The ID of the organization which owns the GCP credential.
+	// +crossplane:generate:reference:type=github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization
 	// +kubebuilder:validation:Optional
 	OrganizationID *string `json:"organizationId,omitempty" tf:"organization_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	OrganizationIDRef *v1.Reference `json:"organizationIdRef,omitempty" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	OrganizationIDSelector *v1.Selector `json:"organizationIdSelector,omitempty" tf:"-"`
 
 	// The region of the GCP credential.
 	// +kubebuilder:validation:Required
