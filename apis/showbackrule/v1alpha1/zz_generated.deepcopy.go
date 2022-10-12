@@ -230,16 +230,6 @@ func (in *RuleParameters) DeepCopyInto(out *RuleParameters) {
 		*out = new(string)
 		**out = **in
 	}
-	if in.ShowbackCredentialIDRef != nil {
-		in, out := &in.ShowbackCredentialIDRef, &out.ShowbackCredentialIDRef
-		*out = new(v1.Reference)
-		**out = **in
-	}
-	if in.ShowbackCredentialIDSelector != nil {
-		in, out := &in.ShowbackCredentialIDSelector, &out.ShowbackCredentialIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
-	}
 	if in.Type != nil {
 		in, out := &in.Type, &out.Type
 		*out = new(string)

@@ -128,16 +128,6 @@ func (in *CredentialGCPParameters) DeepCopyInto(out *CredentialGCPParameters) {
 		*out = new(string)
 		**out = **in
 	}
-	if in.BillingAccountIDRef != nil {
-		in, out := &in.BillingAccountIDRef, &out.BillingAccountIDRef
-		*out = new(v1.Reference)
-		**out = **in
-	}
-	if in.BillingAccountIDSelector != nil {
-		in, out := &in.BillingAccountIDSelector, &out.BillingAccountIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
-	}
 	if in.ConfigFile != nil {
 		in, out := &in.ConfigFile, &out.ConfigFile
 		*out = new(string)

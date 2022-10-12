@@ -85,26 +85,12 @@ type ProjectObservation struct {
 type ProjectParameters struct {
 
 	// ID of the project's access profile. Defaults to the default access profile of the project's organization.
-	// +crossplane:generate:reference:type=AccessProfile
 	// +kubebuilder:validation:Optional
 	AccessProfileID *string `json:"accessProfileId,omitempty" tf:"access_profile_id,omitempty"`
 
-	// +kubebuilder:validation:Optional
-	AccessProfileIDRef *v1.Reference `json:"accessProfileIdRef,omitempty" tf:"-"`
-
-	// +kubebuilder:validation:Optional
-	AccessProfileIDSelector *v1.Selector `json:"accessProfileIdSelector,omitempty" tf:"-"`
-
 	// ID of the project's alerting profile.
-	// +crossplane:generate:reference:type=AlertingProfile
 	// +kubebuilder:validation:Optional
 	AlertingProfileID *string `json:"alertingProfileId,omitempty" tf:"alerting_profile_id,omitempty"`
-
-	// +kubebuilder:validation:Optional
-	AlertingProfileIDRef *v1.Reference `json:"alertingProfileIdRef,omitempty" tf:"-"`
-
-	// +kubebuilder:validation:Optional
-	AlertingProfileIDSelector *v1.Selector `json:"alertingProfileIdSelector,omitempty" tf:"-"`
 
 	// If enabled, the Kubespray version will be automatically upgraded when a new version is available. Defaults to `false`.
 	// +kubebuilder:validation:Optional
@@ -135,15 +121,8 @@ type ProjectParameters struct {
 	Images []*string `json:"images,omitempty" tf:"images,omitempty"`
 
 	// ID of the project's Kubernetes profile. Defaults to the default Kubernetes profile of the project's organization.
-	// +crossplane:generate:reference:type=KubernetesProfile
 	// +kubebuilder:validation:Optional
 	KubernetesProfileID *string `json:"kubernetesProfileId,omitempty" tf:"kubernetes_profile_id,omitempty"`
-
-	// +kubebuilder:validation:Optional
-	KubernetesProfileIDRef *v1.Reference `json:"kubernetesProfileIdRef,omitempty" tf:"-"`
-
-	// +kubebuilder:validation:Optional
-	KubernetesProfileIDSelector *v1.Selector `json:"kubernetesProfileIdSelector,omitempty" tf:"-"`
 
 	// Kubernetes Version at project creation. Use the meta-argument `ignore_changes` to ignore future upgrades.
 	// +kubebuilder:validation:Optional
@@ -173,15 +152,8 @@ type ProjectParameters struct {
 	OrganizationIDSelector *v1.Selector `json:"organizationIdSelector,omitempty" tf:"-"`
 
 	// ID of the Policy profile. If unspecified, Gatekeeper is disabled.
-	// +crossplane:generate:reference:type=PolicyProfile
 	// +kubebuilder:validation:Optional
 	PolicyProfileID *string `json:"policyProfileId,omitempty" tf:"policy_profile_id,omitempty"`
-
-	// +kubebuilder:validation:Optional
-	PolicyProfileIDRef *v1.Reference `json:"policyProfileIdRef,omitempty" tf:"-"`
-
-	// +kubebuilder:validation:Optional
-	PolicyProfileIDSelector *v1.Selector `json:"policyProfileIdSelector,omitempty" tf:"-"`
 
 	// Maximum CPU units. Defaults to `1000000`.
 	// +kubebuilder:validation:Optional

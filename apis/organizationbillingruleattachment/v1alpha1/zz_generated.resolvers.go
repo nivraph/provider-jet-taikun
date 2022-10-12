@@ -20,32 +20,33 @@ package v1alpha1
 import (
 	"context"
 	reference "github.com/crossplane/crossplane-runtime/pkg/reference"
+	v1alpha1 "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1"
 	errors "github.com/pkg/errors"
 	client "sigs.k8s.io/controller-runtime/pkg/client"
 )
 
-// ResolveReferences of this Rule.
-func (mg *Rule) ResolveReferences(ctx context.Context, c client.Reader) error {
+// ResolveReferences of this BillingRuleAttachment.
+func (mg *BillingRuleAttachment) ResolveReferences(ctx context.Context, c client.Reader) error {
 	r := reference.NewAPIResolver(c, mg)
 
 	var rsp reference.ResolutionResponse
 	var err error
 
 	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
-		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.BillingCredentialID),
+		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.OrganizationID),
 		Extract:      reference.ExternalName(),
-		Reference:    mg.Spec.ForProvider.BillingCredentialIDRef,
-		Selector:     mg.Spec.ForProvider.BillingCredentialIDSelector,
+		Reference:    mg.Spec.ForProvider.OrganizationIDRef,
+		Selector:     mg.Spec.ForProvider.OrganizationIDSelector,
 		To: reference.To{
-			List:    &BillingCredentialList{},
-			Managed: &BillingCredential{},
+			List:    &v1alpha1.OrganizationList{},
+			Managed: &v1alpha1.Organization{},
 		},
 	})
 	if err != nil {
-		return errors.Wrap(err, "mg.Spec.ForProvider.BillingCredentialID")
+		return errors.Wrap(err, "mg.Spec.ForProvider.OrganizationID")
 	}
-	mg.Spec.ForProvider.BillingCredentialID = reference.ToPtrValue(rsp.ResolvedValue)
-	mg.Spec.ForProvider.BillingCredentialIDRef = rsp.ResolvedReference
+	mg.Spec.ForProvider.OrganizationID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.OrganizationIDRef = rsp.ResolvedReference
 
 	return nil
 }

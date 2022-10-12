@@ -108,15 +108,8 @@ type ProfileParameters struct {
 	Reminder *string `json:"reminder" tf:"reminder,omitempty"`
 
 	// The ID of the Slack configuration to notify. Defaults to `0`.
-	// +crossplane:generate:reference:type=SlackConfiguration
 	// +kubebuilder:validation:Optional
 	SlackConfigurationID *string `json:"slackConfigurationId,omitempty" tf:"slack_configuration_id,omitempty"`
-
-	// +kubebuilder:validation:Optional
-	SlackConfigurationIDRef *v1.Reference `json:"slackConfigurationIdRef,omitempty" tf:"-"`
-
-	// +kubebuilder:validation:Optional
-	SlackConfigurationIDSelector *v1.Selector `json:"slackConfigurationIdSelector,omitempty" tf:"-"`
 
 	// The list of webhooks to notify.
 	// +kubebuilder:validation:Optional

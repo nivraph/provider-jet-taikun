@@ -42,8 +42,15 @@ type BillingRuleAttachmentParameters struct {
 	DiscountRate *float64 `json:"discountRate,omitempty" tf:"discount_rate,omitempty"`
 
 	// ID of the organisation.
-	// +kubebuilder:validation:Required
-	OrganizationID *string `json:"organizationId" tf:"organization_id,omitempty"`
+	// +crossplane:generate:reference:type=github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization
+	// +kubebuilder:validation:Optional
+	OrganizationID *string `json:"organizationId,omitempty" tf:"organization_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	OrganizationIDRef *v1.Reference `json:"organizationIdRef,omitempty" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	OrganizationIDSelector *v1.Selector `json:"organizationIdSelector,omitempty" tf:"-"`
 }
 
 // BillingRuleAttachmentSpec defines the desired state of BillingRuleAttachment

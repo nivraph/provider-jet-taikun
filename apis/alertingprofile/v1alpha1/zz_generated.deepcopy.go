@@ -283,16 +283,6 @@ func (in *ProfileParameters) DeepCopyInto(out *ProfileParameters) {
 		*out = new(string)
 		**out = **in
 	}
-	if in.SlackConfigurationIDRef != nil {
-		in, out := &in.SlackConfigurationIDRef, &out.SlackConfigurationIDRef
-		*out = new(v1.Reference)
-		**out = **in
-	}
-	if in.SlackConfigurationIDSelector != nil {
-		in, out := &in.SlackConfigurationIDSelector, &out.SlackConfigurationIDSelector
-		*out = new(v1.Selector)
-		(*in).DeepCopyInto(*out)
-	}
 	if in.Webhook != nil {
 		in, out := &in.Webhook, &out.Webhook
 		*out = make([]WebhookParameters, len(*in))

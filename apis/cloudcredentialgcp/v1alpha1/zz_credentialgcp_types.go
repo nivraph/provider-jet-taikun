@@ -38,15 +38,8 @@ type CredentialGCPObservation struct {
 type CredentialGCPParameters struct {
 
 	// The ID of the GCP credential's billing account. Conflicts with: `import_project`.
-	// +crossplane:generate:reference:type=BillingCredential
 	// +kubebuilder:validation:Optional
 	BillingAccountID *string `json:"billingAccountId,omitempty" tf:"billing_account_id,omitempty"`
-
-	// +kubebuilder:validation:Optional
-	BillingAccountIDRef *v1.Reference `json:"billingAccountIdRef,omitempty" tf:"-"`
-
-	// +kubebuilder:validation:Optional
-	BillingAccountIDSelector *v1.Selector `json:"billingAccountIdSelector,omitempty" tf:"-"`
 
 	// The path of the GCP credential's configuration file.
 	// +kubebuilder:validation:Required

@@ -33,22 +33,6 @@ func (mg *CredentialGCP) ResolveReferences(ctx context.Context, c client.Reader)
 	var err error
 
 	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
-		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.BillingAccountID),
-		Extract:      reference.ExternalName(),
-		Reference:    mg.Spec.ForProvider.BillingAccountIDRef,
-		Selector:     mg.Spec.ForProvider.BillingAccountIDSelector,
-		To: reference.To{
-			List:    &BillingCredentialList{},
-			Managed: &BillingCredential{},
-		},
-	})
-	if err != nil {
-		return errors.Wrap(err, "mg.Spec.ForProvider.BillingAccountID")
-	}
-	mg.Spec.ForProvider.BillingAccountID = reference.ToPtrValue(rsp.ResolvedValue)
-	mg.Spec.ForProvider.BillingAccountIDRef = rsp.ResolvedReference
-
-	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.OrganizationID),
 		Extract:      reference.ExternalName(),
 		Reference:    mg.Spec.ForProvider.OrganizationIDRef,

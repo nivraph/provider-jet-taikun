@@ -48,21 +48,5 @@ func (mg *Rule) ResolveReferences(ctx context.Context, c client.Reader) error {
 	mg.Spec.ForProvider.OrganizationID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.OrganizationIDRef = rsp.ResolvedReference
 
-	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
-		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ShowbackCredentialID),
-		Extract:      reference.ExternalName(),
-		Reference:    mg.Spec.ForProvider.ShowbackCredentialIDRef,
-		Selector:     mg.Spec.ForProvider.ShowbackCredentialIDSelector,
-		To: reference.To{
-			List:    &ShowbackCredentialList{},
-			Managed: &ShowbackCredential{},
-		},
-	})
-	if err != nil {
-		return errors.Wrap(err, "mg.Spec.ForProvider.ShowbackCredentialID")
-	}
-	mg.Spec.ForProvider.ShowbackCredentialID = reference.ToPtrValue(rsp.ResolvedValue)
-	mg.Spec.ForProvider.ShowbackCredentialIDRef = rsp.ResolvedReference
-
 	return nil
 }

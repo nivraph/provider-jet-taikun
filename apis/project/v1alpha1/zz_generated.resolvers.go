@@ -33,54 +33,6 @@ func (mg *Project) ResolveReferences(ctx context.Context, c client.Reader) error
 	var err error
 
 	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
-		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.AccessProfileID),
-		Extract:      reference.ExternalName(),
-		Reference:    mg.Spec.ForProvider.AccessProfileIDRef,
-		Selector:     mg.Spec.ForProvider.AccessProfileIDSelector,
-		To: reference.To{
-			List:    &AccessProfileList{},
-			Managed: &AccessProfile{},
-		},
-	})
-	if err != nil {
-		return errors.Wrap(err, "mg.Spec.ForProvider.AccessProfileID")
-	}
-	mg.Spec.ForProvider.AccessProfileID = reference.ToPtrValue(rsp.ResolvedValue)
-	mg.Spec.ForProvider.AccessProfileIDRef = rsp.ResolvedReference
-
-	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
-		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.AlertingProfileID),
-		Extract:      reference.ExternalName(),
-		Reference:    mg.Spec.ForProvider.AlertingProfileIDRef,
-		Selector:     mg.Spec.ForProvider.AlertingProfileIDSelector,
-		To: reference.To{
-			List:    &AlertingProfileList{},
-			Managed: &AlertingProfile{},
-		},
-	})
-	if err != nil {
-		return errors.Wrap(err, "mg.Spec.ForProvider.AlertingProfileID")
-	}
-	mg.Spec.ForProvider.AlertingProfileID = reference.ToPtrValue(rsp.ResolvedValue)
-	mg.Spec.ForProvider.AlertingProfileIDRef = rsp.ResolvedReference
-
-	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
-		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.KubernetesProfileID),
-		Extract:      reference.ExternalName(),
-		Reference:    mg.Spec.ForProvider.KubernetesProfileIDRef,
-		Selector:     mg.Spec.ForProvider.KubernetesProfileIDSelector,
-		To: reference.To{
-			List:    &KubernetesProfileList{},
-			Managed: &KubernetesProfile{},
-		},
-	})
-	if err != nil {
-		return errors.Wrap(err, "mg.Spec.ForProvider.KubernetesProfileID")
-	}
-	mg.Spec.ForProvider.KubernetesProfileID = reference.ToPtrValue(rsp.ResolvedValue)
-	mg.Spec.ForProvider.KubernetesProfileIDRef = rsp.ResolvedReference
-
-	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.OrganizationID),
 		Extract:      reference.ExternalName(),
 		Reference:    mg.Spec.ForProvider.OrganizationIDRef,
@@ -95,22 +47,6 @@ func (mg *Project) ResolveReferences(ctx context.Context, c client.Reader) error
 	}
 	mg.Spec.ForProvider.OrganizationID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.OrganizationIDRef = rsp.ResolvedReference
-
-	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
-		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.PolicyProfileID),
-		Extract:      reference.ExternalName(),
-		Reference:    mg.Spec.ForProvider.PolicyProfileIDRef,
-		Selector:     mg.Spec.ForProvider.PolicyProfileIDSelector,
-		To: reference.To{
-			List:    &PolicyProfileList{},
-			Managed: &PolicyProfile{},
-		},
-	})
-	if err != nil {
-		return errors.Wrap(err, "mg.Spec.ForProvider.PolicyProfileID")
-	}
-	mg.Spec.ForProvider.PolicyProfileID = reference.ToPtrValue(rsp.ResolvedValue)
-	mg.Spec.ForProvider.PolicyProfileIDRef = rsp.ResolvedReference
 
 	return nil
 }
