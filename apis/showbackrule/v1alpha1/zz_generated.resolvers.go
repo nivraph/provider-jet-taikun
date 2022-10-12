@@ -21,6 +21,7 @@ import (
 	"context"
 	reference "github.com/crossplane/crossplane-runtime/pkg/reference"
 	v1alpha1 "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1"
+	v1alpha11 "github.com/nivraph/provider-jet-taikun/apis/showbackcredential/v1alpha1"
 	errors "github.com/pkg/errors"
 	client "sigs.k8s.io/controller-runtime/pkg/client"
 )
@@ -47,6 +48,22 @@ func (mg *Rule) ResolveReferences(ctx context.Context, c client.Reader) error {
 	}
 	mg.Spec.ForProvider.OrganizationID = reference.ToPtrValue(rsp.ResolvedValue)
 	mg.Spec.ForProvider.OrganizationIDRef = rsp.ResolvedReference
+
+	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.ShowbackCredentialID),
+		Extract:      reference.ExternalName(),
+		Reference:    mg.Spec.ForProvider.ShowbackCredentialIDRef,
+		Selector:     mg.Spec.ForProvider.ShowbackCredentialIDSelector,
+		To: reference.To{
+			List:    &v1alpha11.CredentialList{},
+			Managed: &v1alpha11.Credential{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.ShowbackCredentialID")
+	}
+	mg.Spec.ForProvider.ShowbackCredentialID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.ShowbackCredentialIDRef = rsp.ResolvedReference
 
 	return nil
 }

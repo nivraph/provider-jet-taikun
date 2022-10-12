@@ -251,10 +251,30 @@ func (in *ProjectParameters) DeepCopyInto(out *ProjectParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.AccessProfileIDRef != nil {
+		in, out := &in.AccessProfileIDRef, &out.AccessProfileIDRef
+		*out = new(v1.Reference)
+		**out = **in
+	}
+	if in.AccessProfileIDSelector != nil {
+		in, out := &in.AccessProfileIDSelector, &out.AccessProfileIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.AlertingProfileID != nil {
 		in, out := &in.AlertingProfileID, &out.AlertingProfileID
 		*out = new(string)
 		**out = **in
+	}
+	if in.AlertingProfileIDRef != nil {
+		in, out := &in.AlertingProfileIDRef, &out.AlertingProfileIDRef
+		*out = new(v1.Reference)
+		**out = **in
+	}
+	if in.AlertingProfileIDSelector != nil {
+		in, out := &in.AlertingProfileIDSelector, &out.AlertingProfileIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.AutoUpgrade != nil {
 		in, out := &in.AutoUpgrade, &out.AutoUpgrade
@@ -308,6 +328,16 @@ func (in *ProjectParameters) DeepCopyInto(out *ProjectParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.KubernetesProfileIDRef != nil {
+		in, out := &in.KubernetesProfileIDRef, &out.KubernetesProfileIDRef
+		*out = new(v1.Reference)
+		**out = **in
+	}
+	if in.KubernetesProfileIDSelector != nil {
+		in, out := &in.KubernetesProfileIDSelector, &out.KubernetesProfileIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.KubernetesVersion != nil {
 		in, out := &in.KubernetesVersion, &out.KubernetesVersion
 		*out = new(string)
@@ -347,6 +377,16 @@ func (in *ProjectParameters) DeepCopyInto(out *ProjectParameters) {
 		in, out := &in.PolicyProfileID, &out.PolicyProfileID
 		*out = new(string)
 		**out = **in
+	}
+	if in.PolicyProfileIDRef != nil {
+		in, out := &in.PolicyProfileIDRef, &out.PolicyProfileIDRef
+		*out = new(v1.Reference)
+		**out = **in
+	}
+	if in.PolicyProfileIDSelector != nil {
+		in, out := &in.PolicyProfileIDSelector, &out.PolicyProfileIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.QuotaCPUUnits != nil {
 		in, out := &in.QuotaCPUUnits, &out.QuotaCPUUnits

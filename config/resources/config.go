@@ -73,11 +73,9 @@ func Configure(p *config.Provider) {
 		r.References["organization_id"] = config.Reference{
 			Type: "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization",
 		}
-		/*
-			r.References["showback_credential_id"] = config.Reference{
-				Type: "ShowbackCredential",
-			}
-		*/
+		r.References["showback_credential_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/showbackcredential/v1alpha1.Credential",
+		}
 	})
 	p.AddResourceConfigurator("taikun_billing_credential", func(r *config.Resource) {
 		r.ShortGroup = "billingCredential"
@@ -92,11 +90,9 @@ func Configure(p *config.Provider) {
 		r.References["organization_id"] = config.Reference{
 			Type: "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization",
 		}
-		/*
-			r.References["billing_credential_id"] = config.Reference{
-				Type: "BillingCredential",
-			}
-		*/
+		r.References["billing_credential_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/billingcredential/v1alpha1.Credential",
+		}
 	})
 	p.AddResourceConfigurator("taikun_user", func(r *config.Resource) {
 		r.ShortGroup = "user"
@@ -123,11 +119,9 @@ func Configure(p *config.Provider) {
 		r.References["organization_id"] = config.Reference{
 			Type: "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization",
 		}
-		/*
-			r.References["billing_account_id"] = config.Reference{
-				Type: "BillingCredential",
-			}
-		*/
+		r.References["billing_account_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/billingcredential/v1alpha1.Credential",
+		}
 	})
 	p.AddResourceConfigurator("taikun_cloud_credential_azure", func(r *config.Resource) {
 		r.ShortGroup = "cloudCredentialAzure"
@@ -142,20 +136,18 @@ func Configure(p *config.Provider) {
 		r.References["organization_id"] = config.Reference{
 			Type: "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization",
 		}
-		/*
-			r.References["access_profile_id"] = config.Reference{
-				Type: "AccessProfile",
-			}
-			r.References["alerting_profile_id"] = config.Reference{
-				Type: "AlertingProfile",
-			}
-			r.References["kubernetes_profile_id"] = config.Reference{
-				Type: "KubernetesProfile",
-			}
-			r.References["policy_profile_id"] = config.Reference{
-				Type: "PolicyProfile",
-			}
-		*/
+		r.References["access_profile_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/accessprofile/v1alpha1.Profile",
+		}
+		r.References["alerting_profile_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/alertingprofile/v1alpha1.Profile",
+		}
+		r.References["kubernetes_profile_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/kubernetesprofile/v1alpha1.Profile",
+		}
+		r.References["policy_profile_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/policyprofile/v1alpha1.Profile",
+		}
 		// TODO: add backup credential references
 		/*
 			r.References["backupCredentialId"] = config.Reference{
@@ -169,10 +161,8 @@ func Configure(p *config.Provider) {
 		r.References["organization_id"] = config.Reference{
 			Type: "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization",
 		}
-		/*
-			r.References["billing_rule_id"] = config.Reference{
-				Type: "BillingRule",
-			}
-		*/
+		r.References["billing_rule_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/billingrule/v1alpha1.Rule",
+		}
 	})
 }

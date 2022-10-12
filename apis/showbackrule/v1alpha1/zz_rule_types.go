@@ -95,8 +95,15 @@ type RuleParameters struct {
 	ProjectAlertLimit *float64 `json:"projectAlertLimit,omitempty" tf:"project_alert_limit,omitempty"`
 
 	// ID of the showback credential.
+	// +crossplane:generate:reference:type=github.com/nivraph/provider-jet-taikun/apis/showbackcredential/v1alpha1.Credential
 	// +kubebuilder:validation:Optional
 	ShowbackCredentialID *string `json:"showbackCredentialId,omitempty" tf:"showback_credential_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	ShowbackCredentialIDRef *v1.Reference `json:"showbackCredentialIdRef,omitempty" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	ShowbackCredentialIDSelector *v1.Selector `json:"showbackCredentialIdSelector,omitempty" tf:"-"`
 
 	// The type of showback rule: `Count` (calculate package as unit) or `Sum` (calculate per quantity).
 	// +kubebuilder:validation:Required

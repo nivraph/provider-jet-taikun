@@ -118,6 +118,16 @@ func (in *BillingRuleAttachmentParameters) DeepCopyInto(out *BillingRuleAttachme
 		*out = new(string)
 		**out = **in
 	}
+	if in.BillingRuleIDRef != nil {
+		in, out := &in.BillingRuleIDRef, &out.BillingRuleIDRef
+		*out = new(v1.Reference)
+		**out = **in
+	}
+	if in.BillingRuleIDSelector != nil {
+		in, out := &in.BillingRuleIDSelector, &out.BillingRuleIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.DiscountRate != nil {
 		in, out := &in.DiscountRate, &out.DiscountRate
 		*out = new(float64)

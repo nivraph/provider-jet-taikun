@@ -34,8 +34,15 @@ type BillingRuleAttachmentObservation struct {
 type BillingRuleAttachmentParameters struct {
 
 	// ID of the billing rule.
-	// +kubebuilder:validation:Required
-	BillingRuleID *string `json:"billingRuleId" tf:"billing_rule_id,omitempty"`
+	// +crossplane:generate:reference:type=github.com/nivraph/provider-jet-taikun/apis/billingrule/v1alpha1.Rule
+	// +kubebuilder:validation:Optional
+	BillingRuleID *string `json:"billingRuleId,omitempty" tf:"billing_rule_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	BillingRuleIDRef *v1.Reference `json:"billingRuleIdRef,omitempty" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	BillingRuleIDSelector *v1.Selector `json:"billingRuleIdSelector,omitempty" tf:"-"`
 
 	// Discount rate in percents (0-100 %). Defaults to `100`.
 	// +kubebuilder:validation:Optional

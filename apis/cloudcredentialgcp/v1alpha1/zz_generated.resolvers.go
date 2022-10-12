@@ -20,7 +20,8 @@ package v1alpha1
 import (
 	"context"
 	reference "github.com/crossplane/crossplane-runtime/pkg/reference"
-	v1alpha1 "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1"
+	v1alpha1 "github.com/nivraph/provider-jet-taikun/apis/billingcredential/v1alpha1"
+	v1alpha11 "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1"
 	errors "github.com/pkg/errors"
 	client "sigs.k8s.io/controller-runtime/pkg/client"
 )
@@ -33,13 +34,29 @@ func (mg *CredentialGCP) ResolveReferences(ctx context.Context, c client.Reader)
 	var err error
 
 	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.BillingAccountID),
+		Extract:      reference.ExternalName(),
+		Reference:    mg.Spec.ForProvider.BillingAccountIDRef,
+		Selector:     mg.Spec.ForProvider.BillingAccountIDSelector,
+		To: reference.To{
+			List:    &v1alpha1.CredentialList{},
+			Managed: &v1alpha1.Credential{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.BillingAccountID")
+	}
+	mg.Spec.ForProvider.BillingAccountID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.BillingAccountIDRef = rsp.ResolvedReference
+
+	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.OrganizationID),
 		Extract:      reference.ExternalName(),
 		Reference:    mg.Spec.ForProvider.OrganizationIDRef,
 		Selector:     mg.Spec.ForProvider.OrganizationIDSelector,
 		To: reference.To{
-			List:    &v1alpha1.OrganizationList{},
-			Managed: &v1alpha1.Organization{},
+			List:    &v1alpha11.OrganizationList{},
+			Managed: &v1alpha11.Organization{},
 		},
 	})
 	if err != nil {
