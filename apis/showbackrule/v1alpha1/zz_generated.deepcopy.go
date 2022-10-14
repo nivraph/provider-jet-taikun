@@ -22,6 +22,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"github.com/crossplane/crossplane-runtime/apis/common/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 )
 
@@ -204,6 +205,16 @@ func (in *RuleParameters) DeepCopyInto(out *RuleParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.OrganizationIDRef != nil {
+		in, out := &in.OrganizationIDRef, &out.OrganizationIDRef
+		*out = new(v1.Reference)
+		**out = **in
+	}
+	if in.OrganizationIDSelector != nil {
+		in, out := &in.OrganizationIDSelector, &out.OrganizationIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.Price != nil {
 		in, out := &in.Price, &out.Price
 		*out = new(float64)
@@ -218,6 +229,16 @@ func (in *RuleParameters) DeepCopyInto(out *RuleParameters) {
 		in, out := &in.ShowbackCredentialID, &out.ShowbackCredentialID
 		*out = new(string)
 		**out = **in
+	}
+	if in.ShowbackCredentialIDRef != nil {
+		in, out := &in.ShowbackCredentialIDRef, &out.ShowbackCredentialIDRef
+		*out = new(v1.Reference)
+		**out = **in
+	}
+	if in.ShowbackCredentialIDSelector != nil {
+		in, out := &in.ShowbackCredentialIDSelector, &out.ShowbackCredentialIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.Type != nil {
 		in, out := &in.Type, &out.Type

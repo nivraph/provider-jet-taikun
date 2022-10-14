@@ -67,9 +67,55 @@ spec:
                     description: ID of the project's access profile. Defaults to the
                       default access profile of the project's organization.
                     type: string
+                  accessProfileIdRef:
+                    description: A Reference to a named object.
+                    properties:
+                      name:
+                        description: Name of the referenced object.
+                        type: string
+                    required:
+                    - name
+                    type: object
+                  accessProfileIdSelector:
+                    description: A Selector selects an object.
+                    properties:
+                      matchControllerRef:
+                        description: MatchControllerRef ensures an object with the
+                          same controller reference as the selecting object is selected.
+                        type: boolean
+                      matchLabels:
+                        additionalProperties:
+                          type: string
+                        description: MatchLabels ensures an object with matching labels
+                          is selected.
+                        type: object
+                    type: object
                   alertingProfileId:
                     description: ID of the project's alerting profile.
                     type: string
+                  alertingProfileIdRef:
+                    description: A Reference to a named object.
+                    properties:
+                      name:
+                        description: Name of the referenced object.
+                        type: string
+                    required:
+                    - name
+                    type: object
+                  alertingProfileIdSelector:
+                    description: A Selector selects an object.
+                    properties:
+                      matchControllerRef:
+                        description: MatchControllerRef ensures an object with the
+                          same controller reference as the selecting object is selected.
+                        type: boolean
+                      matchLabels:
+                        additionalProperties:
+                          type: string
+                        description: MatchLabels ensures an object with matching labels
+                          is selected.
+                        type: object
+                    type: object
                   autoUpgrade:
                     description: If enabled, the Kubespray version will be automatically
                       upgraded when a new version is available. Defaults to `false`.
@@ -82,6 +128,29 @@ spec:
                     description: ID of the cloud credential used to create the project's
                       servers.
                     type: string
+                  cloudCredentialIdRef:
+                    description: A Reference to a named object.
+                    properties:
+                      name:
+                        description: Name of the referenced object.
+                        type: string
+                    required:
+                    - name
+                    type: object
+                  cloudCredentialIdSelector:
+                    description: A Selector selects an object.
+                    properties:
+                      matchControllerRef:
+                        description: MatchControllerRef ensures an object with the
+                          same controller reference as the selecting object is selected.
+                        type: boolean
+                      matchLabels:
+                        additionalProperties:
+                          type: string
+                        description: MatchLabels ensures an object with matching labels
+                          is selected.
+                        type: object
+                    type: object
                   deleteOnExpiration:
                     description: 'If enabled, the project will be deleted on the expiration
                       date and it will not be possible to recover it. Defaults to
@@ -104,6 +173,29 @@ spec:
                     description: ID of the project's Kubernetes profile. Defaults
                       to the default Kubernetes profile of the project's organization.
                     type: string
+                  kubernetesProfileIdRef:
+                    description: A Reference to a named object.
+                    properties:
+                      name:
+                        description: Name of the referenced object.
+                        type: string
+                    required:
+                    - name
+                    type: object
+                  kubernetesProfileIdSelector:
+                    description: A Selector selects an object.
+                    properties:
+                      matchControllerRef:
+                        description: MatchControllerRef ensures an object with the
+                          same controller reference as the selecting object is selected.
+                        type: boolean
+                      matchLabels:
+                        additionalProperties:
+                          type: string
+                        description: MatchLabels ensures an object with matching labels
+                          is selected.
+                        type: object
+                    type: object
                   kubernetesVersion:
                     description: Kubernetes Version at project creation. Use the meta-argument
                       `ignore_changes` to ignore future upgrades.
@@ -121,10 +213,56 @@ spec:
                   organizationId:
                     description: ID of the organization which owns the project.
                     type: string
+                  organizationIdRef:
+                    description: A Reference to a named object.
+                    properties:
+                      name:
+                        description: Name of the referenced object.
+                        type: string
+                    required:
+                    - name
+                    type: object
+                  organizationIdSelector:
+                    description: A Selector selects an object.
+                    properties:
+                      matchControllerRef:
+                        description: MatchControllerRef ensures an object with the
+                          same controller reference as the selecting object is selected.
+                        type: boolean
+                      matchLabels:
+                        additionalProperties:
+                          type: string
+                        description: MatchLabels ensures an object with matching labels
+                          is selected.
+                        type: object
+                    type: object
                   policyProfileId:
                     description: ID of the Policy profile. If unspecified, Gatekeeper
                       is disabled.
                     type: string
+                  policyProfileIdRef:
+                    description: A Reference to a named object.
+                    properties:
+                      name:
+                        description: Name of the referenced object.
+                        type: string
+                    required:
+                    - name
+                    type: object
+                  policyProfileIdSelector:
+                    description: A Selector selects an object.
+                    properties:
+                      matchControllerRef:
+                        description: MatchControllerRef ensures an object with the
+                          same controller reference as the selecting object is selected.
+                        type: boolean
+                      matchLabels:
+                        additionalProperties:
+                          type: string
+                        description: MatchLabels ensures an object with matching labels
+                          is selected.
+                        type: object
+                    type: object
                   quotaCpuUnits:
                     description: Maximum CPU units. Defaults to `1000000`.
                     type: number
@@ -339,7 +477,6 @@ spec:
                       type: object
                     type: array
                 required:
-                - cloudCredentialId
                 - name
                 type: object
               providerConfigRef:

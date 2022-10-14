@@ -1,0 +1,36 @@
+apiVersion: organization.taikun.jet.crossplane.io/v1alpha1
+kind: Organization
+metadata:
+  name: orga-mult-res
+spec:
+  forProvider:
+    name: "orga-mult-res"
+    fullName: "Test multi ressources with ref"
+    discountRate: 42
+    city: "Praha"
+    billingEmail: "billing2@foo.org"
+    email: "contact@foo.org"
+    phone: "065100035103"
+  providerConfigRef:
+    name: default
+---
+apiVersion: alertingprofile.taikun.jet.crossplane.io/v1alpha1
+kind: Profile
+metadata:
+  name: alertp-mult-res
+spec:
+  forProvider:
+    name: "mult-res-ap"
+    emails:
+      - "raphael.nivault@itera.io"
+    lock: false
+    organizationIdRef:
+      name: "orga-mult-res"
+    reminder: "Daily"
+    webhook:
+      - header:
+          - key: "key"
+            value: "value"
+        url: "https://www.example.com"
+  providerConfigRef:
+    name: default

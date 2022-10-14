@@ -5,7 +5,6 @@ metadata:
 spec:
   forProvider:
     name: "cred-open"
-    organizationId: "15687"
     user: "raphael"
     passwordSecretRef:
       key: "password"

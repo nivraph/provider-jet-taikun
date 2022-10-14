@@ -22,6 +22,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"github.com/crossplane/crossplane-runtime/apis/common/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 )
 
@@ -117,6 +118,16 @@ func (in *BillingRuleAttachmentParameters) DeepCopyInto(out *BillingRuleAttachme
 		*out = new(string)
 		**out = **in
 	}
+	if in.BillingRuleIDRef != nil {
+		in, out := &in.BillingRuleIDRef, &out.BillingRuleIDRef
+		*out = new(v1.Reference)
+		**out = **in
+	}
+	if in.BillingRuleIDSelector != nil {
+		in, out := &in.BillingRuleIDSelector, &out.BillingRuleIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.DiscountRate != nil {
 		in, out := &in.DiscountRate, &out.DiscountRate
 		*out = new(float64)
@@ -126,6 +137,16 @@ func (in *BillingRuleAttachmentParameters) DeepCopyInto(out *BillingRuleAttachme
 		in, out := &in.OrganizationID, &out.OrganizationID
 		*out = new(string)
 		**out = **in
+	}
+	if in.OrganizationIDRef != nil {
+		in, out := &in.OrganizationIDRef, &out.OrganizationIDRef
+		*out = new(v1.Reference)
+		**out = **in
+	}
+	if in.OrganizationIDSelector != nil {
+		in, out := &in.OrganizationIDSelector, &out.OrganizationIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 }
 

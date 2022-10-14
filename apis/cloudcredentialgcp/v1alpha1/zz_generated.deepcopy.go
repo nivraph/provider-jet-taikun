@@ -22,6 +22,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"github.com/crossplane/crossplane-runtime/apis/common/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 )
 
@@ -127,6 +128,16 @@ func (in *CredentialGCPParameters) DeepCopyInto(out *CredentialGCPParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.BillingAccountIDRef != nil {
+		in, out := &in.BillingAccountIDRef, &out.BillingAccountIDRef
+		*out = new(v1.Reference)
+		**out = **in
+	}
+	if in.BillingAccountIDSelector != nil {
+		in, out := &in.BillingAccountIDSelector, &out.BillingAccountIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.ConfigFile != nil {
 		in, out := &in.ConfigFile, &out.ConfigFile
 		*out = new(string)
@@ -156,6 +167,16 @@ func (in *CredentialGCPParameters) DeepCopyInto(out *CredentialGCPParameters) {
 		in, out := &in.OrganizationID, &out.OrganizationID
 		*out = new(string)
 		**out = **in
+	}
+	if in.OrganizationIDRef != nil {
+		in, out := &in.OrganizationIDRef, &out.OrganizationIDRef
+		*out = new(v1.Reference)
+		**out = **in
+	}
+	if in.OrganizationIDSelector != nil {
+		in, out := &in.OrganizationIDSelector, &out.OrganizationIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
 	}
 	if in.Region != nil {
 		in, out := &in.Region, &out.Region

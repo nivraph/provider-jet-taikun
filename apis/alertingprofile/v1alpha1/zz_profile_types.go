@@ -93,16 +93,30 @@ type ProfileParameters struct {
 	Name *string `json:"name" tf:"name,omitempty"`
 
 	// The ID of the organization which owns the profile.
+	// +crossplane:generate:reference:type=github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization
 	// +kubebuilder:validation:Optional
 	OrganizationID *string `json:"organizationId,omitempty" tf:"organization_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	OrganizationIDRef *v1.Reference `json:"organizationIdRef,omitempty" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	OrganizationIDSelector *v1.Selector `json:"organizationIdSelector,omitempty" tf:"-"`
 
 	// The frequency of notifications: `HalfHour`, `Hourly`, `Daily` or `None`.
 	// +kubebuilder:validation:Required
 	Reminder *string `json:"reminder" tf:"reminder,omitempty"`
 
 	// The ID of the Slack configuration to notify. Defaults to `0`.
+	// +crossplane:generate:reference:type=github.com/nivraph/provider-jet-taikun/apis/slackconfiguration/v1alpha1.Configuration
 	// +kubebuilder:validation:Optional
 	SlackConfigurationID *string `json:"slackConfigurationId,omitempty" tf:"slack_configuration_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	SlackConfigurationIDRef *v1.Reference `json:"slackConfigurationIdRef,omitempty" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	SlackConfigurationIDSelector *v1.Selector `json:"slackConfigurationIdSelector,omitempty" tf:"-"`
 
 	// The list of webhooks to notify.
 	// +kubebuilder:validation:Optional

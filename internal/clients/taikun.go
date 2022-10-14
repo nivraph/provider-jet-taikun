@@ -27,7 +27,7 @@ import (
 
 	"github.com/crossplane/terrajet/pkg/terraform"
 
-	"github.com/crossplane-contrib/provider-jet-taikun/apis/v1alpha1"
+	"github.com/nivraph/provider-jet-taikun/apis/v1alpha1"
 )
 
 const (

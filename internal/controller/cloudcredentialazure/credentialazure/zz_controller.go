@@ -30,7 +30,7 @@ import (
 	"github.com/crossplane/terrajet/pkg/terraform"
 	ctrl "sigs.k8s.io/controller-runtime"
 
-	v1alpha1 "github.com/crossplane-contrib/provider-jet-taikun/apis/cloudcredentialazure/v1alpha1"
+	v1alpha1 "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialazure/v1alpha1"
 )
 
 // Setup adds a controller that reconciles CredentialAzure managed resources.

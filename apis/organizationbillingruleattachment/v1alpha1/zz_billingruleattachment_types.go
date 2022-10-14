@@ -34,16 +34,30 @@ type BillingRuleAttachmentObservation struct {
 type BillingRuleAttachmentParameters struct {
 
 	// ID of the billing rule.
-	// +kubebuilder:validation:Required
-	BillingRuleID *string `json:"billingRuleId" tf:"billing_rule_id,omitempty"`
+	// +crossplane:generate:reference:type=github.com/nivraph/provider-jet-taikun/apis/billingrule/v1alpha1.Rule
+	// +kubebuilder:validation:Optional
+	BillingRuleID *string `json:"billingRuleId,omitempty" tf:"billing_rule_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	BillingRuleIDRef *v1.Reference `json:"billingRuleIdRef,omitempty" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	BillingRuleIDSelector *v1.Selector `json:"billingRuleIdSelector,omitempty" tf:"-"`
 
 	// Discount rate in percents (0-100 %). Defaults to `100`.
 	// +kubebuilder:validation:Optional
 	DiscountRate *float64 `json:"discountRate,omitempty" tf:"discount_rate,omitempty"`
 
 	// ID of the organisation.
-	// +kubebuilder:validation:Required
-	OrganizationID *string `json:"organizationId" tf:"organization_id,omitempty"`
+	// +crossplane:generate:reference:type=github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization
+	// +kubebuilder:validation:Optional
+	OrganizationID *string `json:"organizationId,omitempty" tf:"organization_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	OrganizationIDRef *v1.Reference `json:"organizationIdRef,omitempty" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	OrganizationIDSelector *v1.Selector `json:"organizationIdSelector,omitempty" tf:"-"`
 }
 
 // BillingRuleAttachmentSpec defines the desired state of BillingRuleAttachment
