@@ -115,8 +115,15 @@ type ProjectParameters struct {
 	BackupCredentialID *string `json:"backupCredentialId,omitempty" tf:"backup_credential_id,omitempty"`
 
 	// ID of the cloud credential used to create the project's servers.
-	// +kubebuilder:validation:Required
-	CloudCredentialID *string `json:"cloudCredentialId" tf:"cloud_credential_id,omitempty"`
+	// +crossplane:generate:reference:type=github.com/nivraph/provider-jet-taikun/apis/cloudcredentialopenstack/v1alpha1.CredentialOpenstack
+	// +kubebuilder:validation:Optional
+	CloudCredentialID *string `json:"cloudCredentialId,omitempty" tf:"cloud_credential_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	CloudCredentialIDRef *v1.Reference `json:"cloudCredentialIdRef,omitempty" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	CloudCredentialIDSelector *v1.Selector `json:"cloudCredentialIdSelector,omitempty" tf:"-"`
 
 	// If enabled, the project will be deleted on the expiration date and it will not be possible to recover it. Defaults to `false`. Required with: `expiration_date`.
 	// +kubebuilder:validation:Optional

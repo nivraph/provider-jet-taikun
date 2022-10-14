@@ -291,6 +291,16 @@ func (in *ProjectParameters) DeepCopyInto(out *ProjectParameters) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.CloudCredentialIDRef != nil {
+		in, out := &in.CloudCredentialIDRef, &out.CloudCredentialIDRef
+		*out = new(v1.Reference)
+		**out = **in
+	}
+	if in.CloudCredentialIDSelector != nil {
+		in, out := &in.CloudCredentialIDSelector, &out.CloudCredentialIDSelector
+		*out = new(v1.Selector)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.DeleteOnExpiration != nil {
 		in, out := &in.DeleteOnExpiration, &out.DeleteOnExpiration
 		*out = new(bool)

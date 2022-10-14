@@ -148,6 +148,9 @@ func Configure(p *config.Provider) {
 		r.References["policy_profile_id"] = config.Reference{
 			Type: "github.com/nivraph/provider-jet-taikun/apis/policyprofile/v1alpha1.Profile",
 		}
+		r.References["cloud_credential_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialopenstack/v1alpha1.CredentialOpenstack",
+		}
 		// TODO: add backup credential references
 		/*
 			r.References["backupCredentialId"] = config.Reference{
