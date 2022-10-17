@@ -1,0 +1,10 @@
+apiVersion: accessprofile.taikun.jet.crossplane.io/v1alpha1
+kind: Profile
+metadata:
+  name: ACCESS_PROFILE
+spec:
+  forProvider:
+    name: "ACCESS_PROFILE"
+    organizationIdRef: "ORGANIZATION_REF"
+  providerConfigRef:
+    name: default

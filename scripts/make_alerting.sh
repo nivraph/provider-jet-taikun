@@ -15,7 +15,7 @@ read CP_ALERT_ORG
 echo 'Reminder:'
 read CP_ALERT_REMINDER
 
-cp example_"$RESOURCE".yaml $DEST
+cp "$EXAMPLES_PATH"example_"$RESOURCE".yaml $DEST
 
 sed -i "s/ALERTING/$CP_ALERT_NAME/g" $DEST
 sed -i "s/EMAIL/$CP_ALERT_EMAIL/g" $DEST

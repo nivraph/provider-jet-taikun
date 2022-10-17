@@ -24,7 +24,7 @@ read CP_ORG_EMAIL
 echo 'Phone:'
 read CP_ORG_PHONE
 
-cp example_organization.yaml $DEST
+cp "$EXAMPLES_PATH"example_"$RESOURCE".yaml $DEST
 
 sed -i "s/ORGANIZATION/$CP_ORG_NAME/g" $DEST
 sed -i "s/DESCRIPTION/$CP_ORG_DESCRIPTION/g" $DEST
