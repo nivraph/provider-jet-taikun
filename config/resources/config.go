@@ -168,4 +168,14 @@ func Configure(p *config.Provider) {
 			Type: "github.com/nivraph/provider-jet-taikun/apis/billingrule/v1alpha1.Rule",
 		}
 	})
+        p.AddResourceConfigurator("taikun_kubeconfig", func(r *config.Resource) {
+                r.ShortGroup = "kubeconfig"
+                r.ExternalName = config.IdentifierFromProvider
+                r.References["project_id"] = config.Reference{
+                        Type: "github.com/nivraph/provider-jet-taikun/apis/project/v1alpha1.Project",
+                }
+                r.References["user_id"] = config.Reference{
+                        Type: "github.com/nivraph/provider-jet-taikun/apis/user/v1alpha1.User",
+                }
+        })
 }
