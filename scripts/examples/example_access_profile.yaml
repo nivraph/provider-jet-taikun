@@ -5,6 +5,7 @@ metadata:
 spec:
   forProvider:
     name: "ACCESS_PROFILE"
-    organizationIdRef: "ORGANIZATION_REF"
+    organizationIdRef:
+        name: "ORGANIZATION_REF"
   providerConfigRef:
     name: default

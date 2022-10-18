@@ -5,7 +5,8 @@ metadata:
 spec:
   forProvider:
     name: "SLACK_CONFIGURATION"
-    organizationId: "ORGANIZATION_REF"
+    organizationIdRef:
+        name: "ORGANIZATION_REF"
     channel: "CHANNEL"
     type: "TYPE"
     url: "URL"
