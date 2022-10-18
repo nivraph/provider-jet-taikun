@@ -104,6 +104,9 @@ func Configure(p *config.Provider) {
 	p.AddResourceConfigurator("taikun_standalone_profile", func(r *config.Resource) {
 		r.ShortGroup = "standaloneProfile"
 		r.ExternalName = config.IdentifierFromProvider
+                r.References["organization_id"] = config.Reference{
+                        Type: "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization",
+                }
 	})
 	p.AddResourceConfigurator("taikun_backup_policy", func(r *config.Resource) {
 		r.ShortGroup = "backupPolicy"
@@ -151,6 +154,9 @@ func Configure(p *config.Provider) {
 		r.References["cloud_credential_id"] = config.Reference{
 			Type: "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialopenstack/v1alpha1.CredentialOpenstack",
 		}
+                r.References["standalone_profile_id"] = config.Reference{
+                        Type: "github.com/nivraph/provider-jet-taikun/apis/standaloneprofile/v1alpha1.Profile",
+                }
 		// TODO: add backup credential references
 		/*
 			r.References["backupCredentialId"] = config.Reference{

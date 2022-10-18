@@ -7,6 +7,7 @@ spec:
     userName: "USER"
     email: "EMAIL"
     role: "ROLE"
-    organizationIdRef: "ORGANIZATION_REF"
+    organizationIdRef:
+        name: "ORGANIZATION_REF"
   providerConfigRef:
     name: default

@@ -6,6 +6,7 @@ spec:
   forProvider:
     name: "STANDALONE"
     publicKey: "PUBLIC_KEY"
-    organizationIdRef: "ORGANIZATION_REF"
+    organizationIdRef:
+        name: "ORGANIZATION_REF"
   providerConfigRef:
     name: default

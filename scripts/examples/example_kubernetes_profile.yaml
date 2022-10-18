@@ -5,7 +5,8 @@ metadata:
 spec:
   forProvider:
     name: "KUBERNETES_PROFILE"
-    organizationId: "ORGANIZATION_REF"
+    organizationIdRef:
+        name: "ORGANIZATION_REF"
     lock: false
     loadBalancingSolution: "Octavia"
     uniqueClusterName: true
