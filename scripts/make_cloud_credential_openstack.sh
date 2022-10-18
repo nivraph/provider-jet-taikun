@@ -12,6 +12,9 @@ read CP_CREDS_OS_USER
 echo 'Password:'
 read CP_CREDS_OS_PASSWORD
 
+echo 'Organization:'
+read CP_CREDS_OS_ORG
+
 echo 'URL:'
 read CP_CREDS_OS_URL
 
@@ -50,6 +53,7 @@ cp "$EXAMPLES_PATH"example_"$RESOURCE".yaml $DEST
 
 sed -i "s/OPENSTACK/$CP_CREDS_OS_NAME/g" $DEST
 sed -i "s/USER/$CP_CREDS_OS_USER/g" $DEST
+sed -i "s/ORGANIZATION_REF/$CP_CREDS_OS_ORG/g" $DEST
 sed -i "s^URL^$CP_CREDS_OS_URL^g" $DEST
 sed -i "s/DOMAIN/$CP_CREDS_OS_DOMAIN/g" $DEST
 sed -i "s/PROJECT/$CP_CREDS_OS_PROJECT/g" $DEST
