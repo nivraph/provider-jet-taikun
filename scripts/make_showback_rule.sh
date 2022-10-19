@@ -1,0 +1,39 @@
+source config.sh
+
+RESOURCE="showback_rule"
+DEST=$PATH_DST$PRE$RESOURCE$END
+
+echo 'Showback rule name:'
+read CP_SHOWBACK_RULE_NAME
+
+echo 'Price:'
+read CP_SHOWBACK_RULE_PRICE
+
+echo 'Kind:'
+read CP_SHOWBACK_RULE_KIND
+
+echo 'Type:'
+read CP_SHOWBACK_RULE_TYPE
+
+echo 'Organization:'
+read CP_SHOWBACK_RULE_ORG
+
+echo 'Showback credential:'
+read CP_SHOWBACK_RULE_CREDS
+
+echo 'Global alert limit:'
+read CP_SHOWBACK_RULE_GLOBAL_LIMIT
+
+echo 'Project alert limit:'
+read CP_SHOWBACK_RULE_PROJECT_LIMIT
+
+cp "$EXAMPLES_PATH"example_"$RESOURCE".yaml $DEST
+
+sed -i "s^SHOWBACK_RULE^$CP_SHOWBACK_RULE_NAME^g" $DEST
+sed -i "s^KIND^$CP_SHOWBACK_RULE_KIND^g" $DEST
+sed -i "s^TYPE^$CP_SHOWBACK_RULE_TYPE^g" $DEST
+sed -i "s^PRICE^$CP_SHOWBACK_RULE_PRICE^g" $DEST
+sed -i "s^GLOBAL_ALERT^$CP_SHOWBACK_RULE_GLOBAL_LIMIT^g" $DEST
+sed -i "s^PROJECT_ALERT^$CP_SHOWBACK_RULE_PROJECT_LIMIT^g" $DEST
+sed -i "s^ORGANIZATION_REF^$CP_SHOWBACK_RULE_ORG^g" $DEST
+sed -i "s^SHOWBACK_CREDENTIAL^$CP_SHOWBACK_RULE_CREDS^g" $DEST
