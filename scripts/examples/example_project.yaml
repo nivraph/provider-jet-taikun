@@ -5,8 +5,7 @@ metadata:
 spec:
   forProvider:
     name: "PROJECT_NAME"
-    cloudCredentialIdRef:
-        name: "CLOUD_REF"
+    cloudCredentialId: "CLOUD_REF"
     organizationIdRef:
         name: "ORGANIZATION_REF"
     quotaDiskSize: QDISK_SIZE
@@ -15,6 +14,8 @@ spec:
     monitoring: false
     kubernetesProfileIdRef:
         name: "KP_REF"
+    backupCredentialIdRef:
+        name: "BACK_REF"
     flavors:
       - "PROJECT_FLAVOR"
     images:
@@ -23,8 +24,7 @@ spec:
       - flavor: "VM_FLAVOR"
         imageId: "VM_IMAGE_ID"
         name: "VM_NAME"
-        standaloneProfileIdRef:
-            name: "VM_SA"
+        standaloneProfileId: "VM_SA"
         volumeSize: VM_VOLUME_SIZE
         username: "VM_USER"
         publicIp: true

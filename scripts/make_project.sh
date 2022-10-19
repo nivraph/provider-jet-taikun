@@ -21,6 +21,9 @@ read CP_PROJECT_QRAM
 echo 'Kubernetes profile:'
 read CP_PROJECT_KP
 
+echo 'Backup credentials:'
+read CP_PROJECT_BACK
+
 echo 'Flavor:'
 read CP_PROJECT_FLAVOR
 
@@ -53,6 +56,7 @@ sed -i "s/ORGANIZATION_REF/$CP_PROJECT_ORG/g" $DEST
 sed -i "s/QDISK_SIZE/$CP_PROJECT_QDISK/g" $DEST
 sed -i "s/QRAM_SIZE/$CP_PROJECT_QRAM/g" $DEST
 sed -i "s/KP_REF/$CP_PROJECT_KP/g" $DEST
+sed -i "s/BACK_REF/$CP_PROJECT_BACK/g" $DEST
 sed -i "s/PROJECT_FLAVOR/$CP_PROJECT_FLAVOR/g" $DEST
 sed -i "s/IMG/$CP_PROJECT_IMG/g" $DEST
 sed -i "s/VM_FLAVOR/$CP_PROJECT_VM_FLAVOR/g" $DEST
