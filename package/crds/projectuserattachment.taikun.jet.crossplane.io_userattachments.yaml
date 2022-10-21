@@ -5,18 +5,18 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.8.0
   creationTimestamp: null
-  name: policies.backuppolicy.taikun.jet.crossplane.io
+  name: userattachments.projectuserattachment.taikun.jet.crossplane.io
 spec:
-  group: backuppolicy.taikun.jet.crossplane.io
+  group: projectuserattachment.taikun.jet.crossplane.io
   names:
     categories:
     - crossplane
     - managed
     - taikunjet
-    kind: Policy
-    listKind: PolicyList
-    plural: policies
-    singular: policy
+    kind: UserAttachment
+    listKind: UserAttachmentList
+    plural: userattachments
+    singular: userattachment
   scope: Cluster
   versions:
   - additionalPrinterColumns:
@@ -35,7 +35,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: Policy is the Schema for the Policys API
+        description: UserAttachment is the Schema for the UserAttachments API
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation
@@ -50,7 +50,7 @@ spec:
           metadata:
             type: object
           spec:
-            description: PolicySpec defines the desired state of Policy
+            description: UserAttachmentSpec defines the desired state of UserAttachment
             properties:
               deletionPolicy:
                 default: Delete
@@ -63,24 +63,8 @@ spec:
                 type: string
               forProvider:
                 properties:
-                  cronPeriod:
-                    description: Frequency of backups.
-                    type: string
-                  excludedNamespaces:
-                    description: Namespaces excluded from the backups.
-                    items:
-                      type: string
-                    type: array
-                  includedNamespaces:
-                    description: Namespaces included in the backups.
-                    items:
-                      type: string
-                    type: array
-                  name:
-                    description: The name of the backup policy.
-                    type: string
                   projectId:
-                    description: The ID of the project.
+                    description: ID of the project.
                     type: string
                   projectIdRef:
                     description: A Reference to a named object.
@@ -105,12 +89,32 @@ spec:
                           is selected.
                         type: object
                     type: object
-                  retentionPeriod:
-                    description: How long to store the backups. Defaults to `720h`.
+                  userId:
+                    description: ID of the user.
                     type: string
-                required:
-                - cronPeriod
-                - name
+                  userIdRef:
+                    description: A Reference to a named object.
+                    properties:
+                      name:
+                        description: Name of the referenced object.
+                        type: string
+                    required:
+                    - name
+                    type: object
+                  userIdSelector:
+                    description: A Selector selects an object.
+                    properties:
+                      matchControllerRef:
+                        description: MatchControllerRef ensures an object with the
+                          same controller reference as the selecting object is selected.
+                        type: boolean
+                      matchLabels:
+                        additionalProperties:
+                          type: string
+                        description: MatchLabels ensures an object with matching labels
+                          is selected.
+                        type: object
+                    type: object
                 type: object
               providerConfigRef:
                 default:
@@ -209,13 +213,13 @@ spec:
             - forProvider
             type: object
           status:
-            description: PolicyStatus defines the observed state of Policy.
+            description: UserAttachmentStatus defines the observed state of UserAttachment.
             properties:
               atProvider:
                 properties:
                   id:
                     type: string
-                  phase:
+                  projectName:
                     type: string
                 type: object
               conditions:
