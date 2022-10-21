@@ -38,6 +38,7 @@ import (
 	v1alpha1organizationbillingruleattachment "github.com/nivraph/provider-jet-taikun/apis/organizationbillingruleattachment/v1alpha1"
 	v1alpha1policyprofile "github.com/nivraph/provider-jet-taikun/apis/policyprofile/v1alpha1"
 	v1alpha1project "github.com/nivraph/provider-jet-taikun/apis/project/v1alpha1"
+	v1alpha1projectuserattachment "github.com/nivraph/provider-jet-taikun/apis/projectuserattachment/v1alpha1"
 	v1alpha1showbackcredential "github.com/nivraph/provider-jet-taikun/apis/showbackcredential/v1alpha1"
 	v1alpha1showbackrule "github.com/nivraph/provider-jet-taikun/apis/showbackrule/v1alpha1"
 	v1alpha1slackconfiguration "github.com/nivraph/provider-jet-taikun/apis/slackconfiguration/v1alpha1"
@@ -65,6 +66,7 @@ func init() {
 		v1alpha1organizationbillingruleattachment.SchemeBuilder.AddToScheme,
 		v1alpha1policyprofile.SchemeBuilder.AddToScheme,
 		v1alpha1project.SchemeBuilder.AddToScheme,
+		v1alpha1projectuserattachment.SchemeBuilder.AddToScheme,
 		v1alpha1showbackcredential.SchemeBuilder.AddToScheme,
 		v1alpha1showbackrule.SchemeBuilder.AddToScheme,
 		v1alpha1slackconfiguration.SchemeBuilder.AddToScheme,

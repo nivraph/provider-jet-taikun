@@ -37,6 +37,7 @@ import (
 	billingruleattachment "github.com/nivraph/provider-jet-taikun/internal/controller/organizationbillingruleattachment/billingruleattachment"
 	profilepolicyprofile "github.com/nivraph/provider-jet-taikun/internal/controller/policyprofile/profile"
 	project "github.com/nivraph/provider-jet-taikun/internal/controller/project/project"
+	userattachment "github.com/nivraph/provider-jet-taikun/internal/controller/projectuserattachment/userattachment"
 	providerconfig "github.com/nivraph/provider-jet-taikun/internal/controller/providerconfig"
 	credentialshowbackcredential "github.com/nivraph/provider-jet-taikun/internal/controller/showbackcredential/credential"
 	ruleshowbackrule "github.com/nivraph/provider-jet-taikun/internal/controller/showbackrule/rule"
@@ -65,6 +66,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		billingruleattachment.Setup,
 		profilepolicyprofile.Setup,
 		project.Setup,
+		userattachment.Setup,
 		providerconfig.Setup,
 		credentialshowbackcredential.Setup,
 		ruleshowbackrule.Setup,
