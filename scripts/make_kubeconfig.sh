@@ -1,0 +1,35 @@
+source config.sh
+
+RESOURCE="kubeconfig"
+DEST=$PATH_DST$PRE$RESOURCE$END
+
+echo 'Kubeconfig name:'
+read CP_KUBECONFIG_NAME
+
+echo 'Access scope:'
+read CP_KUBECONFIG_SCOPE
+
+echo 'Role:'
+read CP_KUBECONFIG_ROLE
+
+echo 'Namespace:'
+read CP_KUBECONFIG_NAMESPACE
+
+echo 'Validity:'
+read CP_KUBECONFIG_VALIDITY
+
+echo 'Project:'
+read CP_KUBECONFIG_PROJECT
+
+echo 'User:'
+read CP_KUBECONFIG_USER
+
+cp "$EXAMPLES_PATH"example_"$RESOURCE".yaml $DEST
+
+sed -i "s^KUBECONFIG^$CP_KUBECONFIG_NAME^g" $DEST
+sed -i "s^SCOPE^$CP_KUBECONFIG_SCOPE^g" $DEST
+sed -i "s^ROLE^$CP_KUBECONFIG_ROLE^g" $DEST
+sed -i "s^PROJECT^$CP_KUBECONFIG_PROJECT^g" $DEST
+sed -i "s^NAMESPACE^$CP_KUBECONFIG_NAMESPACE^g" $DEST
+sed -i "s^USER^$CP_KUBECONFIG_USER^g" $DEST
+sed -i "s^VALIDITY^$CP_KUBECONFIG_VALIDITY^g" $DEST
