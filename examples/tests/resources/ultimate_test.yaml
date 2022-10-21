@@ -1,0 +1,294 @@
+apiVersion: organization.taikun.jet.crossplane.io/v1alpha1
+kind: Organization
+metadata:
+  name: utltimate-orga
+spec:
+  forProvider:
+    name: "ultimate-orga"
+    fullName: "Create taikun organization with crossplane FINAL TEST"
+    discountRate: 42
+    city: "Praha"
+    billingEmail: "billing2@foo.org"
+    email: "contact@foo.org"
+    phone: "065100035103"
+  providerConfigRef:
+    name: default
+---
+apiVersion: slackconfiguration.taikun.jet.crossplane.io/v1alpha1
+kind: Configuration
+metadata:
+  name: ultimate-sc
+spec:
+  forProvider:
+    name: "ultimate-sc"
+    organizationIdRef:
+      name: "ultimate-orga"
+    channel: "random"
+    type: "General"
+    url: "https://test-crossplane.slack.com/archives/C043Z7TNESZ"
+  providerConfigRef:
+    name: default
+---
+apiVersion: alertingprofile.taikun.jet.crossplane.io/v1alpha1
+kind: Profile
+metadata:
+  name: utltimate-alp
+spec:
+  forProvider:
+    name: "ultimate-alp"
+    emails:
+      - "raphael.nivault@itera.io"
+    lock: false
+    organizationIdRef:
+      name: "ultimate-orga"
+    reminder: "Daily"
+    slackConfigurationIdRef:
+      name: "ultimate-sc"
+    webhook:
+      - header:
+          - key: "key"
+            value: "value"
+        url: "https://www.example.com"
+  providerConfigRef:
+    name: default
+---
+apiVersion: kubernetesprofile.taikun.jet.crossplane.io/v1alpha1
+kind: Profile
+metadata:
+  name: ultimate-kp
+spec:
+  forProvider:
+    name: "ultimate-kp"
+    organizationIdRef:
+      name: "ultimate-orga"
+    lock: false
+    loadBalancingSolution: "Octavia"
+    uniqueClusterName: true
+  providerConfigRef:
+    name: default
+---
+apiVersion: standaloneprofile.taikun.jet.crossplane.io/v1alpha1
+kind: Profile
+metadata:
+  name: ultimate-sp
+spec:
+  forProvider:
+    name: "ultimate-sp"
+    publicKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDzRwxyKsIfQrRYhoL/N0fgmhamlvn9ZnXzsxULMJbHZQyy4oMAazy48TWlFSLuEFgXZKHq4EIrhnYaCGf/QbJ3bqhCsjLh86xaHP/B80X2vZBjYtChmzwjFhVATJ9CBrFzE66a1oyyE3gcSJIrbNwgMtHxE1fgavKirKFpbbIfJIKtvB1LrHtB1+uM9gATivqERv+iRoFc5Bfvn0TNH4bJIsNTBDkPPUfIF6TULIGtH57XLaw4oZrTnPyf5c+FEVOobu1VDop1CKxPaub64dmtDbd3CvQSJeWFfEKUWOowo49ZCuC/1iJOokjriXmR5snF1x0rDX17V6qinWT9jJQO1Rp6+ejICU3Qhr/flfulnY6+8rkgOb+v4kLVgHuIiPoUxPbx7j/s0Gtnnsn4KckL2a7KCm+Ctp7OWFQ2EEp/gFmaGMGrJbBe4xoOFAWfhMEhb+Swxa+iZARJTRek2RSH+Ift3gS6J78e1u3atiS9RcXn9j7GcRn21nwPI2RkwwNatHIffTV39JXpUi/vOlA5BdSaFZBl3+IbUv/DKXG+hZF69YLrDZVQ/wnndSZtRhNaF/bB5vGfuwrgy0b9qbCAW1o+5R+PPW7c+FkAOuEkq+r5U/Abuu9UY4WmT3I6XvhT2gme+G1OxvmUk2fjwheZfu1QE+HECiJxvpWwir859Q== ubuntu@test-cloud-init"
+    organizationIdRef:
+      name: "ultimate-orga"
+  providerConfigRef:
+    name: default
+---
+apiVersion: policyprofile.taikun.jet.crossplane.io/v1alpha1
+kind: Profile
+metadata:
+  name: ultimate-pp
+spec:
+  forProvider:
+    name: "ultimate-pp"
+    organizationIdRef:
+      name: "ultimate-orga"
+    allowedRepos:
+      - "repo"
+    forbidHttpIngress: true
+    forbidNodePort: true
+    forbiddenTags:
+      - "tag"
+    lock: false
+    requireProbe: true
+    uniqueIngress: true
+    uniqueServiceSelector: true
+  providerConfigRef:
+    name: default
+---
+apiVersion: accessprofile.taikun.jet.crossplane.io/v1alpha1
+kind: Profile
+metadata:
+  name: ultimate-acp
+spec:
+  forProvider:
+    name: "ultimate-acp"
+    organizationIdRef:
+      name: "ultimate-orga"
+    sshUser:
+      - name: "test-key"
+        publicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQwGpzLk0IzqKnBpaHqecLA+X4zfHamNe9Rg3CoaXHF :oui_oui:"
+  providerConfigRef:
+    name: default
+---
+apiVersion: billingcredential.taikun.jet.crossplane.io/v1alpha1
+kind: Credential
+metadata:
+  name: utltimate-bcred
+spec:
+  forProvider:
+    name: "ultimate-bcred"
+    prometheusPasswordSecretRef:
+      key: "password"
+      name: "billing-credentials"
+      namespace: "crossplane-system"
+    prometheusUrl: "https://prometheus.taikun.dev/"
+    prometheusUsername: "monitoring"
+    organizationIdRef:
+      name: "ultimate-orga"
+    lock: false
+  providerConfigRef:
+    name: default
+---
+apiVersion: billingrule.taikun.jet.crossplane.io/v1alpha1
+kind: Rule
+metadata:
+  name: ultimate-br
+spec:
+  forProvider:
+    name: "ultimate-br"
+    billingCredentialIdRef: "ultimate-bcred"
+    label:
+      - key: "label"
+        value: "value"
+    metricName: "coredns_forward_request_duration_seconds"
+    price: 1
+    type: "Sum"
+  providerConfigRef:
+    name: default
+---
+apiVersion: organizationbillingruleattachment.taikun.jet.crossplane.io/v1alpha1
+kind: BillingRuleAttachment
+metadata:
+  name: ultimate-br-attach
+spec:
+  forProvider:
+    billingRuleId:
+      name: "ultimate-br"
+    organizationIdRef:
+      name: "ultimate-orga"
+  providerConfigRef:
+    name: default
+---
+apiVersion: user.taikun.jet.crossplane.io/v1alpha1
+kind: User
+metadata:
+  name: "ultimate-user"
+spec:
+  forProvider:
+    userName: "ultimate-user"
+    email: "em@ty.com"
+    role: "Manager"
+    organizationIdRef:
+      name: "ultimate-orga"
+  providerConfigRef:
+    name: default
+---
+apiVersion: cloudcredentialopenstack.taikun.jet.crossplane.io/v1alpha1
+kind: CredentialOpenstack
+metadata:
+  name: ultimate-opencred
+spec:
+  forProvider:
+    name: "ultimate-opencred"
+    organizationIdRef:
+      name: "ultimate-orga"
+    userRef:
+      name: "ultimate-user"
+    passwordSecretRef:
+      key: "password"
+      name: "openstack-credentials"
+      namespace: "crossplane-system"
+    url: "https://cloud.tcpro.cz:30500/v3"
+    domain: "default"
+    projectName: "itera-intern"
+    region: "RegionOne"
+    publicNetworkName: "public2"
+    lock: false
+    availabilityZone: "pod4"
+---
+apiVersion: project.taikun.jet.crossplane.io/v1alpha1
+kind: Project
+metadata:
+  name: "ultimate-project"
+spec:
+  forProvider:
+    name: "ultimate-project"
+    cloudCredentialIdRef:
+      name: "ultimate-opencred"
+    organizationIdRef:
+      name: "ultimate-orga"
+    quotaDiskSize: 40000
+    quotaRamSize: 40000
+    lock: false
+    monitoring: false
+    kubernetesProfileIdRef:
+      name: "ultimate-kp"
+    flavors:
+      - "m1.medium"
+      - "m1.large"
+    images:
+      - "b2a2939d-3609-4f15-92b7-b5dc3dd5c9d3"
+    serverBastion:
+      - name: "bastion-crossplane"
+        flavor: "m1.medium"
+        diskSize: 35
+    serverKubemaster:
+      - name: "master-crossplane"
+        flavor: "m1.large"
+        diskSize: 36
+    serverKubeworker:
+      - name: "worker-crossplane"
+        flavor: "m1.large"
+        diskSize: 37
+  providerConfigRef:
+    name: default
+---
+#apiVersion: projectuserattachment.taikun.jet.crossplane.io/v1alpha1
+#kind: UserAttachment
+#metadata:
+#  name: ultimate-user-attach
+#spec:
+#  forProvider:
+#    userIdRef:
+#      name: "ultimate-user"
+#    projectIdRef:
+#      name: "ultimate-project"
+#---
+apiVersion: showbackcredential.taikun.jet.crossplane.io/v1alpha1
+kind: Credential
+metadata:
+  name: ultimate-show-cred
+spec:
+  forProvider:
+    name: "ultimate-show-cred"
+    passwordSecretRef:
+      key: "password"
+      name: "billing-credentials"
+      namespace: "crossplane-system"
+    url: "https://prometheus.taikun.dev/"
+    username: "monitoring"
+    organizationIdRef:
+      name: "ultimate-orga"
+    lock: false
+  providerConfigRef:
+    name: default
+---
+apiVersion: showbackrule.taikun.jet.crossplane.io/v1alpha1
+kind: Rule
+metadata:
+  name: ultimate-show-rule
+spec:
+  forProvider:
+    name: "ultimate-show-rule"
+    globalAlertLimit: 42
+    kind: "External"
+    label:
+      - key: "key"
+        value: "value"
+    metricName: "metricname"
+    type: "Sum"
+    price: 1000
+    projectAlertLimit: 42
+    organizationIdRef:
+      name: "ultimate-orga"
+    showbackCredentialIdRef:
+      name: "ultimate-show-cred"
+  providerConfigRef:
+    name: default

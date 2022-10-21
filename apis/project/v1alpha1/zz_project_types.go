@@ -111,8 +111,15 @@ type ProjectParameters struct {
 	AutoUpgrade *bool `json:"autoUpgrade,omitempty" tf:"auto_upgrade,omitempty"`
 
 	// ID of the backup credential. If unspecified, backups are disabled.
+	// +crossplane:generate:reference:type=github.com/nivraph/provider-jet-taikun/apis/backupcredential/v1alpha1.Credential
 	// +kubebuilder:validation:Optional
 	BackupCredentialID *string `json:"backupCredentialId,omitempty" tf:"backup_credential_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	BackupCredentialIDRef *v1.Reference `json:"backupCredentialIdRef,omitempty" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	BackupCredentialIDSelector *v1.Selector `json:"backupCredentialIdSelector,omitempty" tf:"-"`
 
 	// ID of the cloud credential used to create the project's servers.
 	// +crossplane:generate:reference:type=github.com/nivraph/provider-jet-taikun/apis/cloudcredentialopenstack/v1alpha1.CredentialOpenstack

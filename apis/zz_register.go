@@ -32,6 +32,7 @@ import (
 	v1alpha1cloudcredentialazure "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialazure/v1alpha1"
 	v1alpha1cloudcredentialgcp "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialgcp/v1alpha1"
 	v1alpha1cloudcredentialopenstack "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialopenstack/v1alpha1"
+	v1alpha1kubeconfig "github.com/nivraph/provider-jet-taikun/apis/kubeconfig/v1alpha1"
 	v1alpha1kubernetesprofile "github.com/nivraph/provider-jet-taikun/apis/kubernetesprofile/v1alpha1"
 	v1alpha1organization "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1"
 	v1alpha1organizationbillingruleattachment "github.com/nivraph/provider-jet-taikun/apis/organizationbillingruleattachment/v1alpha1"
@@ -58,6 +59,7 @@ func init() {
 		v1alpha1cloudcredentialazure.SchemeBuilder.AddToScheme,
 		v1alpha1cloudcredentialgcp.SchemeBuilder.AddToScheme,
 		v1alpha1cloudcredentialopenstack.SchemeBuilder.AddToScheme,
+		v1alpha1kubeconfig.SchemeBuilder.AddToScheme,
 		v1alpha1kubernetesprofile.SchemeBuilder.AddToScheme,
 		v1alpha1organization.SchemeBuilder.AddToScheme,
 		v1alpha1organizationbillingruleattachment.SchemeBuilder.AddToScheme,

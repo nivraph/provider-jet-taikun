@@ -31,6 +31,7 @@ import (
 	credentialazure "github.com/nivraph/provider-jet-taikun/internal/controller/cloudcredentialazure/credentialazure"
 	credentialgcp "github.com/nivraph/provider-jet-taikun/internal/controller/cloudcredentialgcp/credentialgcp"
 	credentialopenstack "github.com/nivraph/provider-jet-taikun/internal/controller/cloudcredentialopenstack/credentialopenstack"
+	kubeconfig "github.com/nivraph/provider-jet-taikun/internal/controller/kubeconfig/kubeconfig"
 	profilekubernetesprofile "github.com/nivraph/provider-jet-taikun/internal/controller/kubernetesprofile/profile"
 	organization "github.com/nivraph/provider-jet-taikun/internal/controller/organization/organization"
 	billingruleattachment "github.com/nivraph/provider-jet-taikun/internal/controller/organizationbillingruleattachment/billingruleattachment"
@@ -58,6 +59,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		credentialazure.Setup,
 		credentialgcp.Setup,
 		credentialopenstack.Setup,
+		kubeconfig.Setup,
 		profilekubernetesprofile.Setup,
 		organization.Setup,
 		billingruleattachment.Setup,

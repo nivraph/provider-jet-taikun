@@ -104,23 +104,23 @@ func Configure(p *config.Provider) {
 	p.AddResourceConfigurator("taikun_standalone_profile", func(r *config.Resource) {
 		r.ShortGroup = "standaloneProfile"
 		r.ExternalName = config.IdentifierFromProvider
-                r.References["organization_id"] = config.Reference{
-                        Type: "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization",
-                }
+		r.References["organization_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization",
+		}
 	})
 	p.AddResourceConfigurator("taikun_backup_policy", func(r *config.Resource) {
 		r.ShortGroup = "backupPolicy"
 		r.ExternalName = config.IdentifierFromProvider
-                r.References["project_id"] = config.Reference{
-                        Type: "github.com/nivraph/provider-jet-taikun/apis/project/v1alpha1.Project",
-                }
+		r.References["project_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/project/v1alpha1.Project",
+		}
 	})
 	p.AddResourceConfigurator("taikun_backup_credential", func(r *config.Resource) {
 		r.ShortGroup = "backupCredential"
 		r.ExternalName = config.IdentifierFromProvider
-                r.References["organization_id"] = config.Reference{
-                        Type: "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization",
-                }
+		r.References["organization_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization",
+		}
 	})
 	p.AddResourceConfigurator("taikun_cloud_credential_gcp", func(r *config.Resource) {
 		r.ShortGroup = "cloudCredentialGcp"
@@ -160,20 +160,12 @@ func Configure(p *config.Provider) {
 		r.References["cloud_credential_id"] = config.Reference{
 			Type: "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialopenstack/v1alpha1.CredentialOpenstack",
 		}
-                r.References["standalone_profile_id"] = config.Reference{
-                        Type: "github.com/nivraph/provider-jet-taikun/apis/standaloneprofile/v1alpha1.Profile",
-                }
-                r.References["backup_credential_id"] = config.Reference{
-                        Type: "github.com/nivraph/provider-jet-taikun/apis/backupcredential/v1alpha1.Credential",
-                }
-
-
-		// TODO: add backup credential references
-		/*
-			r.References["backupCredentialId"] = config.Reference{
-				Type: "BackupCredential",
-			}
-		*/
+		r.References["standalone_profile_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/standaloneprofile/v1alpha1.Profile",
+		}
+		r.References["backup_credential_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/backupcredential/v1alpha1.Credential",
+		}
 	})
 	p.AddResourceConfigurator("taikun_organization_billing_rule_attachment", func(r *config.Resource) {
 		r.ShortGroup = "organizationBillingRuleAttachment"
@@ -185,24 +177,24 @@ func Configure(p *config.Provider) {
 			Type: "github.com/nivraph/provider-jet-taikun/apis/billingrule/v1alpha1.Rule",
 		}
 	})
-        p.AddResourceConfigurator("taikun_kubeconfig", func(r *config.Resource) {
-                r.ShortGroup = "kubeconfig"
-                r.ExternalName = config.IdentifierFromProvider
-                r.References["project_id"] = config.Reference{
-                        Type: "github.com/nivraph/provider-jet-taikun/apis/project/v1alpha1.Project",
-                }
-                r.References["user_id"] = config.Reference{
-                        Type: "github.com/nivraph/provider-jet-taikun/apis/user/v1alpha1.User",
-                }
-        })
-        p.AddResourceConfigurator("taikun_project_user_attachment", func(r *config.Resource) {
-                r.ShortGroup = "projectUserAttachment"
-                r.ExternalName = config.IdentifierFromProvider
-                r.References["project_id"] = config.Reference{
-                        Type: "github.com/nivraph/provider-jet-taikun/apis/project/v1alpha1.Project",
-                }
-                r.References["user_id"] = config.Reference{
-                        Type: "github.com/nivraph/provider-jet-taikun/apis/user/v1alpha1.User",
-                }
-        })
+	p.AddResourceConfigurator("taikun_kubeconfig", func(r *config.Resource) {
+		r.ShortGroup = "kubeconfig"
+		r.ExternalName = config.IdentifierFromProvider
+		r.References["project_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/project/v1alpha1.Project",
+		}
+		r.References["user_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/user/v1alpha1.User",
+		}
+	})
+	p.AddResourceConfigurator("taikun_project_user_attachment", func(r *config.Resource) {
+		r.ShortGroup = "projectUserAttachment"
+		r.ExternalName = config.IdentifierFromProvider
+		r.References["project_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/project/v1alpha1.Project",
+		}
+		r.References["user_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/user/v1alpha1.User",
+		}
+	})
 }

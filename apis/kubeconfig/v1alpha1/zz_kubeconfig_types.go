@@ -25,31 +25,27 @@ import (
 	v1 "github.com/crossplane/crossplane-runtime/apis/common/v1"
 )
 
-type PolicyObservation struct {
+type KubeconfigObservation struct {
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
-	Phase *string `json:"phase,omitempty" tf:"phase,omitempty"`
+	ProjectName *string `json:"projectName,omitempty" tf:"project_name,omitempty"`
 }
 
-type PolicyParameters struct {
+type KubeconfigParameters struct {
 
-	// Frequency of backups.
+	// Who can use the kubeconfig: `personal` (only you), `managers` (managers only) or `all` (all users with access to this project).
 	// +kubebuilder:validation:Required
-	CronPeriod *string `json:"cronPeriod" tf:"cron_period,omitempty"`
+	AccessScope *string `json:"accessScope" tf:"access_scope,omitempty"`
 
-	// Namespaces excluded from the backups.
-	// +kubebuilder:validation:Optional
-	ExcludedNamespaces []*string `json:"excludedNamespaces,omitempty" tf:"excluded_namespaces,omitempty"`
-
-	// Namespaces included in the backups.
-	// +kubebuilder:validation:Optional
-	IncludedNamespaces []*string `json:"includedNamespaces,omitempty" tf:"included_namespaces,omitempty"`
-
-	// The name of the backup policy.
+	// The kubeconfig's name.
 	// +kubebuilder:validation:Required
 	Name *string `json:"name" tf:"name,omitempty"`
 
-	// The ID of the project.
+	// The kubeconfig's namespace.
+	// +kubebuilder:validation:Optional
+	Namespace *string `json:"namespace,omitempty" tf:"namespace,omitempty"`
+
+	// ID of the kubeconfig's project.
 	// +crossplane:generate:reference:type=github.com/nivraph/provider-jet-taikun/apis/project/v1alpha1.Project
 	// +kubebuilder:validation:Optional
 	ProjectID *string `json:"projectId,omitempty" tf:"project_id,omitempty"`
@@ -60,56 +56,71 @@ type PolicyParameters struct {
 	// +kubebuilder:validation:Optional
 	ProjectIDSelector *v1.Selector `json:"projectIdSelector,omitempty" tf:"-"`
 
-	// How long to store the backups. Defaults to `720h`.
+	// The kubeconfig's role: `cluster-admin`, `admin`, `edit` or `view`.
+	// +kubebuilder:validation:Required
+	Role *string `json:"role" tf:"role,omitempty"`
+
+	// ID of the kubeconfig's user, if the kubeconfig is personal.
+	// +crossplane:generate:reference:type=github.com/nivraph/provider-jet-taikun/apis/user/v1alpha1.User
 	// +kubebuilder:validation:Optional
-	RetentionPeriod *string `json:"retentionPeriod,omitempty" tf:"retention_period,omitempty"`
+	UserID *string `json:"userId,omitempty" tf:"user_id,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	UserIDRef *v1.Reference `json:"userIdRef,omitempty" tf:"-"`
+
+	// +kubebuilder:validation:Optional
+	UserIDSelector *v1.Selector `json:"userIdSelector,omitempty" tf:"-"`
+
+	// The kubeconfig's validity period in minutes. Unlimited (-1) by default. Defaults to `-1`.
+	// +kubebuilder:validation:Optional
+	ValidityPeriod *float64 `json:"validityPeriod,omitempty" tf:"validity_period,omitempty"`
 }
 
-// PolicySpec defines the desired state of Policy
-type PolicySpec struct {
+// KubeconfigSpec defines the desired state of Kubeconfig
+type KubeconfigSpec struct {
 	v1.ResourceSpec `json:",inline"`
-	ForProvider     PolicyParameters `json:"forProvider"`
+	ForProvider     KubeconfigParameters `json:"forProvider"`
 }
 
-// PolicyStatus defines the observed state of Policy.
-type PolicyStatus struct {
+// KubeconfigStatus defines the observed state of Kubeconfig.
+type KubeconfigStatus struct {
 	v1.ResourceStatus `json:",inline"`
-	AtProvider        PolicyObservation `json:"atProvider,omitempty"`
+	AtProvider        KubeconfigObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 
-// Policy is the Schema for the Policys API
+// Kubeconfig is the Schema for the Kubeconfigs API
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
 // +kubebuilder:subresource:status
 // +kubebuilder:resource:scope=Cluster,categories={crossplane,managed,taikunjet}
-type Policy struct {
+type Kubeconfig struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              PolicySpec   `json:"spec"`
-	Status            PolicyStatus `json:"status,omitempty"`
+	Spec              KubeconfigSpec   `json:"spec"`
+	Status            KubeconfigStatus `json:"status,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 
-// PolicyList contains a list of Policys
-type PolicyList struct {
+// KubeconfigList contains a list of Kubeconfigs
+type KubeconfigList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []Policy `json:"items"`
+	Items           []Kubeconfig `json:"items"`
 }
 
 // Repository type metadata.
 var (
-	Policy_Kind             = "Policy"
-	Policy_GroupKind        = schema.GroupKind{Group: CRDGroup, Kind: Policy_Kind}.String()
-	Policy_KindAPIVersion   = Policy_Kind + "." + CRDGroupVersion.String()
-	Policy_GroupVersionKind = CRDGroupVersion.WithKind(Policy_Kind)
+	Kubeconfig_Kind             = "Kubeconfig"
+	Kubeconfig_GroupKind        = schema.GroupKind{Group: CRDGroup, Kind: Kubeconfig_Kind}.String()
+	Kubeconfig_KindAPIVersion   = Kubeconfig_Kind + "." + CRDGroupVersion.String()
+	Kubeconfig_GroupVersionKind = CRDGroupVersion.WithKind(Kubeconfig_Kind)
 )
 
 func init() {
-	SchemeBuilder.Register(&Policy{}, &PolicyList{})
+	SchemeBuilder.Register(&Kubeconfig{}, &KubeconfigList{})
 }

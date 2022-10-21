@@ -22,10 +22,11 @@ import (
 	reference "github.com/crossplane/crossplane-runtime/pkg/reference"
 	v1alpha1 "github.com/nivraph/provider-jet-taikun/apis/accessprofile/v1alpha1"
 	v1alpha11 "github.com/nivraph/provider-jet-taikun/apis/alertingprofile/v1alpha1"
-	v1alpha12 "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialopenstack/v1alpha1"
-	v1alpha13 "github.com/nivraph/provider-jet-taikun/apis/kubernetesprofile/v1alpha1"
-	v1alpha14 "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1"
-	v1alpha15 "github.com/nivraph/provider-jet-taikun/apis/policyprofile/v1alpha1"
+	v1alpha12 "github.com/nivraph/provider-jet-taikun/apis/backupcredential/v1alpha1"
+	v1alpha13 "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialopenstack/v1alpha1"
+	v1alpha14 "github.com/nivraph/provider-jet-taikun/apis/kubernetesprofile/v1alpha1"
+	v1alpha15 "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1"
+	v1alpha16 "github.com/nivraph/provider-jet-taikun/apis/policyprofile/v1alpha1"
 	errors "github.com/pkg/errors"
 	client "sigs.k8s.io/controller-runtime/pkg/client"
 )
@@ -70,13 +71,29 @@ func (mg *Project) ResolveReferences(ctx context.Context, c client.Reader) error
 	mg.Spec.ForProvider.AlertingProfileIDRef = rsp.ResolvedReference
 
 	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
+		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.BackupCredentialID),
+		Extract:      reference.ExternalName(),
+		Reference:    mg.Spec.ForProvider.BackupCredentialIDRef,
+		Selector:     mg.Spec.ForProvider.BackupCredentialIDSelector,
+		To: reference.To{
+			List:    &v1alpha12.CredentialList{},
+			Managed: &v1alpha12.Credential{},
+		},
+	})
+	if err != nil {
+		return errors.Wrap(err, "mg.Spec.ForProvider.BackupCredentialID")
+	}
+	mg.Spec.ForProvider.BackupCredentialID = reference.ToPtrValue(rsp.ResolvedValue)
+	mg.Spec.ForProvider.BackupCredentialIDRef = rsp.ResolvedReference
+
+	rsp, err = r.Resolve(ctx, reference.ResolutionRequest{
 		CurrentValue: reference.FromPtrValue(mg.Spec.ForProvider.CloudCredentialID),
 		Extract:      reference.ExternalName(),
 		Reference:    mg.Spec.ForProvider.CloudCredentialIDRef,
 		Selector:     mg.Spec.ForProvider.CloudCredentialIDSelector,
 		To: reference.To{
-			List:    &v1alpha12.CredentialOpenstackList{},
-			Managed: &v1alpha12.CredentialOpenstack{},
+			List:    &v1alpha13.CredentialOpenstackList{},
+			Managed: &v1alpha13.CredentialOpenstack{},
 		},
 	})
 	if err != nil {
@@ -91,8 +108,8 @@ func (mg *Project) ResolveReferences(ctx context.Context, c client.Reader) error
 		Reference:    mg.Spec.ForProvider.KubernetesProfileIDRef,
 		Selector:     mg.Spec.ForProvider.KubernetesProfileIDSelector,
 		To: reference.To{
-			List:    &v1alpha13.ProfileList{},
-			Managed: &v1alpha13.Profile{},
+			List:    &v1alpha14.ProfileList{},
+			Managed: &v1alpha14.Profile{},
 		},
 	})
 	if err != nil {
@@ -107,8 +124,8 @@ func (mg *Project) ResolveReferences(ctx context.Context, c client.Reader) error
 		Reference:    mg.Spec.ForProvider.OrganizationIDRef,
 		Selector:     mg.Spec.ForProvider.OrganizationIDSelector,
 		To: reference.To{
-			List:    &v1alpha14.OrganizationList{},
-			Managed: &v1alpha14.Organization{},
+			List:    &v1alpha15.OrganizationList{},
+			Managed: &v1alpha15.Organization{},
 		},
 	})
 	if err != nil {
@@ -123,8 +140,8 @@ func (mg *Project) ResolveReferences(ctx context.Context, c client.Reader) error
 		Reference:    mg.Spec.ForProvider.PolicyProfileIDRef,
 		Selector:     mg.Spec.ForProvider.PolicyProfileIDSelector,
 		To: reference.To{
-			List:    &v1alpha15.ProfileList{},
-			Managed: &v1alpha15.Profile{},
+			List:    &v1alpha16.ProfileList{},
+			Managed: &v1alpha16.Profile{},
 		},
 	})
 	if err != nil {
