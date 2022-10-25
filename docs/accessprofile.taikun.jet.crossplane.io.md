@@ -1,0 +1,54 @@
+
+accessprofile.taikun.jet.crossplane.io
+======================================
+
+
+This document has been generated.
+  
+
+# Example
+
+
+```yaml
+apiVersion: accessprofile.taikun.jet.crossplane.io/v1alpha1
+kind: Profile
+metadata:
+  name: access-profile
+spec:
+  forProvider:
+    name: "access-profile"
+    organizationIdRef:
+        name: "test-organization"
+  providerConfigRef:
+    name: default
+
+```  
+
+# Schema
+  
+
+## Required
+  
+`name`: The name of the access profile.
+  
+
+## Optional
+  
+`allowedHost`: List of allowed hosts.
+  
+`dnsServer`: List of DNS servers.
+  
+`httpProxy`: HTTP proxy of the access profile.
+  
+`lock`: Indicates whether to lock the access profile. Defaults to `false`.
+  
+`ntpServer`: List of NTP servers.
+  
+`organizationId`: The ID of the organization which owns the access profile.
+  
+`organizationIdRef`: A Reference to a named object.
+  
+`organizationIdSelector`: A Selector selects an object.
+  
+`sshUser`: List of SSH users.
+  

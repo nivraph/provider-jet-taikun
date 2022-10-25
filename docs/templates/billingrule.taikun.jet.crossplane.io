@@ -1,0 +1,18 @@
+
+apiVersion: billingrule.taikun.jet.crossplane.io/v1alpha1
+kind: Rule
+metadata:
+  name: BILLING_RULE
+spec:
+  forProvider:
+    name: "BILLING_RULE"
+    billingCredentialIdRef:
+        name: "BILLING_CRED_REF"
+    label:
+      - key: "label"
+        value: "value"
+    metricName: "coredns_forward_request_duration_seconds"
+    type: "TYPE"
+    price: PRICE
+  providerConfigRef:
+    name: default
