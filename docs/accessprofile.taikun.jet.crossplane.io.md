@@ -47,8 +47,14 @@ spec:
 `organizationId`: The ID of the organization which owns the access profile.
   
 `organizationIdRef`: A Reference to a named object.
+
+* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
   
 `organizationIdSelector`: A Selector selects an object.
+
+* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+
+* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
   
 `sshUser`: List of SSH users.
   

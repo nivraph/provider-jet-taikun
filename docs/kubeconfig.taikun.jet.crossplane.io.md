@@ -47,14 +47,26 @@ spec:
 `projectId`: ID of the kubeconfig's project.
   
 `projectIdRef`: A Reference to a named object.
+
+* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
   
 `projectIdSelector`: A Selector selects an object.
+
+* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+
+* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
   
 `userId`: ID of the kubeconfig's user, if the kubeconfig is personal.
   
 `userIdRef`: A Reference to a named object.
+
+* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
   
 `userIdSelector`: A Selector selects an object.
+
+* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+
+* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
   
 `validityPeriod`: The kubeconfig's validity period in minutes. Unlimited (-1) by default. Defaults to `-1`.
   

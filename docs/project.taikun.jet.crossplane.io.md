@@ -58,28 +58,52 @@ spec:
 `accessProfileId`: ID of the project's access profile. Defaults to the default access profile of the project's organization.
   
 `accessProfileIdRef`: A Reference to a named object.
+
+* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
   
 `accessProfileIdSelector`: A Selector selects an object.
+
+* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+
+* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
   
 `alertingProfileId`: ID of the project's alerting profile.
   
 `alertingProfileIdRef`: A Reference to a named object.
+
+* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
   
 `alertingProfileIdSelector`: A Selector selects an object.
+
+* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+
+* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
   
 `autoUpgrade`: If enabled, the Kubespray version will be automatically upgraded when a new version is available. Defaults to `false`.
   
 `backupCredentialId`: ID of the backup credential. If unspecified, backups are disabled.
   
 `backupCredentialIdRef`: A Reference to a named object.
+
+* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
   
 `backupCredentialIdSelector`: A Selector selects an object.
+
+* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+
+* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
   
 `cloudCredentialId`: ID of the cloud credential used to create the project's servers.
   
 `cloudCredentialIdRef`: A Reference to a named object.
+
+* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
   
 `cloudCredentialIdSelector`: A Selector selects an object.
+
+* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+
+* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
   
 `deleteOnExpiration`: If enabled, the project will be deleted on the expiration date and it will not be possible to recover it. Defaults to `false`. Required with: `expiration_date`.
   
@@ -92,8 +116,14 @@ spec:
 `kubernetesProfileId`: ID of the project's Kubernetes profile. Defaults to the default Kubernetes profile of the project's organization.
   
 `kubernetesProfileIdRef`: A Reference to a named object.
+
+* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
   
 `kubernetesProfileIdSelector`: A Selector selects an object.
+
+* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+
+* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
   
 `kubernetesVersion`: Kubernetes Version at project creation. Use the meta-argument `ignore_changes` to ignore future upgrades.
   
@@ -104,14 +134,26 @@ spec:
 `organizationId`: ID of the organization which owns the project.
   
 `organizationIdRef`: A Reference to a named object.
+
+* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
   
 `organizationIdSelector`: A Selector selects an object.
+
+* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+
+* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
   
 `policyProfileId`: ID of the Policy profile. If unspecified, Gatekeeper is disabled.
   
 `policyProfileIdRef`: A Reference to a named object.
+
+* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
   
 `policyProfileIdSelector`: A Selector selects an object.
+
+* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+
+* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
   
 `quotaCpuUnits`: Maximum CPU units. Defaults to `1000000`.
   

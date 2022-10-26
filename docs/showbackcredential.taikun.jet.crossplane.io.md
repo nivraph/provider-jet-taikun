@@ -39,6 +39,12 @@ spec:
 `name`: The name of the showback credential.
   
 `passwordSecretRef`: The Prometheus password or other credential.
+
+* `key`: The key to select.<font color="red"> (Required)</font>  
+
+* `name`: Name of the secret.<font color="red"> (Required)</font>  
+
+* `namespace`: Namespace of the secret.<font color="red"> (Required)</font>  
   
 `url`: URL of the source.
   
@@ -52,6 +58,12 @@ spec:
 `organizationId`: The ID of the organization which owns the showback credential.
   
 `organizationIdRef`: A Reference to a named object.
+
+* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
   
 `organizationIdSelector`: A Selector selects an object.
+
+* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+
+* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
   

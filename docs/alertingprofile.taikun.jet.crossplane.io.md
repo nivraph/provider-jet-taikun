@@ -49,14 +49,26 @@ spec:
 `organizationId`: The ID of the organization which owns the profile.
   
 `organizationIdRef`: A Reference to a named object.
+
+* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
   
 `organizationIdSelector`: A Selector selects an object.
+
+* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+
+* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
   
 `slackConfigurationId`: The ID of the Slack configuration to notify. Defaults to `0`.
   
 `slackConfigurationIdRef`: A Reference to a named object.
+
+* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
   
 `slackConfigurationIdSelector`: A Selector selects an object.
+
+* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+
+* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
   
 `webhook`: The list of webhooks to notify.
   

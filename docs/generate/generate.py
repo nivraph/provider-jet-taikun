@@ -30,6 +30,39 @@ def contains(l, elt):
     return False
 
 
+def is_field_present(block, fieldName):
+    try:
+        _ = block[fieldName]
+        return True
+    except KeyError:
+        return False
+
+
+def recursive_read(mdFile, block, field):
+    if is_field_present(block[field], 'properties'):
+        required = is_field_present(block[field], 'required')
+        if required:
+            for f in block[field]['properties']:
+                if contains(block[field]['required'], f):
+                    mdFile.write("\n* `"+f+"`: " +
+                                 block[field]['properties'][f]['description'])
+                    mdFile.write(" (Required)", color='red')
+
+                    recursive_read(mdFile, block[field]['properties'], f)
+
+                    mdFile.new_line()
+
+        for f in block[field]['properties']:
+            if not required or not contains(block[field]['required'], f):
+                mdFile.write("\n* `"+f+"`: " +
+                             block[field]['properties'][f]['description'])
+                recursive_read(mdFile, block[field]['properties'], f)
+
+                mdFile.new_line()
+    else:
+        return
+
+
 def createMdDocs(data, filename):
     mdFile = MdUtils(file_name=DOCS_DIR+filename, title=filename)
 
@@ -53,6 +86,9 @@ def createMdDocs(data, filename):
                 if contains(data['required'], field):
                     mdFile.write("`"+field+"`: " +
                                  data['properties'][field]['description']+"\n")
+
+                    recursive_read(mdFile, data['properties'], field)
+
                     mdFile.new_line()
     except KeyError:
         required = False
@@ -65,13 +101,16 @@ def createMdDocs(data, filename):
         if not required or not contains(data['required'], field):
             mdFile.write("`"+field+"`: " +
                          data['properties'][field]['description']+"\n")
+
+            recursive_read(mdFile, data['properties'], field)
+
             mdFile.new_line()
 
     mdFile.create_md_file()
 
 
 def generate_resource_docs(filename):
-    print("generate docs for : ", filename)
+    print("generating docs for: ", filename)
     data = open_yaml(filename)
 
     resource_data = data['spec']['versions'][0]['schema']['openAPIV3Schema'][
@@ -82,6 +121,9 @@ def generate_resource_docs(filename):
 
 
 def generate_provider_docs(filename):
+    print("generating docs for: ", filename)
+    data = open_yaml(filename)
+
     return
 
 #
