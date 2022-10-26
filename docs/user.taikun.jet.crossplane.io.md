@@ -3,7 +3,7 @@ user.taikun.jet.crossplane.io
 =============================
 
 
-This document has been generated.
+This document has been generated from the CRD.
   
 
 # Example
@@ -45,7 +45,7 @@ spec:
   
 `organizationIdRef`: A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
+* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
   
 `organizationIdSelector`: A Selector selects an object.
 

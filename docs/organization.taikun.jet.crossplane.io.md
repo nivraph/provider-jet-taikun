@@ -3,7 +3,7 @@ organization.taikun.jet.crossplane.io
 =====================================
 
 
-This document has been generated.
+This document has been generated from the CRD.
   
 
 # Example

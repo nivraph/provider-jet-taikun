@@ -3,7 +3,7 @@ project.taikun.jet.crossplane.io
 ================================
 
 
-This document has been generated.
+This document has been generated from the CRD.
   
 
 # Example
@@ -59,7 +59,7 @@ spec:
   
 `accessProfileIdRef`: A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
+* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
   
 `accessProfileIdSelector`: A Selector selects an object.
 
@@ -71,7 +71,7 @@ spec:
   
 `alertingProfileIdRef`: A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
+* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
   
 `alertingProfileIdSelector`: A Selector selects an object.
 
@@ -85,7 +85,7 @@ spec:
   
 `backupCredentialIdRef`: A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
+* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
   
 `backupCredentialIdSelector`: A Selector selects an object.
 
@@ -97,7 +97,7 @@ spec:
   
 `cloudCredentialIdRef`: A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
+* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
   
 `cloudCredentialIdSelector`: A Selector selects an object.
 
@@ -117,7 +117,7 @@ spec:
   
 `kubernetesProfileIdRef`: A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
+* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
   
 `kubernetesProfileIdSelector`: A Selector selects an object.
 
@@ -135,7 +135,7 @@ spec:
   
 `organizationIdRef`: A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
+* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
   
 `organizationIdSelector`: A Selector selects an object.
 
@@ -147,7 +147,7 @@ spec:
   
 `policyProfileIdRef`: A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="red"> (Required)</font>  
+* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
   
 `policyProfileIdSelector`: A Selector selects an object.
 

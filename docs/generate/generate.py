@@ -1,4 +1,5 @@
 import os
+from isort import file
 import yaml
 import mdutils
 from mdutils.mdutils import MdUtils
@@ -38,25 +39,31 @@ def is_field_present(block, fieldName):
         return False
 
 
-def recursive_read(mdFile, block, field):
+def is_optional(properties, required):
+    return len(properties) != len(required)
+
+
+def recursive_read(mdFile, block, field, count=0):
     if is_field_present(block[field], 'properties'):
         required = is_field_present(block[field], 'required')
         if required:
             for f in block[field]['properties']:
                 if contains(block[field]['required'], f):
-                    mdFile.write("\n* `"+f+"`: " +
+                    mdFile.write("\n"+count*2*" "+"* `"+f+"`: " +
                                  block[field]['properties'][f]['description'])
-                    mdFile.write(" (Required)", color='red')
+                    mdFile.write(" (Required)", color='orange')
 
-                    recursive_read(mdFile, block[field]['properties'], f)
+                    recursive_read(
+                        mdFile, block[field]['properties'], f, count+1)
 
                     mdFile.new_line()
 
         for f in block[field]['properties']:
             if not required or not contains(block[field]['required'], f):
-                mdFile.write("\n* `"+f+"`: " +
+                mdFile.write("\n"+count*2*" "+"* `"+f+"`: " +
                              block[field]['properties'][f]['description'])
-                recursive_read(mdFile, block[field]['properties'], f)
+
+                recursive_read(mdFile, block[field]['properties'], f, count+1)
 
                 mdFile.new_line()
     else:
@@ -66,7 +73,7 @@ def recursive_read(mdFile, block, field):
 def createMdDocs(data, filename):
     mdFile = MdUtils(file_name=DOCS_DIR+filename, title=filename)
 
-    mdFile.new_paragraph("This document has been generated.\n")
+    mdFile.new_paragraph("This document has been generated from the CRD.\n")
     mdFile.new_line()
 
     mdFile.new_header(1, "Example")
@@ -92,7 +99,10 @@ def createMdDocs(data, filename):
                     mdFile.new_line()
     except KeyError:
         required = False
-        pass
+
+    if required and not is_optional(data['properties'], data['required']):
+        mdFile.create_md_file()
+        return
 
     mdFile.new_header(2, "Optional")
     mdFile.new_line()
@@ -123,8 +133,22 @@ def generate_resource_docs(filename):
 def generate_provider_docs(filename):
     print("generating docs for: ", filename)
     data = open_yaml(filename)
-
-    return
+    if f == "package/crds/taikun.jet.crossplane.io_providerconfigusages.yaml":
+        return
+        provider_data = data['spec']['versions'][0]['schema']['openAPIV3Schema']
+        mdfilename = data['metadata']['name']
+        createMdDocs(provider_data, mdfilename)
+    elif f == "package/crds/taikun.jet.crossplane.io_providerconfigs.yaml":
+        provider_data = data['spec']['versions'][0]['schema']['openAPIV3Schema']['properties']['spec']
+        mdfilename = data['metadata']['name']
+        createMdDocs(provider_data, mdfilename)
+    elif f == "package/crds/taikun.jet.crossplane.io_storeconfigs.yaml":
+        return
+        provider_data = data['spec']['versions'][0]['schema']['openAPIV3Schema']['properties']['spec']
+        mdfilename = data['metadata']['name']
+        createMdDocs(provider_data, mdfilename)
+    else:
+        return
 
 #
 # --------------------------------------------------------------------------------------------------------------
