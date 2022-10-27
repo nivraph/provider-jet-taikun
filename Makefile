@@ -9,8 +9,9 @@ export TERRAFORM_VERSION := 1.1.6
 export TERRAFORM_PROVIDER_SOURCE := itera-io/taikun
 export TERRAFORM_PROVIDER_VERSION := 1.3.0
 export TERRAFORM_PROVIDER_DOWNLOAD_NAME := terraform-provider-taikun
-export TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX := https://github.com/itera-io/terraform-provider-taikun
-#export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-taikun_v1.3.0_x5
+export TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX := https://github.com/itera-io/terraform-provider-taikun/releases/download/v1.3.0/
+export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-taikun_v1.3.0
+
 
 PLATFORMS ?= linux_amd64 linux_arm64
 
