@@ -23,7 +23,7 @@ import (
 	v1alpha1 "github.com/nivraph/provider-jet-taikun/apis/accessprofile/v1alpha1"
 	v1alpha11 "github.com/nivraph/provider-jet-taikun/apis/alertingprofile/v1alpha1"
 	v1alpha12 "github.com/nivraph/provider-jet-taikun/apis/backupcredential/v1alpha1"
-	v1alpha13 "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialopenstack/v1alpha1"
+	v1alpha13 "github.com/nivraph/provider-jet-taikun/apis/cloudcredential/v1alpha1"
 	v1alpha14 "github.com/nivraph/provider-jet-taikun/apis/kubernetesprofile/v1alpha1"
 	v1alpha15 "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1"
 	v1alpha16 "github.com/nivraph/provider-jet-taikun/apis/policyprofile/v1alpha1"
@@ -92,8 +92,8 @@ func (mg *Project) ResolveReferences(ctx context.Context, c client.Reader) error
 		Reference:    mg.Spec.ForProvider.CloudCredentialIDRef,
 		Selector:     mg.Spec.ForProvider.CloudCredentialIDSelector,
 		To: reference.To{
-			List:    &v1alpha13.CredentialOpenstackList{},
-			Managed: &v1alpha13.CredentialOpenstack{},
+			List:    &v1alpha13.CredentialList{},
+			Managed: &v1alpha13.Credential{},
 		},
 	})
 	if err != nil {

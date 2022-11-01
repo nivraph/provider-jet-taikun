@@ -122,7 +122,7 @@ type ProjectParameters struct {
 	BackupCredentialIDSelector *v1.Selector `json:"backupCredentialIdSelector,omitempty" tf:"-"`
 
 	// ID of the cloud credential used to create the project's servers.
-	// +crossplane:generate:reference:type=github.com/nivraph/provider-jet-taikun/apis/cloudcredentialopenstack/v1alpha1.CredentialOpenstack
+	// +crossplane:generate:reference:type=github.com/nivraph/provider-jet-taikun/apis/cloudcredential/v1alpha1.Credential
 	// +kubebuilder:validation:Optional
 	CloudCredentialID *string `json:"cloudCredentialId,omitempty" tf:"cloud_credential_id,omitempty"`
 
