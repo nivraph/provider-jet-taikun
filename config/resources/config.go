@@ -165,7 +165,7 @@ func Configure(p *config.Provider) {
 			Type: "github.com/nivraph/provider-jet-taikun/apis/policyprofile/v1alpha1.Profile",
 		}
 		r.References["cloud_credential_id"] = config.Reference{
-			Type: "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialopenstack/v1alpha1.CredentialOpenstack",
+			Type: "github.com/nivraph/provider-jet-taikun/apis/cloudcredential/v1alpha1.Credential",
 		}
 		r.References["standalone_profile_id"] = config.Reference{
 			Type: "github.com/nivraph/provider-jet-taikun/apis/standaloneprofile/v1alpha1.Profile",
