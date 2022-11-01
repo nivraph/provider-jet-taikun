@@ -27,6 +27,7 @@ import (
 	policy "github.com/nivraph/provider-jet-taikun/internal/controller/backuppolicy/policy"
 	credentialbillingcredential "github.com/nivraph/provider-jet-taikun/internal/controller/billingcredential/credential"
 	rule "github.com/nivraph/provider-jet-taikun/internal/controller/billingrule/rule"
+	credentialcloudcredential "github.com/nivraph/provider-jet-taikun/internal/controller/cloudcredential/credential"
 	credentialaws "github.com/nivraph/provider-jet-taikun/internal/controller/cloudcredentialaws/credentialaws"
 	credentialazure "github.com/nivraph/provider-jet-taikun/internal/controller/cloudcredentialazure/credentialazure"
 	credentialgcp "github.com/nivraph/provider-jet-taikun/internal/controller/cloudcredentialgcp/credentialgcp"
@@ -56,6 +57,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		policy.Setup,
 		credentialbillingcredential.Setup,
 		rule.Setup,
+		credentialcloudcredential.Setup,
 		credentialaws.Setup,
 		credentialazure.Setup,
 		credentialgcp.Setup,

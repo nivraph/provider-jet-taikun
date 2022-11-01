@@ -46,6 +46,13 @@ func Configure(p *config.Provider) {
 			Type: "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization",
 		}
 	})
+	p.AddResourceConfigurator("taikun_cloud_credential", func(r *config.Resource) {
+		r.ShortGroup = "cloudCredential"
+		r.ExternalName = config.IdentifierFromProvider
+		r.References["organization_id"] = config.Reference{
+			Type: "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1.Organization",
+		}
+	})
 	p.AddResourceConfigurator("taikun_cloud_credential_aws", func(r *config.Resource) {
 		r.ShortGroup = "cloudCredentialAws"
 		r.ExternalName = config.IdentifierFromProvider
@@ -158,7 +165,7 @@ func Configure(p *config.Provider) {
 			Type: "github.com/nivraph/provider-jet-taikun/apis/policyprofile/v1alpha1.Profile",
 		}
 		r.References["cloud_credential_id"] = config.Reference{
-			Type: "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialopenstack/v1alpha1.CredentialOpenstack",
+			Type: "github.com/nivraph/provider-jet-taikun/apis/cloudcredential/v1alpha1.Credential",
 		}
 		r.References["standalone_profile_id"] = config.Reference{
 			Type: "github.com/nivraph/provider-jet-taikun/apis/standaloneprofile/v1alpha1.Profile",

@@ -28,6 +28,7 @@ import (
 	v1alpha1backuppolicy "github.com/nivraph/provider-jet-taikun/apis/backuppolicy/v1alpha1"
 	v1alpha1billingcredential "github.com/nivraph/provider-jet-taikun/apis/billingcredential/v1alpha1"
 	v1alpha1billingrule "github.com/nivraph/provider-jet-taikun/apis/billingrule/v1alpha1"
+	v1alpha1cloudcredential "github.com/nivraph/provider-jet-taikun/apis/cloudcredential/v1alpha1"
 	v1alpha1cloudcredentialaws "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialaws/v1alpha1"
 	v1alpha1cloudcredentialazure "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialazure/v1alpha1"
 	v1alpha1cloudcredentialgcp "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialgcp/v1alpha1"
@@ -56,6 +57,7 @@ func init() {
 		v1alpha1backuppolicy.SchemeBuilder.AddToScheme,
 		v1alpha1billingcredential.SchemeBuilder.AddToScheme,
 		v1alpha1billingrule.SchemeBuilder.AddToScheme,
+		v1alpha1cloudcredential.SchemeBuilder.AddToScheme,
 		v1alpha1cloudcredentialaws.SchemeBuilder.AddToScheme,
 		v1alpha1cloudcredentialazure.SchemeBuilder.AddToScheme,
 		v1alpha1cloudcredentialgcp.SchemeBuilder.AddToScheme,
