@@ -11,7 +11,7 @@ spec:
       key: "password"
       name: "openstack-credentials"
       namespace: "crossplane-system"
-    organizationId: "15386"
+    organizationId: "1"
     url: "https://cloud.tcpro.cz:30500/v3"
     domain: "default"
     projectName: "itera-intern"
@@ -29,16 +29,28 @@ spec:
     name: "ref-project"
     cloudCredentialIdRef:
       name: cloud-credential
-    organizationId: "15386"
+    organizationId: "1"
     quotaDiskSize: 40000
     quotaRamSize: 40000
     lock: false
     monitoring: false
-    kubernetesProfileId: "18477"
+    kubernetesVersion: "v1.22.5"
     flavors:
       - "m1.medium"
       - "m1.large"
     images:
       - "b2a2939d-3609-4f15-92b7-b5dc3dd5c9d3"
+    serverBastion:
+      - name: "bastion"
+        flavor: "m1.medium"
+        diskSize: 35
+    serverKubemaster:
+      - name: "master"
+        flavor: "m1.large"
+        diskSize: 36
+    serverKubeworker:
+      - name: "worker"
+        flavor: "m1.large"
+        diskSize: 37
   providerConfigRef:
     name: default
