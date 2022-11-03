@@ -33,30 +33,30 @@ spec:
 
 ## Required
   
-`fullName`: Full name.
+`fullName` (string)`:` Full name.
   
-`name`: Organization's name.
+`name` (string)`:` Organization's name.
   
 
 ## Optional
   
-`address`: Address.
+`address` (string)`:` Address.
   
-`billingEmail`: Billing email.
+`billingEmail` (string)`:` Billing email.
   
-`city`: City.
+`city` (string)`:` City.
   
-`country`: Country.
+`country` (string)`:` Country.
   
-`discountRate`: Discount rate, must be between 0 and 100 (included). Defaults to `100`.
+`discountRate` (number)`:` Discount rate, must be between 0 and 100 (included). Defaults to `100`.
   
-`email`: Email.
+`email` (string)`:` Email.
   
-`lock`: Indicates whether to lock the organization. Defaults to `false`.
+`lock` (boolean)`:` Indicates whether to lock the organization. Defaults to `false`.
   
-`managersCanChangeSubscription`: Allow subscription to be changed by managers. Defaults to `true`.
+`managersCanChangeSubscription` (boolean)`:` Allow subscription to be changed by managers. Defaults to `true`.
   
-`phone`: Phone number.
+`phone` (string)`:` Phone number.
   
-`vatNumber`: VAT number.
+`vatNumber` (string)`:` VAT number.
   

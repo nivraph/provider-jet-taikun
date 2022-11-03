@@ -29,29 +29,29 @@ spec:
 
 ## Optional
   
-`billingRuleId`: ID of the billing rule.
+`billingRuleId` (string)`:` ID of the billing rule.
   
-`billingRuleIdRef`: A Reference to a named object.
+`billingRuleIdRef` (object)`:` A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
+* `name` (string)`:` Name of the referenced object.<font color="orange"> (Required)</font>  
   
-`billingRuleIdSelector`: A Selector selects an object.
+`billingRuleIdSelector` (object)`:` A Selector selects an object.
 
-* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+* `matchControllerRef` (boolean)`:` MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
 
-* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
+* `matchLabels` (object)`:` MatchLabels ensures an object with matching labels is selected.  
   
-`discountRate`: Discount rate in percents (0-100 %). Defaults to `100`.
+`discountRate` (number)`:` Discount rate in percents (0-100 %). Defaults to `100`.
   
-`organizationId`: ID of the organisation.
+`organizationId` (string)`:` ID of the organisation.
   
-`organizationIdRef`: A Reference to a named object.
+`organizationIdRef` (object)`:` A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
+* `name` (string)`:` Name of the referenced object.<font color="orange"> (Required)</font>  
   
-`organizationIdSelector`: A Selector selects an object.
+`organizationIdSelector` (object)`:` A Selector selects an object.
 
-* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+* `matchControllerRef` (boolean)`:` MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
 
-* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
+* `matchLabels` (object)`:` MatchLabels ensures an object with matching labels is selected.  
   

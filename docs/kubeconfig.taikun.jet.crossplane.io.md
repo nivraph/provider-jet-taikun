@@ -33,40 +33,40 @@ spec:
 
 ## Required
   
-`accessScope`: Who can use the kubeconfig: `personal` (only you), `managers` (managers only) or `all` (all users with access to this project).
+`accessScope` (string)`:` Who can use the kubeconfig: `personal` (only you), `managers` (managers only) or `all` (all users with access to this project).
   
-`name`: The kubeconfig's name.
+`name` (string)`:` The kubeconfig's name.
   
-`role`: The kubeconfig's role: `cluster-admin`, `admin`, `edit` or `view`.
+`role` (string)`:` The kubeconfig's role: `cluster-admin`, `admin`, `edit` or `view`.
   
 
 ## Optional
   
-`namespace`: The kubeconfig's namespace.
+`namespace` (string)`:` The kubeconfig's namespace.
   
-`projectId`: ID of the kubeconfig's project.
+`projectId` (string)`:` ID of the kubeconfig's project.
   
-`projectIdRef`: A Reference to a named object.
+`projectIdRef` (object)`:` A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
+* `name` (string)`:` Name of the referenced object.<font color="orange"> (Required)</font>  
   
-`projectIdSelector`: A Selector selects an object.
+`projectIdSelector` (object)`:` A Selector selects an object.
 
-* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+* `matchControllerRef` (boolean)`:` MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
 
-* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
+* `matchLabels` (object)`:` MatchLabels ensures an object with matching labels is selected.  
   
-`userId`: ID of the kubeconfig's user, if the kubeconfig is personal.
+`userId` (string)`:` ID of the kubeconfig's user, if the kubeconfig is personal.
   
-`userIdRef`: A Reference to a named object.
+`userIdRef` (object)`:` A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
+* `name` (string)`:` Name of the referenced object.<font color="orange"> (Required)</font>  
   
-`userIdSelector`: A Selector selects an object.
+`userIdSelector` (object)`:` A Selector selects an object.
 
-* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+* `matchControllerRef` (boolean)`:` MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
 
-* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
+* `matchLabels` (object)`:` MatchLabels ensures an object with matching labels is selected.  
   
-`validityPeriod`: The kubeconfig's validity period in minutes. Unlimited (-1) by default. Defaults to `-1`.
+`validityPeriod` (number)`:` The kubeconfig's validity period in minutes. Unlimited (-1) by default. Defaults to `-1`.
   

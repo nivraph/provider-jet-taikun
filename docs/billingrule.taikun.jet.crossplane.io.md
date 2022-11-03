@@ -36,28 +36,28 @@ spec:
 
 ## Required
   
-`label`: Labels linked to the billing rule.
+`label` (array)`:` Labels linked to the billing rule.
   
-`metricName`: The name of the Prometheus metric (e.g. volumes, flavors, networks) to bill.
+`metricName` (string)`:` The name of the Prometheus metric (e.g. volumes, flavors, networks) to bill.
   
-`name`: The name of the billing rule.
+`name` (string)`:` The name of the billing rule.
   
-`price`: The price in CZK per selected unit.
+`price` (number)`:` The price in CZK per selected unit.
   
-`type`: The type of billing rule: `Count` (calculate package as unit) or `Sum` (calculate per quantity).
+`type` (string)`:` The type of billing rule: `Count` (calculate package as unit) or `Sum` (calculate per quantity).
   
 
 ## Optional
   
-`billingCredentialId`: ID of the billing credential.
+`billingCredentialId` (string)`:` ID of the billing credential.
   
-`billingCredentialIdRef`: A Reference to a named object.
+`billingCredentialIdRef` (object)`:` A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
+* `name` (string)`:` Name of the referenced object.<font color="orange"> (Required)</font>  
   
-`billingCredentialIdSelector`: A Selector selects an object.
+`billingCredentialIdSelector` (object)`:` A Selector selects an object.
 
-* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+* `matchControllerRef` (boolean)`:` MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
 
-* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
+* `matchLabels` (object)`:` MatchLabels ensures an object with matching labels is selected.  
   

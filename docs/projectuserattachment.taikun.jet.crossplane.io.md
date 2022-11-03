@@ -25,27 +25,27 @@ spec:
 
 ## Optional
   
-`projectId`: ID of the project.
+`projectId` (string)`:` ID of the project.
   
-`projectIdRef`: A Reference to a named object.
+`projectIdRef` (object)`:` A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
+* `name` (string)`:` Name of the referenced object.<font color="orange"> (Required)</font>  
   
-`projectIdSelector`: A Selector selects an object.
+`projectIdSelector` (object)`:` A Selector selects an object.
 
-* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+* `matchControllerRef` (boolean)`:` MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
 
-* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
+* `matchLabels` (object)`:` MatchLabels ensures an object with matching labels is selected.  
   
-`userId`: ID of the user.
+`userId` (string)`:` ID of the user.
   
-`userIdRef`: A Reference to a named object.
+`userIdRef` (object)`:` A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
+* `name` (string)`:` Name of the referenced object.<font color="orange"> (Required)</font>  
   
-`userIdSelector`: A Selector selects an object.
+`userIdSelector` (object)`:` A Selector selects an object.
 
-* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+* `matchControllerRef` (boolean)`:` MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
 
-* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
+* `matchLabels` (object)`:` MatchLabels ensures an object with matching labels is selected.  
   

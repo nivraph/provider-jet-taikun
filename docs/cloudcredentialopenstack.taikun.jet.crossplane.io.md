@@ -38,48 +38,48 @@ spec:
 
 ## Required
   
-`domain`: The OpenStack domain.
+`domain` (string)`:` The OpenStack domain.
   
-`name`: The name of the OpenStack cloud credential.
+`name` (string)`:` The name of the OpenStack cloud credential.
   
-`passwordSecretRef`: The OpenStack password.
+`passwordSecretRef` (object)`:` The OpenStack password.
 
-* `key`: The key to select.<font color="orange"> (Required)</font>  
+* `key` (string)`:` The key to select.<font color="orange"> (Required)</font>  
 
-* `name`: Name of the secret.<font color="orange"> (Required)</font>  
+* `name` (string)`:` Name of the secret.<font color="orange"> (Required)</font>  
 
-* `namespace`: Namespace of the secret.<font color="orange"> (Required)</font>  
+* `namespace` (string)`:` Namespace of the secret.<font color="orange"> (Required)</font>  
   
-`projectName`: The OpenStack project name.
+`projectName` (string)`:` The OpenStack project name.
   
-`publicNetworkName`: The name of the public OpenStack network to use.
+`publicNetworkName` (string)`:` The name of the public OpenStack network to use.
   
-`region`: The OpenStack region.
+`region` (string)`:` The OpenStack region.
   
-`url`: The OpenStack authentication URL.
+`url` (string)`:` The OpenStack authentication URL.
   
-`user`: The OpenStack user.
+`user` (string)`:` The OpenStack user.
   
 
 ## Optional
   
-`availabilityZone`: The OpenStack availability zone.
+`availabilityZone` (string)`:` The OpenStack availability zone.
   
-`importedNetworkSubnetId`: The OpenStack network subnet ID to import a network.
+`importedNetworkSubnetId` (string)`:` The OpenStack network subnet ID to import a network.
   
-`lock`: Indicates whether to lock the OpenStack cloud credential. Defaults to `false`.
+`lock` (boolean)`:` Indicates whether to lock the OpenStack cloud credential. Defaults to `false`.
   
-`organizationId`: The ID of the organization which owns the OpenStack cloud credential.
+`organizationId` (string)`:` The ID of the organization which owns the OpenStack cloud credential.
   
-`organizationIdRef`: A Reference to a named object.
+`organizationIdRef` (object)`:` A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
+* `name` (string)`:` Name of the referenced object.<font color="orange"> (Required)</font>  
   
-`organizationIdSelector`: A Selector selects an object.
+`organizationIdSelector` (object)`:` A Selector selects an object.
 
-* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+* `matchControllerRef` (boolean)`:` MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
 
-* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
+* `matchLabels` (object)`:` MatchLabels ensures an object with matching labels is selected.  
   
-`volumeTypeName`: The OpenStack type of volume.
+`volumeTypeName` (string)`:` The OpenStack type of volume.
   

@@ -30,26 +30,26 @@ spec:
 
 ## Required
   
-`email`: The email of the user.
+`email` (string)`:` The email of the user.
   
-`role`: The role of the user: `Manager` or `User`.
+`role` (string)`:` The role of the user: `Manager` or `User`.
   
-`userName`: The name of the user.
+`userName` (string)`:` The name of the user.
   
 
 ## Optional
   
-`displayName`: The user's display name. Defaults to ` `.
+`displayName` (string)`:` The user's display name. Defaults to ` `.
   
-`organizationId`: The ID of the user's organization.
+`organizationId` (string)`:` The ID of the user's organization.
   
-`organizationIdRef`: A Reference to a named object.
+`organizationIdRef` (object)`:` A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
+* `name` (string)`:` Name of the referenced object.<font color="orange"> (Required)</font>  
   
-`organizationIdSelector`: A Selector selects an object.
+`organizationIdSelector` (object)`:` A Selector selects an object.
 
-* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+* `matchControllerRef` (boolean)`:` MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
 
-* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
+* `matchLabels` (object)`:` MatchLabels ensures an object with matching labels is selected.  
   

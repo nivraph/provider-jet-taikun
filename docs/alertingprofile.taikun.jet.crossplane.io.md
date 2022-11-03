@@ -33,42 +33,42 @@ spec:
 
 ## Required
   
-`name`: The alerting profile's name.
+`name` (string)`:` The alerting profile's name.
   
-`reminder`: The frequency of notifications: `HalfHour`, `Hourly`, `Daily` or `None`.
+`reminder` (string)`:` The frequency of notifications: `HalfHour`, `Hourly`, `Daily` or `None`.
   
 
 ## Optional
   
-`emails`: The list of emails to notify.
+`emails` (array)`:` The list of emails to notify.
   
-`integration`: List of alerting integrations.
+`integration` (array)`:` List of alerting integrations.
   
-`lock`: Indicates whether to lock the profile. Defaults to `false`.
+`lock` (boolean)`:` Indicates whether to lock the profile. Defaults to `false`.
   
-`organizationId`: The ID of the organization which owns the profile.
+`organizationId` (string)`:` The ID of the organization which owns the profile.
   
-`organizationIdRef`: A Reference to a named object.
+`organizationIdRef` (object)`:` A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
+* `name` (string)`:` Name of the referenced object.<font color="orange"> (Required)</font>  
   
-`organizationIdSelector`: A Selector selects an object.
+`organizationIdSelector` (object)`:` A Selector selects an object.
 
-* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+* `matchControllerRef` (boolean)`:` MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
 
-* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
+* `matchLabels` (object)`:` MatchLabels ensures an object with matching labels is selected.  
   
-`slackConfigurationId`: The ID of the Slack configuration to notify. Defaults to `0`.
+`slackConfigurationId` (string)`:` The ID of the Slack configuration to notify. Defaults to `0`.
   
-`slackConfigurationIdRef`: A Reference to a named object.
+`slackConfigurationIdRef` (object)`:` A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
+* `name` (string)`:` Name of the referenced object.<font color="orange"> (Required)</font>  
   
-`slackConfigurationIdSelector`: A Selector selects an object.
+`slackConfigurationIdSelector` (object)`:` A Selector selects an object.
 
-* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+* `matchControllerRef` (boolean)`:` MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
 
-* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
+* `matchLabels` (object)`:` MatchLabels ensures an object with matching labels is selected.  
   
-`webhook`: The list of webhooks to notify.
+`webhook` (array)`:` The list of webhooks to notify.
   

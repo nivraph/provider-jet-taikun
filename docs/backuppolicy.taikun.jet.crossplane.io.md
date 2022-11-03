@@ -31,28 +31,28 @@ spec:
 
 ## Required
   
-`cronPeriod`: Frequency of backups.
+`cronPeriod` (string)`:` Frequency of backups.
   
-`name`: The name of the backup policy.
+`name` (string)`:` The name of the backup policy.
   
 
 ## Optional
   
-`excludedNamespaces`: Namespaces excluded from the backups.
+`excludedNamespaces` (array)`:` Namespaces excluded from the backups.
   
-`includedNamespaces`: Namespaces included in the backups.
+`includedNamespaces` (array)`:` Namespaces included in the backups.
   
-`projectId`: The ID of the project.
+`projectId` (string)`:` The ID of the project.
   
-`projectIdRef`: A Reference to a named object.
+`projectIdRef` (object)`:` A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
+* `name` (string)`:` Name of the referenced object.<font color="orange"> (Required)</font>  
   
-`projectIdSelector`: A Selector selects an object.
+`projectIdSelector` (object)`:` A Selector selects an object.
 
-* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+* `matchControllerRef` (boolean)`:` MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
 
-* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
+* `matchLabels` (object)`:` MatchLabels ensures an object with matching labels is selected.  
   
-`retentionPeriod`: How long to store the backups. Defaults to `720h`.
+`retentionPeriod` (string)`:` How long to store the backups. Defaults to `720h`.
   

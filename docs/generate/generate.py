@@ -49,7 +49,7 @@ def recursive_read(mdFile, block, field, count=0):
         if required:
             for f in block[field]['properties']:
                 if contains(block[field]['required'], f):
-                    mdFile.write("\n"+count*2*" "+"* `"+f+"`: " +
+                    mdFile.write("\n"+count*2*" "+"* `"+f+"` (" + block[field]['properties'][f]['type']+")`:` " +
                                  block[field]['properties'][f]['description'])
                     mdFile.write(" (Required)", color='orange')
 
@@ -60,7 +60,7 @@ def recursive_read(mdFile, block, field, count=0):
 
         for f in block[field]['properties']:
             if not required or not contains(block[field]['required'], f):
-                mdFile.write("\n"+count*2*" "+"* `"+f+"`: " +
+                mdFile.write("\n"+count*2*" "+"* `"+f+"` (" + block[field]['properties'][f]['type']+")`:` " +
                              block[field]['properties'][f]['description'])
 
                 recursive_read(mdFile, block[field]['properties'], f, count+1)
@@ -91,7 +91,7 @@ def createMdDocs(data, filename):
 
             for field in data['properties']:
                 if contains(data['required'], field):
-                    mdFile.write("`"+field+"`: " +
+                    mdFile.write("`" + field + "` ("+data['properties'][field]['type']+")`:` " +
                                  data['properties'][field]['description']+"\n")
 
                     recursive_read(mdFile, data['properties'], field)
@@ -109,7 +109,7 @@ def createMdDocs(data, filename):
 
     for field in data['properties']:
         if not required or not contains(data['required'], field):
-            mdFile.write("`"+field+"`: " +
+            mdFile.write("`"+field+"` ("+data['properties'][field]['type']+")`:` " +
                          data['properties'][field]['description']+"\n")
 
             recursive_read(mdFile, data['properties'], field)

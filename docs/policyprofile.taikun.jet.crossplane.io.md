@@ -39,38 +39,38 @@ spec:
 
 ## Required
   
-`name`: The name of the Policy profile.
+`name` (string)`:` The name of the Policy profile.
   
 
 ## Optional
   
-`allowedRepos`: Requires container images to begin with a string from the specified list.
+`allowedRepos` (array)`:` Requires container images to begin with a string from the specified list.
   
-`forbidHttpIngress`: Requires Ingress resources to be HTTPS only. Defaults to `false`.
+`forbidHttpIngress` (boolean)`:` Requires Ingress resources to be HTTPS only. Defaults to `false`.
   
-`forbidNodePort`: Disallows all Services with type NodePort. Defaults to `false`.
+`forbidNodePort` (boolean)`:` Disallows all Services with type NodePort. Defaults to `false`.
   
-`forbiddenTags`: Container images must have an image tag different from the ones in the list.
+`forbiddenTags` (array)`:` Container images must have an image tag different from the ones in the list.
   
-`ingressWhitelist`: List of allowed Ingress rule hosts.
+`ingressWhitelist` (array)`:` List of allowed Ingress rule hosts.
   
-`lock`: Indicates whether to lock the Policy profile. Defaults to `false`.
+`lock` (boolean)`:` Indicates whether to lock the Policy profile. Defaults to `false`.
   
-`organizationId`: The ID of the organization which owns the Policy profile.
+`organizationId` (string)`:` The ID of the organization which owns the Policy profile.
   
-`organizationIdRef`: A Reference to a named object.
+`organizationIdRef` (object)`:` A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
+* `name` (string)`:` Name of the referenced object.<font color="orange"> (Required)</font>  
   
-`organizationIdSelector`: A Selector selects an object.
+`organizationIdSelector` (object)`:` A Selector selects an object.
 
-* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+* `matchControllerRef` (boolean)`:` MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
 
-* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
+* `matchLabels` (object)`:` MatchLabels ensures an object with matching labels is selected.  
   
-`requireProbe`: Requires Pods to have readiness and liveness probes. Defaults to `false`.
+`requireProbe` (boolean)`:` Requires Pods to have readiness and liveness probes. Defaults to `false`.
   
-`uniqueIngress`: Requires all Ingress rule hosts to be unique. Defaults to `false`.
+`uniqueIngress` (boolean)`:` Requires all Ingress rule hosts to be unique. Defaults to `false`.
   
-`uniqueServiceSelector`: Whether services must have globally unique service selectors or not. Defaults to `false`.
+`uniqueServiceSelector` (boolean)`:` Whether services must have globally unique service selectors or not. Defaults to `false`.
   

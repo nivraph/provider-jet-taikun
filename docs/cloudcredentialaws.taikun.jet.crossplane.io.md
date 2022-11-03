@@ -37,42 +37,42 @@ spec:
 
 ## Required
   
-`accessKeyIdSecretRef`: The AWS access key ID.
+`accessKeyIdSecretRef` (object)`:` The AWS access key ID.
 
-* `key`: The key to select.<font color="orange"> (Required)</font>  
+* `key` (string)`:` The key to select.<font color="orange"> (Required)</font>  
 
-* `name`: Name of the secret.<font color="orange"> (Required)</font>  
+* `name` (string)`:` Name of the secret.<font color="orange"> (Required)</font>  
 
-* `namespace`: Namespace of the secret.<font color="orange"> (Required)</font>  
+* `namespace` (string)`:` Namespace of the secret.<font color="orange"> (Required)</font>  
   
-`availabilityZone`: The AWS availability zone for the region.
+`availabilityZone` (string)`:` The AWS availability zone for the region.
   
-`name`: The name of the AWS cloud credential.
+`name` (string)`:` The name of the AWS cloud credential.
   
-`region`: The AWS region.
+`region` (string)`:` The AWS region.
   
-`secretAccessKeySecretRef`: The AWS secret access key.
+`secretAccessKeySecretRef` (object)`:` The AWS secret access key.
 
-* `key`: The key to select.<font color="orange"> (Required)</font>  
+* `key` (string)`:` The key to select.<font color="orange"> (Required)</font>  
 
-* `name`: Name of the secret.<font color="orange"> (Required)</font>  
+* `name` (string)`:` Name of the secret.<font color="orange"> (Required)</font>  
 
-* `namespace`: Namespace of the secret.<font color="orange"> (Required)</font>  
+* `namespace` (string)`:` Namespace of the secret.<font color="orange"> (Required)</font>  
   
 
 ## Optional
   
-`lock`: Indicates whether to lock the AWS cloud credential. Defaults to `false`.
+`lock` (boolean)`:` Indicates whether to lock the AWS cloud credential. Defaults to `false`.
   
-`organizationId`: The ID of the organization which owns the AWS cloud credential.
+`organizationId` (string)`:` The ID of the organization which owns the AWS cloud credential.
   
-`organizationIdRef`: A Reference to a named object.
+`organizationIdRef` (object)`:` A Reference to a named object.
 
-* `name`: Name of the referenced object.<font color="orange"> (Required)</font>  
+* `name` (string)`:` Name of the referenced object.<font color="orange"> (Required)</font>  
   
-`organizationIdSelector`: A Selector selects an object.
+`organizationIdSelector` (object)`:` A Selector selects an object.
 
-* `matchControllerRef`: MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
+* `matchControllerRef` (boolean)`:` MatchControllerRef ensures an object with the same controller reference as the selecting object is selected.  
 
-* `matchLabels`: MatchLabels ensures an object with matching labels is selected.  
+* `matchLabels` (object)`:` MatchLabels ensures an object with matching labels is selected.  
   
