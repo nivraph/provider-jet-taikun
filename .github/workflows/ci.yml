@@ -36,53 +36,14 @@ jobs:
 
 
   lint:
-    runs-on: ubuntu-18.04
-    needs: detect-noop
-    if: needs.detect-noop.outputs.noop != 'true'
-
+    name: lint
+    runs-on: self-hosted
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v2
         with:
-          submodules: true
-
-      - name: Find the Go Build Cache
-        id: go
-        run: echo "::set-output name=cache::$(make go.cachedir)"
-
-      - name: Cache the Go Build Cache
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.go.outputs.cache }}
-          key: ${{ runner.os }}-build-lint-${{ hashFiles('**/go.sum') }}
-          restore-keys: ${{ runner.os }}-build-lint-
-
-      - name: Cache Go Dependencies
-        uses: actions/cache@v2
-        with:
-          path: .work/pkg
-          key: ${{ runner.os }}-pkg-${{ hashFiles('**/go.sum') }}
-          restore-keys: ${{ runner.os }}-pkg-
-
-      - name: Vendor Dependencies
-        run: make vendor vendor.check
-
-      # Go version coming with golangci-lint-action may not be our desired
-      # go version. We deploy our desired go version and then skip go
-      # installation in golangci-lint-action in the next step as suggested
-      # in https://github.com/golangci/golangci-lint-action/issues/183
-      - uses: actions/setup-go@v2
-        with:
-          go-version: ${{ env.GO_VERSION }}
-      # We could run 'make lint' to ensure our desired Go version, but we
-      # prefer this action because it leaves 'annotations' (i.e. it comments
-      # on PRs to point out linter violations).
-      - name: Lint
-        uses: golangci/golangci-lint-action@v3
-        with:
-          version: ${{ env.GOLANGCI_VERSION }}
-          skip-go-installation: true
-          args: --timeout 10m0s
+          version: latest
 
   check-diff:
     runs-on: ubuntu-18.04
