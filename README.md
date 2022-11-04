@@ -8,49 +8,26 @@ Taikun API.
 ## Getting Started
 
 Install the provider by using the following command after changing the image tag
-to the [latest release](https://github.com/crossplane-contrib/provider-jet-taikun/releases):
+to the [latest release](https://github.com/itera-io/provider-jet-taikun/releases):
+
 ```
 kubectl crossplane install provider crossplane/provider-jet-taikun:v0.1.0
 ```
 
-Alternatively, you can use declarative installation:
-```
-kubectl apply -f examples/install.yaml
-```
+## Documentation
 
-Notice that in this example Provider resource is referencing ControllerConfig with debug enabled.
+You can see the API reference [here](https://doc.crds.dev/github.com/itera-io/provider-jet-taikun).
 
-You can see the API reference [here](https://doc.crds.dev/github.com/crossplane-contrib/provider-jet-taikun).
+## Contributing
 
-## Developing
+To add a new resources, please follow [adding new resources](https://github.com/crossplane/terrajet/blob/main/docs/generating-a-provider.md#adding-new-resources) section.
 
-Run code-generation pipeline:
-```console
-go run cmd/generator/main.go "$PWD"
-```
-
-Run against a Kubernetes cluster:
-
-```console
-make run
-```
-
-Build, push, and install:
-
-```console
-make all
-```
-
-Build binary:
-
-```console
-make build
-```
+To configure existing resources, please follow [configuring a resource document](https://github.com/crossplane/terrajet/blob/main/docs/configuring-a-resource.md).
 
 ## Report a Bug
 
 For filing bugs, suggesting improvements, or requesting new features, please
-open an [issue](https://github.com/crossplane-contrib/provider-jet-taikun/issues).
+open an [issue](https://github.com/itera-io/provider-jet-taikun/issues).
 
 ## Contact
 
