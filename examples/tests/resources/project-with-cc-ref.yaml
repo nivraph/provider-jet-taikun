@@ -1,0 +1,56 @@
+apiVersion: cloudcredential.taikun.jet.crossplane.io/v1alpha1
+kind: Credential
+metadata:
+  name: cloud-credential
+spec:
+  forProvider:
+    name: "cloud-credential"
+    type: "openstack"
+    user: "raphael"
+    passwordSecretRef:
+      key: "password"
+      name: "openstack-credentials"
+      namespace: "crossplane-system"
+    organizationId: "1"
+    url: "https://cloud.tcpro.cz:30500/v3"
+    domain: "default"
+    projectName: "itera-intern"
+    region: "RegionOne"
+    publicNetworkName: "public2"
+    lock: false
+    availabilityZone: "nova"
+---
+apiVersion: project.taikun.jet.crossplane.io/v1alpha1
+kind: Project
+metadata:
+  name: "ref-project"
+spec:
+  forProvider:
+    name: "ref-project"
+    cloudCredentialIdRef:
+      name: cloud-credential
+    organizationId: "1"
+    quotaDiskSize: 40000
+    quotaRamSize: 40000
+    lock: false
+    monitoring: false
+    kubernetesVersion: "v1.22.5"
+    flavors:
+      - "m1.medium"
+      - "m1.large"
+    images:
+      - "b2a2939d-3609-4f15-92b7-b5dc3dd5c9d3"
+    serverBastion:
+      - name: "bastion"
+        flavor: "m1.medium"
+        diskSize: 35
+    serverKubemaster:
+      - name: "master"
+        flavor: "m1.large"
+        diskSize: 36
+    serverKubeworker:
+      - name: "worker"
+        flavor: "m1.large"
+        diskSize: 37
+  providerConfigRef:
+    name: default

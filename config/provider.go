@@ -23,12 +23,12 @@ import (
 	tjconfig "github.com/crossplane/terrajet/pkg/config"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
-	"github.com/crossplane-contrib/provider-jet-taikun/config/organization"
+	resources "github.com/nivraph/provider-jet-taikun/config/resources"
 )
 
 const (
 	resourcePrefix = "taikun"
-	modulePath     = "github.com/crossplane-contrib/provider-jet-taikun"
+	modulePath     = "github.com/nivraph/provider-jet-taikun"
 )
 
 //go:embed schema.json
@@ -38,20 +38,48 @@ var providerSchema string
 func GetProvider() *tjconfig.Provider {
 	defaultResourceFn := func(name string, terraformResource *schema.Resource, opts ...tjconfig.ResourceOption) *tjconfig.Resource {
 		r := tjconfig.DefaultResource(name, terraformResource)
-		// Add any provider-specific defaulting here. For example:
-		//   r.ExternalName = tjconfig.IdentifierFromProvider
 		return r
 	}
 
 	pc := tjconfig.NewProviderWithSchema([]byte(providerSchema), resourcePrefix, modulePath,
 		tjconfig.WithDefaultResourceFn(defaultResourceFn),
 		tjconfig.WithIncludeList([]string{
+
+			// Resources
 			"taikun_organization$",
+			"taikun_access_profile$",
+			"taikun_alerting_profile$",
+			"taikun_kubernetes_profile$",
+			"taikun_policy_profile$",
+			"taikun_slack_configuration$",
+			"taikun_cloud_credential",
+			"taikun_cloud_credential_aws",
+			"taikun_cloud_credential_azure",
+			"taikun_cloud_credential_gcp",
+			"taikun_cloud_credential_openstack",
+			"taikun_showback_credential",
+			"taikun_showback_rule",
+			"taikun_billing_credential",
+			"taikun_billing_rule",
+			"taikun_user$",
+			"taikun_standalone_profile$",
+			"taikun_backup_policy$",
+			"taikun_backup_credential$",
+			"taikun_project$",
+			"taikun_organization_billing_rule_attachment$",
+			"taikun_kubeconfig",
+			"taikun_project_user_attachment",
+
+			// Data Sources
 		}))
 
 	for _, configure := range []func(provider *tjconfig.Provider){
 		// add custom config functions
-		organization.Configure,
+
+		// Resources
+		resources.Configure,
+
+		// Data
 	} {
 		configure(pc)
 	}

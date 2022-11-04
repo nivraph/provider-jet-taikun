@@ -1,0 +1,63 @@
+apiVersion: cloudcredentialopenstack.taikun.jet.crossplane.io/v1alpha1
+kind: CredentialOpenstack
+metadata:
+  name: cred-open-raph-crossplane
+spec:
+  forProvider:
+    name: "cred-open"
+    organizationId: "15687"
+    user: "raphael"
+    passwordSecretRef:
+      key: "password"
+      name: "openstack-credentials"
+      namespace: "crossplane-system"
+    url: "https://cloud.tcpro.cz:30500/v3"
+    domain: "default"
+    projectName: "itera-intern"
+    region: "RegionOne"
+    publicNetworkName: "public2"
+    lock: false
+    availabilityZone: "pod4"
+---
+apiVersion: project.taikun.jet.crossplane.io/v1alpha1
+kind: Project
+metadata:
+  name: "test-attach"
+spec:
+  forProvider:
+    name: "test-attach"
+    cloudCredentialId: "19077"
+    organizationId: "15687"
+    quotaDiskSize: 40000
+    quotaRamSize: 40000
+    lock: false
+    monitoring: false
+    kubernetesProfileId: "18855"
+    flavors:
+      - "e2-medium"
+      - "e2-highcpu-8"
+    images:
+      - "ubuntu-2004-focal-v20220927"
+    serverBastion:
+      - name: "bastion-crossplane"
+        flavor: "e2-medium"
+        diskSize: 35
+    serverKubemaster:
+      - name: "master-crossplane"
+        flavor: "e2-highcpu-8"
+        diskSize: 36
+    serverKubeworker:
+      - name: "worker-crossplane"
+        flavor: "e2-highcpu-8"
+        diskSize: 37
+  providerConfigRef:
+    name: default
+---
+apiVersion: projectuserattachment.taikun.jet.crossplane.io/v1alpha1
+kind: UserAttachment
+metadata:
+  name: test-attach
+spec:
+  forProvider:
+    userId: "473b17d3-e27a-49b4-bb6d-484421687050"
+    projectIdRef:

@@ -1,0 +1,33 @@
+apiVersion: project.taikun.jet.crossplane.io/v1alpha1
+kind: Project
+metadata:
+  name: "test-project-gcp"
+spec:
+  forProvider:
+    name: "test-project-gcp"
+    cloudCredentialId: "19137"
+    organizationId: "15727"
+    quotaDiskSize: 40000
+    quotaRamSize: 40000
+    lock: false
+    monitoring: false
+    kubernetesProfileId: "18913"
+    flavors:
+      - "e2-medium"
+      - "e2-highcpu-8"
+    images:
+      - "ubuntu-2004-focal-v20220927"
+    serverBastion:
+      - name: "bastion-crossplane"
+        flavor: "e2-medium"
+        diskSize: 35
+    serverKubemaster:
+      - name: "master-crossplane"
+        flavor: "e2-highcpu-8"
+        diskSize: 36
+    serverKubeworker:
+      - name: "worker-crossplane"
+        flavor: "e2-highcpu-8"
+        diskSize: 37
+  providerConfigRef:
+    name: default

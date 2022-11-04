@@ -1,0 +1,33 @@
+apiVersion: project.taikun.jet.crossplane.io/v1alpha1
+kind: Project
+metadata:
+  name: "project-crossplane-raph-open-cluster"
+spec:
+  forProvider:
+    name: "crossplane-cluster"
+    cloudCredentialId: "19102"
+    organizationId: "15687"
+    quotaDiskSize: 40000
+    quotaRamSize: 40000
+    lock: false
+    monitoring: false
+    kubernetesProfileId: "18855"
+    flavors:
+      - "m1.medium"
+      - "m1.large"
+    images:
+      - "b2a2939d-3609-4f15-92b7-b5dc3dd5c9d3"
+    serverBastion:
+      - name: "bastion-crossplane"
+        flavor: "m1.medium"
+        diskSize: 35
+    serverKubemaster:
+      - name: "master-crossplane"
+        flavor: "m1.large"
+        diskSize: 36
+    serverKubeworker:
+      - name: "worker-crossplane"
+        flavor: "m1.large"
+        diskSize: 37
+  providerConfigRef:
+    name: default

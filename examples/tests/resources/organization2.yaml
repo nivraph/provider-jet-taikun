@@ -1,0 +1,15 @@
+apiVersion: organization.taikun.jet.crossplane.io/v1alpha1
+kind: Organization
+metadata:
+  name: orga-raph-2
+spec:
+  forProvider:
+    name: "test-raph"
+    fullName: "Create taikun organization with crossplane"
+    discountRate: 42
+    city: "Praha"
+    billingEmail: "billing2@foo.org"
+    email: "contact@foo.org"
+    phone: "065100035103"
+  providerConfigRef:
+    name: default

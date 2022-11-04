@@ -22,14 +22,58 @@ package apis
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/crossplane-contrib/provider-jet-taikun/apis/organization/v1alpha1"
-	v1alpha1apis "github.com/crossplane-contrib/provider-jet-taikun/apis/v1alpha1"
+	v1alpha1 "github.com/nivraph/provider-jet-taikun/apis/accessprofile/v1alpha1"
+	v1alpha1alertingprofile "github.com/nivraph/provider-jet-taikun/apis/alertingprofile/v1alpha1"
+	v1alpha1backupcredential "github.com/nivraph/provider-jet-taikun/apis/backupcredential/v1alpha1"
+	v1alpha1backuppolicy "github.com/nivraph/provider-jet-taikun/apis/backuppolicy/v1alpha1"
+	v1alpha1billingcredential "github.com/nivraph/provider-jet-taikun/apis/billingcredential/v1alpha1"
+	v1alpha1billingrule "github.com/nivraph/provider-jet-taikun/apis/billingrule/v1alpha1"
+	v1alpha1cloudcredential "github.com/nivraph/provider-jet-taikun/apis/cloudcredential/v1alpha1"
+	v1alpha1cloudcredentialaws "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialaws/v1alpha1"
+	v1alpha1cloudcredentialazure "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialazure/v1alpha1"
+	v1alpha1cloudcredentialgcp "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialgcp/v1alpha1"
+	v1alpha1cloudcredentialopenstack "github.com/nivraph/provider-jet-taikun/apis/cloudcredentialopenstack/v1alpha1"
+	v1alpha1kubeconfig "github.com/nivraph/provider-jet-taikun/apis/kubeconfig/v1alpha1"
+	v1alpha1kubernetesprofile "github.com/nivraph/provider-jet-taikun/apis/kubernetesprofile/v1alpha1"
+	v1alpha1organization "github.com/nivraph/provider-jet-taikun/apis/organization/v1alpha1"
+	v1alpha1organizationbillingruleattachment "github.com/nivraph/provider-jet-taikun/apis/organizationbillingruleattachment/v1alpha1"
+	v1alpha1policyprofile "github.com/nivraph/provider-jet-taikun/apis/policyprofile/v1alpha1"
+	v1alpha1project "github.com/nivraph/provider-jet-taikun/apis/project/v1alpha1"
+	v1alpha1projectuserattachment "github.com/nivraph/provider-jet-taikun/apis/projectuserattachment/v1alpha1"
+	v1alpha1showbackcredential "github.com/nivraph/provider-jet-taikun/apis/showbackcredential/v1alpha1"
+	v1alpha1showbackrule "github.com/nivraph/provider-jet-taikun/apis/showbackrule/v1alpha1"
+	v1alpha1slackconfiguration "github.com/nivraph/provider-jet-taikun/apis/slackconfiguration/v1alpha1"
+	v1alpha1standaloneprofile "github.com/nivraph/provider-jet-taikun/apis/standaloneprofile/v1alpha1"
+	v1alpha1user "github.com/nivraph/provider-jet-taikun/apis/user/v1alpha1"
+	v1alpha1apis "github.com/nivraph/provider-jet-taikun/apis/v1alpha1"
 )
 
 func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
+		v1alpha1alertingprofile.SchemeBuilder.AddToScheme,
+		v1alpha1backupcredential.SchemeBuilder.AddToScheme,
+		v1alpha1backuppolicy.SchemeBuilder.AddToScheme,
+		v1alpha1billingcredential.SchemeBuilder.AddToScheme,
+		v1alpha1billingrule.SchemeBuilder.AddToScheme,
+		v1alpha1cloudcredential.SchemeBuilder.AddToScheme,
+		v1alpha1cloudcredentialaws.SchemeBuilder.AddToScheme,
+		v1alpha1cloudcredentialazure.SchemeBuilder.AddToScheme,
+		v1alpha1cloudcredentialgcp.SchemeBuilder.AddToScheme,
+		v1alpha1cloudcredentialopenstack.SchemeBuilder.AddToScheme,
+		v1alpha1kubeconfig.SchemeBuilder.AddToScheme,
+		v1alpha1kubernetesprofile.SchemeBuilder.AddToScheme,
+		v1alpha1organization.SchemeBuilder.AddToScheme,
+		v1alpha1organizationbillingruleattachment.SchemeBuilder.AddToScheme,
+		v1alpha1policyprofile.SchemeBuilder.AddToScheme,
+		v1alpha1project.SchemeBuilder.AddToScheme,
+		v1alpha1projectuserattachment.SchemeBuilder.AddToScheme,
+		v1alpha1showbackcredential.SchemeBuilder.AddToScheme,
+		v1alpha1showbackrule.SchemeBuilder.AddToScheme,
+		v1alpha1slackconfiguration.SchemeBuilder.AddToScheme,
+		v1alpha1standaloneprofile.SchemeBuilder.AddToScheme,
+		v1alpha1user.SchemeBuilder.AddToScheme,
 		v1alpha1apis.SchemeBuilder.AddToScheme,
 	)
 }

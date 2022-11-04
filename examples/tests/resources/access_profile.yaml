@@ -1,0 +1,13 @@
+apiVersion: accessprofile.taikun.jet.crossplane.io/v1alpha1
+kind: Profile
+metadata:
+  name: ap-raph-crossplane
+spec:
+  forProvider:
+    name: "success-AP"
+    organizationId: "15687"
+    sshUser:
+      - name: "test-key"
+        publicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQwGpzLk0IzqKnBpaHqecLA+X4zfHamNe9Rg3CoaXHF :oui_oui:"
+  providerConfigRef:
+    name: default

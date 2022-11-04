@@ -1,0 +1,12 @@
+apiVersion: organizationbillingruleattachment.taikun.jet.crossplane.io/v1alpha1
+kind: BillingRuleAttachment
+metadata:
+  name: ORG_BILL_RULE_ATTACH
+spec:
+  forProvider:
+    billingRuleIdRef:
+        name: "BILL_RULE_REF"
+    organizationIdRef:
+        name: "ORGANIZATION_REF"
+  providerConfigRef:
+    name: default

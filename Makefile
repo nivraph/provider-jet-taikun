@@ -2,15 +2,16 @@
 # Setup Project
 
 PROJECT_NAME := provider-jet-taikun
-PROJECT_REPO := github.com/crossplane-contrib/$(PROJECT_NAME)
+PROJECT_REPO := github.com/nivraph/$(PROJECT_NAME)
 
 export TERRAFORM_VERSION := 1.1.6
 
 export TERRAFORM_PROVIDER_SOURCE := itera-io/taikun
-export TERRAFORM_PROVIDER_VERSION := 1.3.0
+export TERRAFORM_PROVIDER_VERSION := 1.4.0
 export TERRAFORM_PROVIDER_DOWNLOAD_NAME := terraform-provider-taikun
-export TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX := https://github.com/itera-io/terraform-provider-taikun
-#export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-taikun_v1.3.0_x5
+export TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX := https://github.com/itera-io/terraform-provider-taikun/releases/download/v1.4.0/
+export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-taikun_v1.4.0
+
 
 PLATFORMS ?= linux_amd64 linux_arm64
 
@@ -127,7 +128,10 @@ run: go.build
 	@# To see other arguments that can be provided, run the command with --help instead
 	$(GO_OUT_DIR)/provider --debug
 
-.PHONY: cobertura submodules fallthrough run crds.clean
+docs:
+	@./docs/generate/generate.sh
+
+.PHONY: cobertura submodules fallthrough run crds.clean docs
 
 # ====================================================================================
 # Special Targets

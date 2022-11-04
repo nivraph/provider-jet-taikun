@@ -27,7 +27,7 @@ import (
 
 	"github.com/crossplane/terrajet/pkg/terraform"
 
-	"github.com/crossplane-contrib/provider-jet-taikun/apis/v1alpha1"
+	"github.com/nivraph/provider-jet-taikun/apis/v1alpha1"
 )
 
 const (
@@ -42,7 +42,7 @@ const (
 const (
 	taikunEmail            = "email"
 	taikunPassword         = "password"
-	taikunApiHost          = "api_host"
+	taikunAPIHost          = "api_host"
 	taikunKeycloakEmail    = "keycloak_email"
 	taikunKeycloakPassword = "keycloak_password"
 )
@@ -90,8 +90,8 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 		if v, ok := taikunCreds[taikunPassword]; ok {
 			ps.Configuration[taikunPassword] = v
 		}
-		if v, ok := taikunCreds[taikunApiHost]; ok {
-			ps.Configuration[taikunApiHost] = v
+		if v, ok := taikunCreds[taikunAPIHost]; ok {
+			ps.Configuration[taikunAPIHost] = v
 		}
 		if v, ok := taikunCreds[taikunKeycloakEmail]; ok {
 			ps.Configuration[taikunKeycloakEmail] = v

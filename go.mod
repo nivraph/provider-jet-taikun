@@ -1,4 +1,4 @@
-module github.com/crossplane-contrib/provider-jet-taikun
+module github.com/nivraph/provider-jet-taikun
 
 go 1.17
 

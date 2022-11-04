@@ -25,7 +25,7 @@ import (
 
 	"github.com/crossplane/terrajet/pkg/pipeline"
 
-	"github.com/crossplane-contrib/provider-jet-taikun/config"
+	"github.com/nivraph/provider-jet-taikun/config"
 )
 
 func main() {

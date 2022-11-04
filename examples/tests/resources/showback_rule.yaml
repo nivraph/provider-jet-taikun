@@ -1,0 +1,20 @@
+apiVersion: showbackrule.taikun.jet.crossplane.io/v1alpha1
+kind: Rule
+metadata:
+  name: showrule-raph-crossplane
+spec:
+  forProvider:
+    name: "success-Showbackrule"
+    globalAlertLimit: 42
+    kind: "External"
+    label:
+      - key: "key"
+        value: "value"
+    metricName: "metricname"
+    type: "Sum"
+    price: 1000
+    projectAlertLimit: 42
+    organizationId: "15687"
+    showbackCredentialId: "45"
+  providerConfigRef:
+    name: default

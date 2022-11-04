@@ -1,0 +1,16 @@
+apiVersion: billingrule.taikun.jet.crossplane.io/v1alpha1
+kind: Rule
+metadata:
+  name: billingrule-raph-crossplane
+spec:
+  forProvider:
+    name: "success-billingrule"
+    billingCredentialId: "10136"
+    label:
+      - key: "label"
+        value: "value"
+    metricName: "coredns_forward_request_duration_seconds"
+    price: 1
+    type: "Sum"
+  providerConfigRef:
+    name: default

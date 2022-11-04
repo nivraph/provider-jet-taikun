@@ -75,6 +75,10 @@ type OrganizationParameters struct {
 	// +kubebuilder:validation:Optional
 	ManagersCanChangeSubscription *bool `json:"managersCanChangeSubscription,omitempty" tf:"managers_can_change_subscription,omitempty"`
 
+	// Organization's name.
+	// +kubebuilder:validation:Required
+	Name *string `json:"name" tf:"name,omitempty"`
+
 	// Phone number.
 	// +kubebuilder:validation:Optional
 	Phone *string `json:"phone,omitempty" tf:"phone,omitempty"`

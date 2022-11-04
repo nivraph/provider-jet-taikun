@@ -1,0 +1,19 @@
+apiVersion: alertingprofile.taikun.jet.crossplane.io/v1alpha1
+kind: Profile
+metadata:
+  name: "156452"
+spec:
+  forProvider:
+    emails:
+      - "raphael.nivault@itera.io"
+    lock: false
+    organizationId: "15687"
+    reminder: "Daily"
+    slackConfigurationId: "5069"
+    webhook:
+      - header:
+          - key: "key"
+            value: "value"
+        url: "https://www.example.com"
+  providerConfigRef:
+    name: default
