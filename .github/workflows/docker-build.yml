@@ -29,7 +29,6 @@ jobs:
           build-essential \
           ca-certificates \
           curl \
-          docker \
           git \
           jq \
           lsb-release \
@@ -39,6 +38,13 @@ jobs:
           sudo apt-get upgrade -y && \
           sudo apt-get autoremove -y && \
           sudo apt-get clean
+      -
+        name: Docker Install
+        run: |
+          sudo apt update
+          sudo apt install docker.io -y
+          sudo snap install docker
+          sudo systemctl status docker
       -
         name: Go Set up
         run: |
