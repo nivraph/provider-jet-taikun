@@ -7,11 +7,10 @@ Taikun API.
 
 ## Getting Started
 
-Install the provider by using the following command after changing the image tag
-to the [latest release](https://github.com/itera-io/provider-jet-taikun/releases):
+Install the provider by using the following command:
 
 ```
-kubectl crossplane install provider crossplane/provider-jet-taikun:v0.1.0
+kubectl apply -f examples/install.yaml
 ```
 
 In order to learn about basics of this provider, you can found [here](https://github.com/itera-io/provider-jet-taikun-workshop) a little workshop.
