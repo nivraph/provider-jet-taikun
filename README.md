@@ -14,6 +14,8 @@ to the [latest release](https://github.com/itera-io/provider-jet-taikun/releases
 kubectl crossplane install provider crossplane/provider-jet-taikun:v0.1.0
 ```
 
+In order to learn about basics of this provider, you can found [here](https://github.com/itera-io/provider-jet-taikun-workshop) a little workshop.
+
 ## Documentation
 
 You can see the API reference [here](https://doc.crds.dev/github.com/itera-io/provider-jet-taikun).
