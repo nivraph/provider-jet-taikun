@@ -38,7 +38,7 @@ jobs:
           sudo apt-get update && \
           sudo apt-get upgrade -y && \
           sudo apt-get autoremove -y && \
-          sudo apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+          sudo apt-get clean
       -
         name: Go Set up
         run: |
