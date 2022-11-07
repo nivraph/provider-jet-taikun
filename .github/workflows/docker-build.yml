@@ -29,7 +29,7 @@ jobs:
           build-essential \
           ca-certificates \
           curl \
-          docker.io \
+          docker \
           git \
           jq \
           lsb-release \
