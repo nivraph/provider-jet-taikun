@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
 
     steps:
       -
@@ -34,11 +34,7 @@ jobs:
           jq \
           lsb-release \
           make \
-          rsync \
-          runit \
-          sudo \
-          unzip \
-          zip && \
+          sudo && \
           sudo apt-get update && \
           sudo apt-get upgrade -y && \
           sudo apt-get autoremove -y && \
