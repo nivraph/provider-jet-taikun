@@ -48,7 +48,7 @@ jobs:
           echo "${GO_HASH}  golang.tar.gz" | sha256sum -c - && \
           sudo tar -C /usr/local -xzf golang.tar.gz && \
           rm golang.tar.gz
-          PATH /usr/local/go/bin:$PATH
+          PATH=/usr/local/go/bin:$PATH
       -
         name: Build provider's images
         run: |
