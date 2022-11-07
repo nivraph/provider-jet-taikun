@@ -63,12 +63,12 @@ jobs:
           git clone https://github.com/nivraph/provider-jet-taikun.git
           cd provider-jet-taikun
           make submodules
-          make build
+          sudo make build
           
       -
         name: Push provider's images
         run: |
-          docker images | cat
+          docker images | echo
           
           
         
