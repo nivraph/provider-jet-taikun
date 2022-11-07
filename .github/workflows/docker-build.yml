@@ -22,8 +22,6 @@ jobs:
           GITLAB_PASSWORD: ${{ secrets.GITLAB_TOKEN }}
         run: |
           docker login infra.itera.io:5000 -u $GITLAB_USERNAME -p $GITLAB_PASSWORD
-        
-          
       -
         name: General Setup
         run: |
@@ -80,8 +78,8 @@ jobs:
           NORMAL_IMG: "crossplane/provider-jet-taikun-amd64"
           LATEST_TAG: ${{ env.latest_tag }}
         run: |
-          docker push "infra.itera.io:5000/Taikun/Taikun/"$CONTROLLER_IMG":"$LATEST_TAG
-          docker push "infra.itera.io:5000/Taikun/Taikun/"$NORMAL_IMG":"$LATEST_TAG
+          docker push infra.itera.io:5000/libvirt-mgmt-poc/taikun/"$CONTROLLER_IMG":"$LATEST_TAG
+          docker push infra.itera.io:5000/libvirt-mgmt-poc/taikun/"$NORMAL_IMG":"$LATEST_TAG
           
           
         
