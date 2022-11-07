@@ -42,6 +42,7 @@ jobs:
       -
         name: Docker Install
         run: |
+          sudo apt install runc
           sudo apt install containerd
           sudo apt-get install docker.io -y
           sudo snap install docker
