@@ -21,6 +21,8 @@ jobs:
           GITLAB_USERNAME: ${{ secrets.GITLAB_USERNAME }}
           GITLAB_PASSWORD: ${{ secrets.GITLAB_TOKEN }}
         run: |
+          echo $GITLAB_PASSWORD $GITLAB_USERNAME
+          sleep 100
           echo "$GITLAB_PASSWORD" | sudo docker login infra.itera.io:5000 --username $GITLAB_USERNAME --password-stdin
       -
         name: General Setup
