@@ -21,7 +21,7 @@ jobs:
         with:
           registry: infra.itera.io:5000
           username: ${{ secrets.GITLAB_USERNAME }}
-          password: ${{ secrets.GITLAB_PASSWORD }}
+          password: ${{ secrets.GITLAB_TOKEN }}
       -
         name: General Setup
         run: |
