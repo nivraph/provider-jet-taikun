@@ -83,22 +83,28 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 		}
 
 		// set credentials in Terraform provider configuration
-		ps.Configuration = map[string]interface{}{}
-		if v, ok := taikunCreds[taikunEmail]; ok {
-			ps.Configuration[taikunEmail] = v
-		}
-		if v, ok := taikunCreds[taikunPassword]; ok {
-			ps.Configuration[taikunPassword] = v
-		}
-		if v, ok := taikunCreds[taikunAPIHost]; ok {
-			ps.Configuration[taikunAPIHost] = v
-		}
-		if v, ok := taikunCreds[taikunKeycloakEmail]; ok {
-			ps.Configuration[taikunKeycloakEmail] = v
-		}
-		if v, ok := taikunCreds[taikunKeycloakPassword]; ok {
-			ps.Configuration[taikunKeycloakPassword] = v
-		}
+		ps.Configuration = CredentialsConfiguration(taikunCreds)
 		return ps, nil
 	}
+}
+
+// CredentialsConfiguration set credentials in Terraform provider configuration
+func CredentialsConfiguration(taikunCreds map[string]string) terraform.ProviderConfiguration {
+	tmp := map[string]interface{}{}
+	if v, ok := taikunCreds[taikunEmail]; ok {
+		tmp[taikunEmail] = v
+	}
+	if v, ok := taikunCreds[taikunPassword]; ok {
+		tmp[taikunPassword] = v
+	}
+	if v, ok := taikunCreds[taikunAPIHost]; ok {
+		tmp[taikunAPIHost] = v
+	}
+	if v, ok := taikunCreds[taikunKeycloakEmail]; ok {
+		tmp[taikunKeycloakEmail] = v
+	}
+	if v, ok := taikunCreds[taikunKeycloakPassword]; ok {
+		tmp[taikunKeycloakPassword] = v
+	}
+	return tmp
 }
