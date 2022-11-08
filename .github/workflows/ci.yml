@@ -12,9 +12,9 @@ on:
 
 env:
   # Common versions
-  GO_VERSION: '1.17'
-  GOLANGCI_VERSION: 'v1.31'
-  DOCKER_BUILDX_VERSION: 'v0.4.2'
+  GO_VERSION: "1.17"
+  GOLANGCI_VERSION: "v1.31"
+  DOCKER_BUILDX_VERSION: "v0.4.2"
 
   # Common users. We can't run a step 'if secrets.AWS_USR != ""' but we can run
   # a step 'if env.AWS_USR' != ""', so we copy these to succinctly test whether
@@ -26,8 +26,7 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     steps:
-      -
-        name: General Setup
+      - name: General Setup
         run: |
           sudo apt-get update && \
           sudo apt-get install -yy -q --no-install-recommends \
@@ -44,16 +43,14 @@ jobs:
           sudo apt-get upgrade -y && \
           sudo apt-get autoremove -y && \
           sudo apt-get clean
-      -
-        name: Docker Install
+      - name: Docker Install
         run: |
           sudo apt install runc
           sudo apt install containerd
           sudo apt-get install docker.io -y
           sudo snap install docker
           sudo systemctl status docker
-      -
-        name: Go Set up
+      - name: Go Set up
         run: |
           GO_VERSION=1.17.5 && \
           GO_HASH=bd78114b0d441b029c8fe0341f4910370925a4d270a6a590668840675b0c653e && \
@@ -62,14 +59,13 @@ jobs:
           sudo tar -C /usr/local -xzf golang.tar.gz && \
           rm golang.tar.gz
           PATH=/usr/local/go/bin:$PATH
-      -
-        name: Build provider's images
+      - name: Build provider's images
         run: |
           git clone https://github.com/nivraph/provider-jet-taikun.git
           cd provider-jet-taikun
           make submodules
           sudo make all
-    
+
   detect-noop:
     runs-on: ubuntu-18.04
     needs: build
@@ -83,39 +79,40 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           paths_ignore: '["**.md", "**.png", "**.jpg"]'
           do_not_skip: '["workflow_dispatch", "schedule", "push"]'
-  
+
   golangci-lint:
-      name: lint
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/setup-go@v3
-          with:
-            go-version: 1.17
-        - uses: actions/checkout@v3
-        - name: golangci-lint
-          uses: golangci/golangci-lint-action@v3
-          with:
-            # Optional: version of golangci-lint to use in form of v1.2 or v1.2.3 or `latest` to use the latest version
-            version: v1.29
+    name: lint
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/setup-go@v3
+        with:
+          go-version: 1.17
+      - uses: actions/checkout@v3
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          # Optional: version of golangci-lint to use in form of v1.2 or v1.2.3 or `latest` to use the latest version
+          version: v1.29
 
-            # Optional: working directory, useful for monorepos
-            # working-directory: somedir
+          # Optional: working directory, useful for monorepos
+          # working-directory: somedir
 
-            # Optional: golangci-lint command line arguments.
-            # args: --issues-exit-code=0
+          # Optional: golangci-lint command line arguments.
+          # args: --issues-exit-code=0
 
-            # Optional: show only new issues if it's a pull request. The default value is `false`.
-            # only-new-issues: true
+          # Optional: show only new issues if it's a pull request. The default value is `false`.
+          # only-new-issues: true
 
-            # Optional: if set to true then the all caching functionality will be complete disabled,
-            #           takes precedence over all other caching options.
-            # skip-cache: true
+          # Optional: if set to true then the all caching functionality will be complete disabled,
+          #           takes precedence over all other caching options.
+          # skip-cache: true
 
-            # Optional: if set to true then the action don't cache or restore ~/go/pkg.
-            # skip-pkg-cache: true
+          # Optional: if set to true then the action don't cache or restore ~/go/pkg.
+          # skip-pkg-cache: true
 
-            # Optional: if set to true then the action don't cache or restore ~/.cache/go-build.
-            # skip-build-cache: true
+          # Optional: if set to true then the action don't cache or restore ~/.cache/go-build.
+          # skip-build-cache: true
 
   check-diff:
     runs-on: ubuntu-18.04
@@ -328,20 +325,20 @@ jobs:
           # We're using docker buildx, which doesn't actually load the images it
           # builds by default. Specifying --load does so.
           BUILD_ARGS: "--load"
-      
+
       - name: Publish Artifacts to GitHub
         uses: actions/upload-artifact@v2
         with:
           name: output
           path: _output/**
-      
+
       - name: Login to Docker
         uses: docker/login-action@v1
         if: env.DOCKER_USR != ''
         with:
           username: ${{ secrets.DOCKER_USR }}
           password: ${{ secrets.DOCKER_PSW }}
-      
+
       - name: Publish Artifacts to S3 and Docker Hub
         run: make -j2 publish BRANCH_NAME=${GITHUB_REF##*/}
         if: env.AWS_USR != '' && env.DOCKER_USR != ''
@@ -349,7 +346,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_USR }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_PSW }}
           GIT_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Promote Artifacts in S3 and Docker Hub
         if: github.ref == 'refs/heads/main' && env.AWS_USR != '' && env.DOCKER_USR != ''
         run: make -j2 promote
@@ -358,4 +355,3 @@ jobs:
           CHANNEL: main
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_USR }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_PSW }}
-        
