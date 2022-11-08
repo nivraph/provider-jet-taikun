@@ -88,7 +88,8 @@ jobs:
   golangci-lint:
     name: lint
     needs: build
-    permissions: read
+    permissions:
+      contents: read
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
