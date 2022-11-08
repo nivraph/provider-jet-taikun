@@ -21,8 +21,56 @@ env:
   AWS_USR: ${{ secrets.AWS_USR }}
 
 jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      -
+        name: General Setup
+        run: |
+          sudo apt-get update && \
+          sudo apt-get install -yy -q --no-install-recommends \
+          build-essential \
+          ca-certificates \
+          curl \
+          git \
+          jq \
+          lsb-release \
+          make \
+          wget \
+          sudo && \
+          sudo apt-get update && \
+          sudo apt-get upgrade -y && \
+          sudo apt-get autoremove -y && \
+          sudo apt-get clean
+      -
+        name: Docker Install
+        run: |
+          sudo apt install runc
+          sudo apt install containerd
+          sudo apt-get install docker.io -y
+          sudo snap install docker
+          sudo systemctl status docker
+      -
+        name: Go Set up
+        run: |
+          GO_VERSION=1.17.5 && \
+          GO_HASH=bd78114b0d441b029c8fe0341f4910370925a4d270a6a590668840675b0c653e && \
+          curl -fsSL https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz -o golang.tar.gz && \
+          echo "${GO_HASH}  golang.tar.gz" | sha256sum -c - && \
+          sudo tar -C /usr/local -xzf golang.tar.gz && \
+          rm golang.tar.gz
+          PATH=/usr/local/go/bin:$PATH
+      -
+        name: Build provider's images
+        run: |
+          git clone https://github.com/nivraph/provider-jet-taikun.git
+          cd provider-jet-taikun
+          make submodules
+          sudo make all
+    
   detect-noop:
     runs-on: ubuntu-18.04
+    needs: build
     outputs:
       noop: ${{ steps.noop.outputs.should_skip }}
     steps:
@@ -38,6 +86,7 @@ jobs:
   lint:
     name: lint
     runs-on: self-hosted
+    needs: build
     steps:
       - uses: actions/checkout@v2
       - name: golangci-lint
@@ -47,7 +96,7 @@ jobs:
 
   check-diff:
     runs-on: ubuntu-18.04
-    needs: detect-noop
+    needs: [detect-noop, build]
     if: needs.detect-noop.outputs.noop != 'true'
 
     steps:
@@ -90,7 +139,7 @@ jobs:
 
   unit-tests:
     runs-on: ubuntu-18.04
-    needs: detect-noop
+    needs: [detect-noop, build]
     if: needs.detect-noop.outputs.noop != 'true'
 
     steps:
@@ -139,7 +188,7 @@ jobs:
 
   e2e-tests:
     runs-on: ubuntu-18.04
-    needs: detect-noop
+    needs: [detect-noop, build]
     if: needs.detect-noop.outputs.noop != 'true'
 
     steps:
@@ -201,7 +250,7 @@ jobs:
 
   publish-artifacts:
     runs-on: ubuntu-18.04
-    needs: detect-noop
+    needs: [detect-noop, build]
     if: needs.detect-noop.outputs.noop != 'true'
 
     steps:
