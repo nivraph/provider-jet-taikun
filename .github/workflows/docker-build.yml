@@ -17,6 +17,9 @@ jobs:
         uses: docker/setup-buildx-action@v2
       -
         name: Login to Gitlab Registry
+        env: 
+          GITLAB_USERNAME: ${{ secrets.GITLAB_USERNAME }}
+          GITLAB_PASSWORD: ${{ secrets.GITLAB_TOKEN }}
         run: |
           echo $GITLAB_TOKEN $GITLAB_USERNAME
           echo "$GITLAB_TOKEN" | sudo docker login infra.itera.io:5000 --username $GITLAB_USERNAME --password-stdin
