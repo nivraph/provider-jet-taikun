@@ -79,8 +79,8 @@ jobs:
           NORMAL_IMG: "raphidock/provider-jet-taikun-amd64"
           LATEST_TAG: ${{ env.latest_tag }}
         run: |
-          docker push $CONTROLLER_IMG":"$LATEST_TAG
-          docker push $NORMAL_IMG":"$LATEST_TAG
+          docker push "raphidock/provider-jet-taikun-controller-amd64:"$LATEST_TAG
+          docker push "raphidock/provider-jet-taikun-amd64:"$LATEST_TAG
           
           
         
