@@ -152,4 +152,7 @@ crossplane.help:
 
 help-special: crossplane.help
 
+test:
+	./tests/run_tests.sh
+
 .PHONY: crossplane.help help-special

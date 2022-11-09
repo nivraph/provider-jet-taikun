@@ -1,3 +1,5 @@
+#!/bin/bash
+
 WHITE='\033[0m'
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -19,9 +21,10 @@ source get_ref.sh
 
 # Check if created
 go run test_created.go
+OUT="$?"
 
 printf "    -> Creating...\n"
-if [ $? -eq 0 ]
+if [ "$OUT" -eq "0" ]
 then
     printf "    ${GREEN}PASSED !!!${WHITE}\n"
 else
@@ -32,9 +35,10 @@ fi
 kubectl delete -f "$DEST"
 # Check if destroyed
 go run test_destroyed.go
+OUT="$?"
 
 printf "    -> Destroying...\n"
-if [ $? -eq 0 ]
+if [ "$OUT" -eq "0" ]
 then
     printf "    ${GREEN}PASSED !!!${WHITE}\n"
 else

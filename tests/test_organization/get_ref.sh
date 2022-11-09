@@ -1,3 +1,5 @@
+#!/bin/bash
+
 kubectl get managed > out_raw
 grep "$RESOURCE_NAME" "out_raw" > out
 

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 export PRE="generated_"
 export END=".yaml"

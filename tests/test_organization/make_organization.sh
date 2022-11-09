@@ -1,3 +1,5 @@
+#!/bin/bash
+
 source data.sh
 cp example_"$RESOURCE".yaml $DEST
 
