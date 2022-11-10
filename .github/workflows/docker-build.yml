@@ -77,8 +77,5 @@ jobs:
         env:
           LATEST_TAG: ${{ env.latest_tag }}
         run: |
-          docker push "raphidock/provider-jet-taikun-controller-amd64:"$LATEST_TAG
-          docker push "raphidock/provider-jet-taikun-amd64:"$LATEST_TAG
-          
-          
-        
+          docker push image "raphidock/provider-jet-taikun-controller-amd64:"$LATEST_TAG
+          docker push image "raphidock/provider-jet-taikun-amd64:"$LATEST_TAG
