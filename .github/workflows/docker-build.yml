@@ -29,7 +29,7 @@ jobs:
         with:
           registry: registry.cri.epita.fr/raphael.nivault
           username: ${{ secrets.GITLAB_USERNAME }}
-          password: ${{ secrets.GITLAB_PASSWORD }}
+          password: ${{ secrets.GITLAB_TOKEN }}
       -
         name: General Setup
         run: |
