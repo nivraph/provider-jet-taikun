@@ -24,6 +24,13 @@ jobs:
           username: "raphidock"
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
+        name: Login to GitLab
+        uses: docker/login-action@v2
+        with:
+          registry: registry.cri.epita.fr/raphael.nivault
+          username: ${{ secrets.GITLAB_USERNAME }}
+          password: ${{ secrets.GITLAB_PASSWORD }}
+      -
         name: General Setup
         run: |
           sudo apt-get update && \
@@ -60,22 +67,18 @@ jobs:
           rm golang.tar.gz
           PATH=/usr/local/go/bin:$PATH
       -
-        name: Build provider's images
-        run: |
-          git clone https://github.com/nivraph/provider-jet-taikun.git
-          cd provider-jet-taikun
-          make submodules
-          sudo make build BUILD_REGISTRY=raphidock
-      - 
         name: "Set latest tag"
         id: set-latest-tag
         run: |
           echo "latest_tag=$(git tag | sort --version-sort | tail -n1)" >> $GITHUB_ENV
           echo "LATEST_TAG = ${{ env.latest_tag }}"
       -
-        name: Push provider's images
-        env:
-          LATEST_TAG: ${{ env.latest_tag }}
+        name: Build and Push provider's images
         run: |
-          docker image push "raphidock/provider-jet-taikun-controller-amd64:"$LATEST_TAG
-          docker image push "raphidock/provider-jet-taikun-amd64:"$LATEST_TAG
+          echo "latest_tag=$(git tag | sort --version-sort | tail -n1)" >> $GITHUB_ENV
+          git clone https://github.com/nivraph/provider-jet-taikun.git
+          cd provider-jet-taikun
+          make submodules
+          sudo make build BUILD_REGISTRY=registry.cri.epita.fr/raphael.nivault
+          sudo docker push registry.cri.epita.fr/raphael.nivault/provider-jet-taikun-amd64:${{ env.latest_tag }}
+          
