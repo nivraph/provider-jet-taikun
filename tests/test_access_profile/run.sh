@@ -5,12 +5,14 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 
+RETURN=0
+
 source data.sh
 
 ./make_"$RESOURCE".sh
 
 printf "\n=== TESTING "
-printf "$RESOURCE\n"
+printf "${YELLOW}$RESOURCE${WHITE}\n"
 
 # Create
 kubectl apply -f "$DEST"
@@ -27,6 +29,7 @@ if [ "$OUT" -eq "0" ]
 then
     printf "    ${GREEN}PASSED !!!${WHITE}\n"
 else
+    RETURN=1
     printf "    ${RED}FAILED TO CREATE...${WHITE}\n"
 fi
 
@@ -42,9 +45,12 @@ if [ "$OUT" -eq "0" ]
 then
     printf "    ${GREEN}PASSED !!!${WHITE}\n"
 else
+    RETURN=1
     printf "    ${RED}FAILED TO DESTROY...${WHITE}\n"
 fi
 
 printf "\n"
 
 rm "$DEST"
+
+return $RETURN

@@ -2,18 +2,19 @@
 # Setup Project
 
 PROJECT_NAME := provider-jet-taikun
-PROJECT_REPO := github.com/nivraph/$(PROJECT_NAME)
+PROJECT_REPO := github.com/itera-io/$(PROJECT_NAME)
 
 export TERRAFORM_VERSION := 1.1.6
 
 export TERRAFORM_PROVIDER_SOURCE := itera-io/taikun
-export TERRAFORM_PROVIDER_VERSION := 1.4.0
+export TERRAFORM_PROVIDER_VERSION := 1.4.1
 export TERRAFORM_PROVIDER_DOWNLOAD_NAME := terraform-provider-taikun
-export TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX := https://github.com/itera-io/terraform-provider-taikun/releases/download/v1.4.0/
-export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-taikun_v1.4.0
+export TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX := https://github.com/itera-io/terraform-provider-taikun/releases/download/v1.4.1/
+export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-taikun_v1.4.1
+export TERRAFORM_DOCS_PATH := docs/resources
+export TERRAFORM_PROVIDER_REPO := https://github.com/itera-io/terraform-provider-taikun
 
-
-PLATFORMS ?= linux_amd64 linux_arm64
+PLATFORMS ?= linux_amd64
 
 # -include will silently skip missing files, which allows us
 # to load those files with a target in the Makefile. If only
@@ -38,6 +39,8 @@ NPROCS ?= 1
 # to half the number of CPU cores.
 GO_TEST_PARALLEL := $(shell echo $$(( $(NPROCS) / 2 )))
 
+GO_REQUIRED_VERSION ?= 1.19
+GOLANGCILINT_VERSION ?= 1.50.0
 GO_STATIC_PACKAGES = $(GO_PROJECT)/cmd/provider
 GO_LDFLAGS += -X $(GO_PROJECT)/internal/version.Version=$(VERSION)
 GO_SUBDIRS += cmd internal apis
@@ -52,7 +55,7 @@ GO111MODULE = on
 # ====================================================================================
 # Setup Images
 
-DOCKER_REGISTRY ?= crossplane
+DOCKER_REGISTRY ?= crossplane-provider
 IMAGES = provider-jet-taikun provider-jet-taikun-controller
 -include build/makelib/image.mk
 
@@ -93,9 +96,16 @@ $(TERRAFORM_PROVIDER_SCHEMA): $(TERRAFORM)
 	@$(TERRAFORM) -chdir=$(TERRAFORM_WORKDIR) providers schema -json=true > $(TERRAFORM_PROVIDER_SCHEMA) 2>> $(TERRAFORM_WORKDIR)/terraform-logs.txt
 	@$(OK) generating provider schema for $(TERRAFORM_PROVIDER_SOURCE) $(TERRAFORM_PROVIDER_VERSION)
 
-generate.init: $(TERRAFORM_PROVIDER_SCHEMA)
+pull-docs:
+	@if [ ! -d "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)" ]; then \
+  		mkdir -p "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)" && \
+		git clone -c advice.detachedHead=false --depth 1 --filter=blob:none --branch "v$(TERRAFORM_PROVIDER_VERSION)" --sparse "$(TERRAFORM_PROVIDER_REPO)" "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)"; \
+	fi
+	@git -C "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)" sparse-checkout set "$(TERRAFORM_DOCS_PATH)"
 
-.PHONY: $(TERRAFORM_PROVIDER_SCHEMA)
+generate.init: $(TERRAFORM_PROVIDER_SCHEMA) pull-docs
+
+.PHONY: $(TERRAFORM_PROVIDER_SCHEMA) pull-docs
 # ====================================================================================
 # Targets
 
@@ -131,6 +141,9 @@ run: go.build
 docs:
 	@./docs/generate/generate.sh
 
+install:
+	@kubectl apply -f examples/install.yaml
+
 .PHONY: cobertura submodules fallthrough run crds.clean docs
 
 # ====================================================================================
@@ -152,7 +165,7 @@ crossplane.help:
 
 help-special: crossplane.help
 
-test:
+acc-test:
 	./tests/run_tests.sh
 
 .PHONY: crossplane.help help-special

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+WAITING=938
 COUNT=0
 COUNT_LIMIT=$(($WAITING / $JUMP_TIME))
 REF=""
@@ -16,14 +17,16 @@ do
         exit 1
     fi
 
-    REF=`cat ref`
+    #REF=`cat ref`
     kubectl get managed > out_raw
-    grep "$REF" "out_raw" > out
+    grep "test-$TAIKUN_USER-user" "out_raw" > out
     CONTENT=`cat out`
+
+    #echo "$CONTENT"
 
     READY=`grep -o True out | wc -l`
 
-    sed -i "s/.* \([0-9]\+\)\(\/[0-9]\+\)\? .*/\1/g" "out"
+    sed -i "s/.* \([a-z0-9-]\+\) .*/\1/g" "out"
 
     CONTENT_AFTER=`cat out`
 
@@ -40,7 +43,10 @@ do
     sleep $JUMP_TIME
 done
 
-export RESOURCE_REF=$REF
+#echo $REF
 
-rm out*
-rm ref
+export TESTS_USER_REF=$REF
+
+rm out_raw
+rm out
+#rm ref

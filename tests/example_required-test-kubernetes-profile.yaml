@@ -1,0 +1,14 @@
+apiVersion: kubernetesprofile.taikun.jet.crossplane.io/v1alpha1
+kind: Profile
+metadata:
+  name: test-USER_TEST-kp
+spec:
+  forProvider:
+    name: "test-USER_TEST-kp"
+    organizationIdRef:
+        name: "test-USER_TEST-org-attach"
+    lock: false
+    loadBalancingSolution: "Octavia"
+    uniqueClusterName: true
+  providerConfigRef:
+    name: PROVIDER

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+WAITING=938
 COUNT=0
 COUNT_LIMIT=$(($WAITING / $JUMP_TIME))
 REF=""
@@ -11,14 +12,12 @@ do
         echo "TIMEOUT!"
         kubectl delete -f "$DEST"
         rm out*
-        rm ref
         rm "$DEST"
         exit 1
     fi
 
-    REF=`cat ref`
     kubectl get managed > out_raw
-    grep "$REF" "out_raw" > out
+    grep "test-$TAIKUN_USER-org-attach" "out_raw" > out
     CONTENT=`cat out`
 
     READY=`grep -o True out | wc -l`
@@ -40,7 +39,6 @@ do
     sleep $JUMP_TIME
 done
 
-export RESOURCE_REF=$REF
+export TESTS_ORGANIZATION_REF=$REF
 
 rm out*
-rm ref

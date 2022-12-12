@@ -3,6 +3,8 @@
 source data.sh
 cp example_"$RESOURCE".yaml $DEST
 
+sed -i "s/PROVIDER/$PROVIDER_NAME/g" $DEST
+
 sed -i "s/ORGANIZATION/$CP_ORG_NAME/g" $DEST
 sed -i "s/DESCRIPTION/$CP_ORG_DESCRIPTION/g" $DEST
 sed -i "s/DISCOUNT/$CP_ORG_DISCOUNT/g" $DEST
